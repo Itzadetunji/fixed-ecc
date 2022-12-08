@@ -1,7 +1,35 @@
 import "../styles/globals.css";
 import "tailwindcss/tailwind.css";
-import type { AppProps } from "next/app";
 
-export default function App({ Component, pageProps }: AppProps) {
-	return <Component {...pageProps} />;
+import { CookiesProvider } from "react-cookie";
+import type { AppProps } from "next/app";
+import { AnimatePresence } from "framer-motion";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import NotificationContextProvider from "../components/Contexts/NotificationContext";
+import UserContextProvider from "../components/Contexts/UserContext";
+
+const queryClient = new QueryClient();
+function MyApp({ Component, pageProps, router }: AppProps) {
+	const queryClient = new QueryClient();
+	return (
+		<QueryClientProvider client={queryClient}>
+			<AnimatePresence exitBeforeEnter>
+				<GoogleOAuthProvider clientId="805243689186-pe7uljmhc6i38mpvehe4o768ll6nomd4.apps.googleusercontent.com">
+					<CookiesProvider>
+						<NotificationContextProvider>
+							<UserContextProvider>
+								<Component
+									{...pageProps}
+									key={router.route}
+								/>
+							</UserContextProvider>
+						</NotificationContextProvider>
+					</CookiesProvider>
+				</GoogleOAuthProvider>
+			</AnimatePresence>
+		</QueryClientProvider>
+	);
 }
+
+export default MyApp;
