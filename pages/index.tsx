@@ -4,7 +4,7 @@ import PartnersSection from "../Sections/HomeSections/PartnersSection";
 import VentComplaintsSection from "../Sections/HomeSections/VentComplaintsSection";
 import HeroSection from "../Sections/HomeSections/HeroSection";
 import styles from "../styles/Home.module.css";
-import { Footer, GoalCard, NavBar } from "";
+import { Footer, GoalCard, NavBar } from "../components";
 import PostaComplaint from "../Sections/HomeSections/PostaComplaint";
 import Testimonials from "../Sections/HomeSections/TestimonialsSection";
 import Numbers from "../Sections/HomeSections/Numbers";
