@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { HowItWorksCard } from "../../../Components";
+import { HowItWorksCard } from "../../../components";
 
 const HowDoesItWork: React.FC = (props) => {
 	return (

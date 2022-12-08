@@ -1,4 +1,4 @@
-import { PartnerBox } from "../../../Components";
+import { PartnerBox } from "../../../components";
 
 const PartnersSection: React.FC = (props) => {
 	return (

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { GoalCard } from "../../../Components/";
+import { GoalCard } from "../../../components";
 
 const OurGoalsSection: React.FC = (props) => {
 	const goalCardInfo = [
