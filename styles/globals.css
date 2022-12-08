@@ -40,7 +40,7 @@ a {
 	animation: carouselAnimation 30s linear infinite;
 }
 .testimonialSection {
-	/* background-image: url("../public/images/hourglass.svg"); */
+	/* background-image: url("../public/Images/hourglass.svg"); */
 }
 @keyframes testimonialCarouselAnimation {
 	0% {
@@ -189,7 +189,6 @@ legend {
 	border: 6.5px solid white;
 	background: #d9d9d9;
 	transition: all 0.2s;
-
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
 	background: #c7c6c6;

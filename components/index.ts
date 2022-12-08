@@ -20,7 +20,7 @@ export * from "./NavBar";
 export * from "./NavBar/NavItem";
 // export * from "./NotificationItem";
 // export * from "./PaginationButton";
-// export * from "./PartnerBox";
+export * from "./PartnerBox";
 // export * from "./SmallFaqComponent";
 export * from "./VentComplaintsCard";
 export * from "./VentComplaintsCardsContainer";

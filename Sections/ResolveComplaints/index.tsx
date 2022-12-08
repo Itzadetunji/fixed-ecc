@@ -6,7 +6,7 @@ const ResolveComplaintsSection: React.FC = () => {
 			<h1 className="text-center mx-auto font-semibold text-[48px] lg:max-w-[826px]">Help resolve Users Complaints and make them happy again!</h1>
 			<div className="flex justify-center mt-[81px] px-[40px]">
 				<Image
-					src="/images/LawyerShakingHands.png"
+					src="/Images/LawyerShakingHands.png"
 					width={1159}
 					height={641}
 					alt={"An Image"}

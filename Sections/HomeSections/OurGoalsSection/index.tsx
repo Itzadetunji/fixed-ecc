@@ -6,17 +6,17 @@ const OurGoalsSection: React.FC = (props) => {
 		{
 			title: "Protect our customers",
 			description: "Safety & security tips, scam watch, guidelines to protect users from fraud and put an end to inustice.",
-			iconPath: "/images/shield.svg",
+			iconPath: "/Images/shield.svg",
 		},
 		{
 			title: "Help our customers",
 			description: "Reach decision maker, send email, get attention from brand via social campaigns.",
-			iconPath: "/images/question.svg",
+			iconPath: "/Images/question.svg",
 		},
 		{
 			title: "Fight for our customers",
 			description: "Take legal action and approach Consumer forum with experienced lawyers.",
-			iconPath: "/images/sword.svg",
+			iconPath: "/Images/sword.svg",
 		},
 	];
 	return (

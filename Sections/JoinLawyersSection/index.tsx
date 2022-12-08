@@ -5,7 +5,7 @@ const JoinLawyersSection: React.FC = () => {
 		<div className="px-[40px]">
 			<div className="max-w-[1102px] mx-auto">
 				<Image
-					src="/images/multipleCircles.svg"
+					src="/Images/multipleCircles.svg"
 					width={1102}
 					height={614}
 					alt={"An Image"}

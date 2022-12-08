@@ -22,7 +22,7 @@ module.exports = {
 				"complaint-success-border": "#52FF01",
 			},
 			backgroundImage: {
-				hourglass: "url('/images/hourglass.svg')",
+				hourglass: "url('/Images/hourglass.svg')",
 			},
 		},
 	},

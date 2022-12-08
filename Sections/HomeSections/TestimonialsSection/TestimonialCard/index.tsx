@@ -6,7 +6,7 @@ const TestimonialCard = () => {
 			<div className="">
 				<div className="relative">
 					<img
-						src="./images/man.png"
+						src="./Images/man.png"
 						alt=""
 						className="rounded-[15px] w-[200px] md:w-[250px] lg:w-[300px] xl:w-[467px] h-[300px] md:h-[350px] lg:h-[450px] xl:h-[650px]"
 					/>
@@ -17,7 +17,7 @@ const TestimonialCard = () => {
 					</div>
 					<div className="absolute -top-10 left-[30%] md:left-[35%] lg:left-[37%] xl:left-[42%] scale-[0.7] sm:scale-[0.85] lg:scale-[1]">
 						<IconContainer
-							iconPath={"/images/shield.svg"}
+							iconPath={"/Images/shield.svg"}
 							size={80}
 						></IconContainer>
 					</div>

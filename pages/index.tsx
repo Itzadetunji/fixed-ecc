@@ -56,9 +56,9 @@ const Home: NextPage = () => {
 			<VentComplaintsSection />
 			<HowDoesItWork />
 			<Testimonials />
-			{/* <PartnersSection /> */}
-			{/* <PostaComplaint /> */}
-			{/* <Footer /> */}
+			<PartnersSection />
+			<PostaComplaint />
+			<Footer />
 		</div>
 	);
 };
