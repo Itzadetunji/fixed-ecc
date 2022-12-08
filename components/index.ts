@@ -1,6 +1,6 @@
 // export * from "./AsyncSubmitButton";
 // export * from "./ButtonLoader";
-// export * from "./Complaint";
+export * from "./Complaint";
 export * from "./ComplaintsCard";
 // export * from "./DashboardNav/NavWrapper";
 // export * from "./DashboardNav/Notifications";
@@ -19,7 +19,7 @@ export * from "./IconContainer";
 export * from "./NavBar";
 export * from "./NavBar/NavItem";
 // export * from "./NotificationItem";
-// export * from "./PaginationButton";
+export * from "./PaginationButton";
 export * from "./PartnerBox";
 // export * from "./SmallFaqComponent";
 export * from "./VentComplaintsCard";
