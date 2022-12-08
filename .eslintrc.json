@@ -1,10 +1,10 @@
 {
   "extends": "next/core-web-vitals",
-  "rules": {
-		"react/react-in-jsx-scope": "off",
-		"prettier/prettier": ["error", { "endOfLine": "auto", "useTabs": true }, { "usePrettierrc": true }],
-		"react-hooks/rules-of-hooks": "error",
-		"react-hooks/exhaustive-deps": "warn",
-		"react/prop-types": "off"
-	}
+  // "rules": {
+	// 	"react/react-in-jsx-scope": "off",
+	// 	"prettier/prettier": ["error", { "endOfLine": "auto", "useTabs": true }, { "usePrettierrc": true }],
+	// 	"react-hooks/rules-of-hooks": "error",
+	// 	"react-hooks/exhaustive-deps": "warn",
+	// 	"react/prop-types": "off"
+	// }
 }
