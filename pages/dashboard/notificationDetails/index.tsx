@@ -1,9 +1,9 @@
-import { getServerSideProps } from "./../../../Components/NotificationItem/notificationData/index";
+import { getServerSideProps } from "./../../../components/NotificationItem/notificationData/index";
 import { useRouter } from "next/router";
-import NavWrapper from "../../../Components/DashboardNav/NavWrapper";
+import NavWrapper from "../../../components/DashboardNav/NavWrapper";
 import { useContext } from "react";
-import { NotificationContext } from "../../../Components/Contexts/NotificationContext";
-import { Notification } from "../../../Components/Types";
+import { NotificationContext } from "../../../components/Contexts/NotificationContext";
+import { Notification } from "../../../components/Types";
 import { motion } from "framer-motion";
 
 const NotificationDetails = () => {

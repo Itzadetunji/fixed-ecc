@@ -6,6 +6,11 @@
       "dom.iterable",
       "esnext"
     ],
+    "baseUrl": ".",
+    "paths": {
+			"@icons/*": ["public/icons/*"],
+			"@images/*": ["public/Images/*"]
+		},
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,

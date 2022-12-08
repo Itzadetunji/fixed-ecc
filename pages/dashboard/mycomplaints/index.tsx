@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import ComplaintsNavBar from "../../../Components/DashboardComponents/DashboardProfile/ComplaintsNavBar";
-import NavWrapper from "../../../Components/DashboardNav/NavWrapper";
+import ComplaintsNavBar from "../../../components/DashboardComponents/DashboardProfile/ComplaintsNavBar";
+import NavWrapper from "../../../components/DashboardNav/NavWrapper";
 import { useState } from "react";
-import ComplaintList from "../../../Components/DashboardComponents/DashboardProfile/ComplaintList";
+import ComplaintList from "../../../components/DashboardComponents/DashboardProfile/ComplaintList";
 
 const Mycomplaints: NextPage = () => {
 	const [page, setPage] = useState("All");

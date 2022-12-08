@@ -1,13 +1,13 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import manFreakedOut from "@Images/man-freaked-out-2.png";
+import manFreakedOut from "@images/man-freaked-out-2.png";
 import { useState, useEffect, useContext } from "react";
-import DashboardCard from "../../Components/DashboardComponents/DashboardCard";
-import NavWrapper from "../../Components/DashboardNav/NavWrapper";
+import DashboardCard from "../../components/DashboardComponents/DashboardCard";
+import NavWrapper from "../../components/DashboardNav/NavWrapper";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
-import { NotificationContext } from "../../Components/Contexts/NotificationContext";
-import { UserContext } from "../../Components/Contexts/UserContext";
+import { NotificationContext } from "../../components/Contexts/NotificationContext";
+import { UserContext } from "../../components/Contexts/UserContext";
 import { motion } from "framer-motion";
 
 interface User {
@@ -23,15 +23,15 @@ const Index: NextPage = () => {
 	const { user, setUser } = useContext(UserContext);
 
 	const router = useRouter();
-	useEffect(() => {
-		if (!cookie.user) {
-			router.replace("/login");
-		} else {
-			setUser(cookie.user);
-			console.log(cookie.user);
-			setInterval(() => fetchNotificationData(), 30000);
-		}
-	}, []);
+	// useEffect(() => {
+	// 	if (!cookie.user) {
+	// 		router.replace("/login");
+	// 	} else {
+	// 		setUser(cookie.user);
+	// 		console.log(cookie.user);
+	// 		setInterval(() => fetchNotificationData(), 30000);
+	// 	}
+	// }, []);
 
 	return (
 		<NavWrapper>

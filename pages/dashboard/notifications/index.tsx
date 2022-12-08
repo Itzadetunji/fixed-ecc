@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
-import NavWrapper from "../../../Components/DashboardNav/NavWrapper";
-import NotificationItem from "../../../Components/NotificationItem";
-import { getServerSideProps } from "./../../../Components/NotificationItem/notificationData/index";
+import NavWrapper from "../../../components/DashboardNav/NavWrapper";
+import NotificationItem from "../../../components/NotificationItem";
+import { getServerSideProps } from "./../../../components/NotificationItem/notificationData/index";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
-import { NotificationContext } from "../../../Components/Contexts/NotificationContext";
-import { Notification } from "../../../Components/Types";
+import { NotificationContext } from "../../../components/Contexts/NotificationContext";
+import { Notification } from "../../../components/Types";
 import { useCookies } from "react-cookie";
 import client from "../../../pages/api/Services/AxiosClient";
 import { motion } from "framer-motion";
