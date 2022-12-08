@@ -1,4 +1,4 @@
-import { IconContainer } from "../../../../Components";
+import { IconContainer } from "../../../../components";
 
 const TestimonialCard = () => {
 	return (

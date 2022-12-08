@@ -11,7 +11,7 @@ export * from "./ComplaintsCard";
 export * from "./Footer";
 export * from "./FooterList";
 export * from "./GoalCard";
-// export * from "./HowItWorksCard";
+export * from "./HowItWorksCard";
 export * from "./IconContainer";
 // export * from "./KonfamPayCallout";
 // export * from "./Login/GoogleLoginButton";

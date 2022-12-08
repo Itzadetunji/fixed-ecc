@@ -54,8 +54,8 @@ const Home: NextPage = () => {
 			<OurGoalsSection />
 			<Numbers />
 			<VentComplaintsSection />
-			{/* <HowDoesItWork /> */}
-			{/* <Testimonials /> */}
+			<HowDoesItWork />
+			<Testimonials />
 			{/* <PartnersSection /> */}
 			{/* <PostaComplaint /> */}
 			{/* <Footer /> */}
