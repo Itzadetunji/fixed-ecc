@@ -1,14 +1,14 @@
-import ComplaintLetterSection from "../../../Components/FileAComplaintComponents/ComplaintLetterSection";
-import NavWrapper from "./../../../Components/DashboardNav/NavWrapper";
-import PageSectionNav from "../../../Components/FileAComplaintComponents/PageSectionNav";
+import ComplaintLetterSection from "../../../components/FileAComplaintComponents/ComplaintLetterSection";
+import NavWrapper from "./../../../components/DashboardNav/NavWrapper";
+import PageSectionNav from "../../../components/FileAComplaintComponents/PageSectionNav";
 
 import type { NextPage } from "next";
 
 import { useState } from "react";
 
-import Page1 from "../../../Components/FileAComplaintComponents/Page1";
-import Page2 from "../../../Components/FileAComplaintComponents/Page2";
-import Page3 from "../../../Components/FileAComplaintComponents/Page3";
+import Page1 from "../../../components/FileAComplaintComponents/Page1";
+import Page2 from "../../../components/FileAComplaintComponents/Page2";
+import Page3 from "../../../components/FileAComplaintComponents/Page3";
 
 import { motion } from "framer-motion";
 
