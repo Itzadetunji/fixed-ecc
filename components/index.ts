@@ -22,6 +22,6 @@ export * from "./NavBar/NavItem";
 // export * from "./PaginationButton";
 // export * from "./PartnerBox";
 // export * from "./SmallFaqComponent";
-// export * from "./VentComplaintsCard";
-// export * from "./VentComplaintsCardsContainer";
+export * from "./VentComplaintsCard";
+export * from "./VentComplaintsCardsContainer";
 // export * from "./Verification/VerificationInputGroup";
