@@ -13,7 +13,7 @@ export * from "./FooterList";
 export * from "./GoalCard";
 export * from "./HowItWorksCard";
 export * from "./IconContainer";
-// export * from "./KonfamPayCallout";
+export * from "./KonfamPayCallout";
 // export * from "./Login/GoogleLoginButton";
 export * from "./Login/LoginInputGroup";
 export * from "./NavBar";
