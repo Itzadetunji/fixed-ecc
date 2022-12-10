@@ -40,7 +40,7 @@ const Home: NextPage = () => {
 					>
 						<div className="relative">
 							<img
-								src="./icons/search.svg"
+								src="/icons/search.svg"
 								className="absolute top-[30%] left-[9px] fill-eccblue w-[19px] h-[19px]"
 								alt=""
 							/>

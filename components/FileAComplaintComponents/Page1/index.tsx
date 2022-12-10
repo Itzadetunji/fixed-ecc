@@ -124,7 +124,7 @@ const Page1: React.FC<Page1Props> = ({
 				<div className="flex flex-row space-x-[10px] pb-[10px]">
 					<p className="text-[14px] lg:text-[20px]">Complaint details</p>
 					<img
-						src="../icons/fac-help.svg"
+						src="/icons/fac-help.svg"
 						alt=""
 						className="cursor-pointer w-[21px] h-[21px] lg:w-[28px] lg:h-[28px]"
 					/>
@@ -150,7 +150,7 @@ const Page1: React.FC<Page1Props> = ({
 						>
 							<p className="text-eccblue inline">here</p>
 							<img
-								src="../icons/chevron-down.svg"
+								src="/icons/chevron-down.svg"
 								className={`w-[22px] h-[22px] lg:w-[30px] lg:h-[30px] ${showing && "rotate-180"}`}
 								alt=""
 							/>

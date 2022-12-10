@@ -51,7 +51,7 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 				</div>
 				<div className={`flex flex-col justify-center items-center w-full h-[162px] lg:h-[419px] rounded-xl bg-clearblue border-eccblue mt-[15px] lg:mt-6 border-2 border-dashed mx-auto ${selectedFiles ? "" : "pt-[170px]"}`}>
 					<img
-						src="../icons/paste.svg"
+						src="/icons/paste.svg"
 						alt=""
 						className="mx-auto cursor-pointer w-[41px] lg:w-[150px] h-[41px] lg:h-[150px]"
 						onClick={() => filePickerRef.current!.click()}
@@ -89,13 +89,13 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 									<div className="flex flex-row space-x-[14.22px] lg:space-x-[37px] justify-start items-center break-words">
 										<img
 											className="w-[12px] lg:w-[30px] h-[12px] lg:h-[30px] cursor-pointer"
-											src="../icons/file-check.svg"
+											src="/icons/file-check.svg"
 											alt=""
 										/>
 										<p className="text-[10px] lg:text-[20px] leading-[12px] lg:leading-[30px] font-[600] text-white">{item.name ? item.name : ""}</p>
 									</div>
 									<img
-										src="../icons/close-1.svg"
+										src="/icons/close-1.svg"
 										className=" absolute right-[25px] top-[33px] w-[11px] lg:w-[16px] xl:w-[18px] h-[11px]lg:h-[16px] xl:h-[18px] cursor-pointer"
 										onClick={() => onFileDelete(item)}
 										alt=""

@@ -21,7 +21,7 @@ const index: React.FC<FileAComplaintRadioProps> = ({ iconPath, title, descriptio
 			<div className="py-[24px] flex items-center space-x-[10.35px] lg:space-x-[25.03px] pr-[50px] lg:pr-[60px]">
 				<div className="flex space-x-[8.35px] ml-[14px] xl:ml-[22.86px] items-center">
 					<img
-						src={`../icons/${iconPath}.svg`}
+						src={`/icons/${iconPath}.svg`}
 						className="w-[20.46px] lg:w-[33.38px] h-[20.46px] lg:h-[33.38px]"
 						alt=""
 					/>

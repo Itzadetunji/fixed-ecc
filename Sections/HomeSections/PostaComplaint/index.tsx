@@ -4,7 +4,7 @@ const PostaComplaint: React.FC = () => {
 	return (
 		<div className="lg:mt-48 bg-white items-center justify-center text-center relative">
 			<img
-				src="./Images/rectangle2.svg"
+				src="/Images/rectangle2.svg"
 				alt=""
 				className="w-full min-h-[250px] object-cover"
 			/>

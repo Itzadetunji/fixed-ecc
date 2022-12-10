@@ -47,7 +47,7 @@ export const Footer: React.FC = (props) => {
 			</div>
 			<div className="flex-col gap-[30px] lg:hidden flex">
 				<img
-					src="./Images/eccLogo-2.svg"
+					src="/Images/eccLogo-2.svg"
 					className="w-[35px]"
 					alt="ECC's Logo"
 				/>

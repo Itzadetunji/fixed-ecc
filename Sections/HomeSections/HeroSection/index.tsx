@@ -13,7 +13,7 @@ const index: React.FC = () => {
 				after you make payment for Instagram?
 			</p>
 			<img
-				src="./Images/man-freaked-out.png"
+				src="/Images/man-freaked-out.png"
 				alt=""
 				className="mx-auto"
 			/>

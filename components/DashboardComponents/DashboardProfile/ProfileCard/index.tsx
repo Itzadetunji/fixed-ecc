@@ -28,7 +28,7 @@ const Profile: NextPage = () => {
 				/>
 				<div className="mx-auto  w-[20%] h-[5%] xl:bottom-[150px] lg:bottom-[60px] relative">
 					<img
-						src="/images/dummy-profile.png"
+						src="/Images/dummy-profile.png"
 						alt=""
 						className="absolute"
 					/>
@@ -104,7 +104,7 @@ const Profile: NextPage = () => {
 				/>
 				<div className="mx-auto w-[120px] h-[120px] -mt-[70px] relative">
 					<img
-						src="/images/dummy-profile.png"
+						src="/Images/dummy-profile.png"
 						alt=""
 					/>
 					<img

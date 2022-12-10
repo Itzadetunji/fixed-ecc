@@ -5,7 +5,7 @@ export * from "./ComplaintsCard";
 // export * from "./DashboardNav/NavWrapper";
 // export * from "./DashboardNav/Notifications";
 // export * from "./DashboardNav/TopNav";
-// export * from "./EmailModal";
+export * from "./EmailModal";
 export * from "./faqComponent";
 export * from "./faqComponent/InputGroup";
 export * from "./Footer";

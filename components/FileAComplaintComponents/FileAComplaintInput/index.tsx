@@ -16,7 +16,7 @@ const FileAComplaintInput: React.FC<FileAComplaintInputProps> = ({ label, placeh
 				</p>
 				<img
 					className="w-[21px] h-[21px] lg:w-[28px] lg:h-[28px]"
-					src="../icons/fac-help.svg"
+					src="/icons/fac-help.svg"
 					alt=""
 				/>
 			</div>
@@ -32,7 +32,7 @@ const FileAComplaintInput: React.FC<FileAComplaintInputProps> = ({ label, placeh
 				/>
 				{nairaSymbol && (
 					<img
-						src="../icons/naira.svg"
+						src="/icons/naira.svg"
 						alt=""
 						className="w-[20px] h-[20px] absolute left-[12px] top-[50%] translate-y-[-30%]"
 					/>

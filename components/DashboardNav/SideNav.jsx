@@ -126,7 +126,7 @@ const SideNav = ({ open, openSide }) => {
 								onClick={openSide}
 							>
 								<img
-									src="../icons/dashboard-icons/arrow-left-blue.svg"
+									src="/icons/dashboard-icons/arrow-left-blue.svg"
 									alt=""
 								/>
 							</button>
