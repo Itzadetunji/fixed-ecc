@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
 import { useState } from "react";
-import FileAComplaintProcess from "../../../Components/FileAComplaintComponents/FileAComplaintProcess";
-import { Footer, NavBar } from "../../../Components";
-import FileAComplaintRadio from "../../../Components/FileAComplaintComponents/FileAComplaintRadio";
-import SuccessModal from "../../../Components/FileAComplaintComponents/SuccessModal";
-import ComplaintLetterSection from "../../../Components/FileAComplaintComponents/ComplaintLetterSection";
+import FileAComplaintProcess from "../../../components/FileAComplaintComponents/FileAComplaintProcess";
+import { Footer, NavBar } from "../../../components";
+import FileAComplaintRadio from "../../../components/FileAComplaintComponents/FileAComplaintRadio";
+import SuccessModal from "../../../components/FileAComplaintComponents/SuccessModal";
+import ComplaintLetterSection from "../../../components/FileAComplaintComponents/ComplaintLetterSection";
 
 const Index: NextPage = () => {
 	const [resolution, setResolution] = useState("");
