@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { Footer, NavBar } from "../../Components";
+import { Footer, NavBar } from "../../components";
 import { useState } from "react";
 
 const WriteComplaintPreview: NextPage = () => {
