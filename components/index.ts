@@ -24,4 +24,4 @@ export * from "./PartnerBox";
 export * from "./SmallFaqComponent";
 export * from "./VentComplaintsCard";
 export * from "./VentComplaintsCardsContainer";
-// export * from "./Verification/VerificationInputGroup";
+export * from "./Verification/VerificationInputGroup";
