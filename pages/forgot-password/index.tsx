@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Joi from "joi";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { AsyncSubmitButton, EmailModal, LoginInputGroup } from "../../Components/";
+import { AsyncSubmitButton, EmailModal, LoginInputGroup } from "../../components/";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
 import jwt_decode from "jwt-decode";
