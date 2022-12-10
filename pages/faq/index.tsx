@@ -17,7 +17,7 @@ const Home: NextPage = () => {
 						<form>
 							<div className="relative">
 								<img
-									src="./icons/search.svg"
+									src="/icons/search.svg"
 									className="absolute top-[37.95px] left-[63.75px] fill-[#0BC5]"
 									alt=""
 								/>
