@@ -1,4 +1,4 @@
-import ScamData from "../../../../Components/LatestScams/ScamData";
+import ScamData from "../../../../components/LatestScams/ScamData";
 import { useRouter } from "next/router";
 import Wrapper from "../../../../components/Admin/Navs/navWrapper";
 import { useState, useEffect } from "react";
