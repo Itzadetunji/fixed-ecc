@@ -3,18 +3,19 @@ import ProfileCard from "../../../components/DashboardComponents/DashboardProfil
 import NavWrapper from "../../../components/DashboardNav/NavWrapper";
 import ComplaintsCardSection from "../../../Sections/ComplaintsCardSection";
 
-const Profile: NextPage = () => {
+const profile: NextPage = () => {
 	return (
 		<div>
 			<NavWrapper>
 				<div className="">
 					<div className="lg:block hidden">
-						<div className="grid grid-cols-[auto_438px] gap-x-[50px] w-full">
+						<div className="grid xl:gap-x-[48px] xl:grid-cols-[auto_400px] w-full">
 							<ProfileCard />
-							<ComplaintsCardSection />
+							<div className="lg:hidden xl:block">
+								<ComplaintsCardSection />
+							</div>
 						</div>
 					</div>
-
 					<div className="lg:hidden">
 						<ProfileCard />
 					</div>
@@ -24,4 +25,4 @@ const Profile: NextPage = () => {
 	);
 };
 
-export default Profile;
+export default profile;
