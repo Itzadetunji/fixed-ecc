@@ -8,8 +8,8 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/icons/*":["public/icons/*"],
-			"@/images/*":["public/Images/*"]
+			"@icons/*": ["public/icons/*"],
+			"@images/*": ["public/Images/*"]
 		},
     "allowJs": true,
     "skipLibCheck": true,

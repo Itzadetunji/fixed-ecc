@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import profileHeader from "@/icons/dashboard-icons/profile-header.svg";
-import dummyProfile from "@/images/dummy-profile.png";
-import camera from "@/icons/dashboard-icons/camera.svg";
-import cOutline from "@/icons/dashboard-icons/camera-outline.svg";
+import profileHeader from "@icons/dashboard-icons/profile-header.svg";
+import dummyProfile from "@images/dummy-profile.png";
+import camera from "@icons/dashboard-icons/camera.svg";
+import cOutline from "@icons/dashboard-icons/camera-outline.svg";
 import Link from "next/link";
 import Details from "../PersonalDetails";
 import { useState, useEffect, useContext } from "react";

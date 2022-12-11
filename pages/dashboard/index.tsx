@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import manFreakedOut from "@/images/man-freaked-out-2.png";
+import manFreakedOut from "@images/man-freaked-out-2.png";
 import { useState, useEffect, useContext } from "react";
 import DashboardCard from "../../components/DashboardComponents/DashboardCard";
 import NavWrapper from "../../components/DashboardNav/NavWrapper";
