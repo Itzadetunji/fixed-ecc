@@ -1,11 +1,11 @@
-import Wrapper from "../../../Components/Admin/Navs/navWrapper";
+import Wrapper from "../../../components/Admin/Navs/navWrapper";
 import { useState, useEffect } from "react";
-import AdminData from "../../../Components/Admin/adminData";
+import AdminData from "../../../components/Admin/adminData";
 import { Admin } from "./../../../types/complaintTypes.d";
-import SearchBar from "Components/Admin/searchbar";
-import PaginationSection from "Components/LatestScams/PaginationSection";
-import AdminTable from "Components/Admin/ManageAdmin/AdminTable";
-import AdminOperation from "./../../../Components/Admin/ManageAdmin/AdminOperations/index";
+import SearchBar from "../../../components/Admin/searchbar";
+import PaginationSection from "../../../components/LatestScams/PaginationSection";
+import AdminTable from "../../../components/Admin/ManageAdmin/AdminTable";
+import AdminOperation from "./../../../components/Admin/ManageAdmin/AdminOperations/index";
 
 const ManageAdmin = () => {
 	const [adminData, setAdminData] = useState<Admin[]>(AdminData);

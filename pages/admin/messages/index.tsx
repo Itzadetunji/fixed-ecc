@@ -1,4 +1,4 @@
-import Wrapper from "../../../Components/Admin/Navs/navWrapper";
+import Wrapper from "../../../components/Admin/Navs/navWrapper";
 
 const Messages = () => {
 	return (

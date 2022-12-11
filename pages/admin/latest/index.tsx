@@ -1,10 +1,10 @@
-import ScamTable from "../../../Components/Admin/Latest/ScamTable";
-import Wrapper from "../../../Components/Admin/Navs/navWrapper";
-import ScamData from "../../../Components/LatestScams/ScamData";
+import ScamTable from "../../../components/Admin/Latest/ScamTable";
+import Wrapper from "../../../components/Admin/Navs/navWrapper";
+import ScamData from "../../../components/LatestScams/ScamData";
 import { useState, useEffect } from "react";
-import PaginationSection from "../../../Components/LatestScams/PaginationSection";
-import SearchBar from "../../../Components/Admin/searchbar";
-import ScamOperation from "../../../Components/Admin/Latest/ScamOperation";
+import PaginationSection from "../../../components/LatestScams/PaginationSection";
+import SearchBar from "../../../components/Admin/searchbar";
+import ScamOperation from "../../../components/Admin/Latest/ScamOperation";
 
 const Latest = () => {
 	const [scamData, setScamData] = useState(ScamData);

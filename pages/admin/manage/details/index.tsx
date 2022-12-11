@@ -1,9 +1,9 @@
-import UserData from "../../../../Components/Admin/userData";
+import UserData from "../../../../components/Admin/userData";
 import { useRouter } from "next/router";
-import Wrapper from "../../../../Components/Admin/Navs/navWrapper";
+import Wrapper from "../../../../components/Admin/Navs/navWrapper";
 import { useState } from "react";
-import UserPersonalInfo from "../../../../Components/Admin/ManageUsers/userPersonalInfo";
-import ComplaintInfo from "./../../../../Components/Admin/ManageUsers/UserComplaintInfo/index";
+import UserPersonalInfo from "../../../../components/Admin/ManageUsers/userPersonalInfo";
+import ComplaintInfo from "./../../../../components/Admin/ManageUsers/UserComplaintInfo/index";
 
 const UserDetails = () => {
 	const router = useRouter();

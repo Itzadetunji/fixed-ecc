@@ -1,12 +1,12 @@
-import Wrapper from "../../../Components/Admin/Navs/navWrapper";
+import Wrapper from "../../../components/Admin/Navs/navWrapper";
 
 import { useState, useEffect } from "react";
-import UserTable from "../../../Components/Admin/ManageUsers/userTable";
-import UserOperation from "../../../Components/Admin/ManageUsers/UserOperations";
+import UserTable from "../../../components/Admin/ManageUsers/userTable";
+import UserOperation from "../../../components/Admin/ManageUsers/UserOperations";
 
-import UserData from "./../../../Components/Admin/userData";
-import SearchBar from "../../../Components/Admin/searchbar";
-import PaginationSection from "../../../Components/LatestScams/PaginationSection";
+import UserData from "./../../../components/Admin/userData";
+import SearchBar from "../../../components/Admin/searchbar";
+import PaginationSection from "../../../components/LatestScams/PaginationSection";
 import { format } from "date-fns";
 
 const Manage = () => {

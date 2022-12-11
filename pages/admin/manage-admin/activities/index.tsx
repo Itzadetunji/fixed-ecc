@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import Wrapper from "../../../../Components/Admin/Navs/navWrapper";
+import Wrapper from "../../../../components/Admin/Navs/navWrapper";
 
 import { MutableRefObject } from "react";
 import { format } from "date-fns";

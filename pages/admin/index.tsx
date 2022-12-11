@@ -1,13 +1,13 @@
-import Wrapper from "../../Components/Admin/Navs/navWrapper";
-import UserStats from "../../Components/Admin/Dashboard/UserStats";
-import ComplaintStats from "../../Components/Admin/Dashboard/ComplaintStats";
-import userStats from "./../../Components/Admin/userStats";
-import ComplaintStatsData from "./../../Components/Admin/ComplaintStats";
-import RecentActivity from "../../Components/Admin/Dashboard/RecentActivity";
-import RecentShares from "./../../Components/Admin/Dashboard/RecentShares/index";
-import Geographics from "../../Components/Admin/Dashboard/Geographics";
-import ComplaintGeographics from "../../Components/Admin/Dashboard/ComplaintGeographics";
-import { states } from "../../Components/Data/VerificationData/StatesAndLga";
+import Wrapper from "../../components/Admin/Navs/navWrapper";
+import UserStats from "../../components/Admin/Dashboard/UserStats";
+import ComplaintStats from "../../components/Admin/Dashboard/ComplaintStats";
+import userStats from "./../../components/Admin/userStats";
+import ComplaintStatsData from "./../../components/Admin/ComplaintStats";
+import RecentActivity from "../../components/Admin/Dashboard/RecentActivity";
+import RecentShares from "./../../components/Admin/Dashboard/RecentShares/index";
+import Geographics from "../../components/Admin/Dashboard/Geographics";
+import ComplaintGeographics from "../../components/Admin/Dashboard/ComplaintGeographics";
+import { states } from "../../components/Data/VerificationData/StatesAndLga";
 
 const Admin = () => {
 	return (

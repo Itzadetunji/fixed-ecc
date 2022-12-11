@@ -1,11 +1,11 @@
 import ScamData from "../../../../Components/LatestScams/ScamData";
 import { useRouter } from "next/router";
-import Wrapper from "../../../../Components/Admin/Navs/navWrapper";
+import Wrapper from "../../../../components/Admin/Navs/navWrapper";
 import { useState, useEffect } from "react";
-import ComplaintData from "../../../../Components/Complaint/ComplaintData";
-import ScamPersonalDetails from "../../../../Components/Admin/Latest/ScamPersonalDetails";
-import ScamComplaintDetails from "../../../../Components/Admin/Latest/ScamDetails";
-import ScamOperation from "../../../../Components/Admin/Latest/ScamOperation";
+import ComplaintData from "../../../../components/Complaint/ComplaintData";
+import ScamPersonalDetails from "../../../../components/Admin/Latest/ScamPersonalDetails";
+import ScamComplaintDetails from "../../../../components/Admin/Latest/ScamDetails";
+import ScamOperation from "../../../../components/Admin/Latest/ScamOperation";
 import { ComplainDetailType, Scammer } from "./../../../../types/complaintTypes.d";
 
 const ScamDetails = () => {

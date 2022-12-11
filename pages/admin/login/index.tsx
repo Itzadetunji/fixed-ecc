@@ -1,6 +1,6 @@
-import { LoginInputGroup } from "../../../Components";
+import { LoginInputGroup } from "../../../components";
 import { useState } from "react";
-import { AsyncSubmitButton } from "../../../Components";
+import { AsyncSubmitButton } from "../../../components";
 import Joi from "joi";
 const AdminLogin = () => {
 	const [email, setEmail] = useState("");
