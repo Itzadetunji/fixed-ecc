@@ -21,7 +21,7 @@ const Mycomplaints: NextPage = () => {
 					setPageNumber={setPageNumber}
 				/>
 			</div>
-		</NavWrapper>
+		</NavWrapper>nnn
 	);
 };
 
