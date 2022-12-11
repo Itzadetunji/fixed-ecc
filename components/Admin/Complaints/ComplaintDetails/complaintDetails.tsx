@@ -157,7 +157,19 @@ const ComplaintDetails: React.FC<ComplaintProps> = ({ user, complaint }) => {
 					<div className="border-b w-[370px] border-b-[#c5c5c5] text-[20px] text-eccblue">
 						<p>Resolution Wanted</p>
 					</div>
-					<div className="lg:grid w-full grid-cols-2 flex flex-col items-center justify-center">{complaint && Object.keys(complaint).length > 0 && Object.keys(complaint.resolutionWanted).map((resolution: string) => complaint.resolutionWanted[resolution] && <Resolution type={resolution} />)}</div>
+					<div className="lg:grid w-full grid-cols-2 flex flex-col items-center justify-center">
+						{complaint &&
+							Object.keys(complaint).length > 0 &&
+							Object.keys(complaint.resolutionWanted).map(
+								(resolution: string, index) =>
+									complaint.resolutionWanted[resolution] && (
+										<Resolution
+											key={index}
+											type={resolution}
+										/>
+									)
+							)}
+					</div>
 				</div>
 			</div>
 
