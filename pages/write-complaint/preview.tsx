@@ -50,7 +50,7 @@ const WriteComplaintPreview: NextPage = () => {
 						<div className="flex flex-row justify-between text-white">
 							<div className="flex bg-eccblue space-x-[20px] px-[25px] py-[22px] rounded-xl">
 								<img
-									src="../icons/arrow.svg"
+									src="/icons/arrow.svg"
 									alt=""
 								/>
 								<p>Back</p>
@@ -58,21 +58,21 @@ const WriteComplaintPreview: NextPage = () => {
 							<div className="flex space-x-[17px]">
 								<div className="flex bg-eccblue text-center space-x-[20px] px-[20px] py-[22px] rounded-xl">
 									<img
-										src="../icons/email.svg"
+										src="/icons/email.svg"
 										alt=""
 									/>
 									<p>Send as email</p>
 								</div>
 								<div className="flex bg-eccblue space-x-[20px] px-[25px] py-[22px] rounded-xl">
 									<img
-										src="../icons/copy.svg"
+										src="/icons/copy.svg"
 										alt=""
 									/>
 									<p>Copy</p>
 								</div>
 								<div className="flex bg-eccblue space-x-[20px] px-[25px] py-[22px] rounded-xl">
 									<img
-										src="../icons/print.svg"
+										src="/icons/print.svg"
 										alt=""
 									/>
 									<p>Print</p>

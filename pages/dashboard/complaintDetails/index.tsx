@@ -45,7 +45,7 @@ const Mycomplaints: NextPage = () => {
 												alert("id has been copied to clipboard");
 												navigator.clipboard.writeText(complaint.grievanceId);
 											}}
-											src="../icons/dashboard-icons/copy.svg"
+											src="/icons/dashboard-icons/copy.svg"
 											className="w-[26.15px] h-[26.15px]"
 											alt=""
 										/>
