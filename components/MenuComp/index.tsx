@@ -1,13 +1,22 @@
 import Link from "next/link";
 import { NextPage } from "next";
-import MenuLink from "../../components/Menu/menuLinks";
+import MenuLink from "../Menu/menuLinks";
 import { useRouter } from "next/router";
+import { Dispatch } from "react";
+import { SetStateAction } from "react";
+import { boolean } from "joi";
+import Image from "next/image";
 
-const Menu: NextPage = () => {
+interface MenuProps {
+	setExpand: Dispatch<SetStateAction<boolean>>;
+	expand: boolean;
+}
+
+const Menu: NextPage<MenuProps> = ({ setExpand, expand }) => {
 	const router = useRouter();
 	return (
 		<>
-			<div className="h-screen w-screen bg-clearblue">
+			<div className="h-screen w-screen fixed z-20 bg-clearblue">
 				<header className="h-1/6">
 					<div className="flex items-center">
 						<img
@@ -58,10 +67,17 @@ const Menu: NextPage = () => {
 					<div>
 						<div>
 							<button
-								onClick={() => router.back()}
+								onClick={() => {
+									setExpand(!expand);
+								}}
 								className="bg-eccblue w-12 h-12  rounded-[27.5px] font-semibold text-white"
 							>
-								X
+								<Image
+									src="/../../icons/close.svg"
+									alt="exit icon"
+									width={100}
+									height={100}
+								/>
 							</button>
 						</div>
 					</div>
