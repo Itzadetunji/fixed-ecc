@@ -1,11 +1,11 @@
-import UserData from "../../../../Components/Admin/userData";
-import ComplaintData from "../../../../Components/Complaint/ComplaintData";
+import UserData from "../../../../components/Admin/userData";
+import ComplaintData from "../../../../components/Complaint/ComplaintData";
 import { useRouter } from "next/router";
-import Wrapper from "../../../../Components/Admin/Navs/navWrapper";
+import Wrapper from "../../../../components/Admin/Navs/navWrapper";
 import { useState, useEffect } from "react";
-import UserPersonalInfo from "../../../../Components/Admin/ManageUsers/userPersonalInfo";
-import ComplaintInfo from "./../../../../Components/Admin/ManageUsers/UserComplaintInfo/index";
-import ComplaintDetails from "./../../../../Components/Admin/Complaints/ComplaintDetails/complaintDetails";
+import UserPersonalInfo from "../../../../components/Admin/ManageUsers/userPersonalInfo";
+import ComplaintInfo from "./../../../../components/Admin/ManageUsers/UserComplaintInfo/index";
+import ComplaintDetails from "./../../../../components/Admin/Complaints/ComplaintDetails/complaintDetails";
 import { ComplainDetailType, User } from "./../../../../types/complaintTypes.d";
 
 const UserDetails = () => {

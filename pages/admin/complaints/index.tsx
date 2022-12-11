@@ -1,9 +1,9 @@
-import Wrapper from "../../../Components/Admin/Navs/navWrapper";
-import ComplaintsNavBar from "../../../Components/DashboardComponents/DashboardProfile/ComplaintsNavBar";
+import Wrapper from "../../../components/Admin/Navs/navWrapper";
+import ComplaintsNavBar from "../../../components/DashboardComponents/DashboardProfile/ComplaintsNavBar";
 import { useState } from "react";
-import UserData from "../../../Components/Admin/userData";
-import ComplaintData from "../../../Components/Complaint/ComplaintData";
-import ComplaintPill from "../../../Components/Admin/Complaints/ComplaintPill";
+import UserData from "../../../components/Admin/userData";
+import ComplaintData from "../../../components/Complaint/ComplaintData";
+import ComplaintPill from "../../../components/Admin/Complaints/ComplaintPill";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 

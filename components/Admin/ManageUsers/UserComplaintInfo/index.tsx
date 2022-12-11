@@ -58,12 +58,12 @@ const ComplaintInfo: React.FC<ComplaintProps> = ({ user }) => {
 			<div className="w-full">
 				<table className=" table-auto w-full">
 					<tbody>
-						{listOfComplaints.map((complaint: ComplainDetailType) => (
+						{listOfComplaints.map((complaint: ComplainDetailType, index) => (
 							<tr
 								onClick={() => {
 									router.push({ pathname: "/admin/complaints/details", query: { id: complaint.grievanceId } });
 								}}
-								key={complaint.grievanceId}
+								key={index}
 							>
 								<td>
 									<p className="py-2 pl-2 pr-4">{listOfComplaints.indexOf(complaint) + 1}</p>

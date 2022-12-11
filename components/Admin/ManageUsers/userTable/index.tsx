@@ -34,9 +34,9 @@ const UserTable: React.FC<TableProps> = ({ isOperation, userData, maxNumber, pag
 						</tr>
 					</thead>
 					<tbody>
-						{userData.slice(maxNumber * (pageNumber - 1), maxNumber * pageNumber).map((user) => (
+						{userData.slice(maxNumber * (pageNumber - 1), maxNumber * pageNumber).map((user, index) => (
 							<tr
-								key={user.userId}
+								key={index}
 								className="  border-y border-y-[#e4e4ef] bg-white"
 							>
 								<td>
