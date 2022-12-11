@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { NavItem } from "../";
+import { Dispatch, SetStateAction } from "react";
 
 interface NavBarProps {
 	hasWhiteText?: boolean;
 	searchIconIsPresent?: boolean;
+	setExpand: Dispatch<SetStateAction<boolean>>;
+	expand: boolean;
 }
 
-export const NavBar: React.FC<NavBarProps> = ({ hasWhiteText, searchIconIsPresent }) => {
-	const [expand, setExpand] = useState(false);
+export const NavBar: React.FC<NavBarProps> = ({ hasWhiteText, searchIconIsPresent, setExpand, expand }) => {
 	const [isTransparent, setIsTransparent] = useState(true);
-
-	const expandButton = () => {
-		setExpand(!expand);
-	};
 
 	const changeTransparency = () => {
 		if (window.scrollY >= 40) {
@@ -30,7 +28,7 @@ export const NavBar: React.FC<NavBarProps> = ({ hasWhiteText, searchIconIsPresen
 	return (
 		<nav
 			style={{ backgroundColor: isTransparent ? "transparent" : "white" }}
-			className="border-gray-200 px-2 sm:px-4 py-2.5 z-20 fixed top-0 w-full navBar"
+			className="border-gray-200 px-2 sm:px-4 py-2.5 z-30 fixed top-0 w-full navBar"
 		>
 			<div className="container flex flex-wrap justify-between items-center mx-auto ">
 				{!hasWhiteText && (
@@ -81,20 +79,20 @@ export const NavBar: React.FC<NavBarProps> = ({ hasWhiteText, searchIconIsPresen
 					</li>
 					<li>
 						<button
-							onClick={expandButton}
+							onClick={() => {
+								setExpand(!expand);
+							}}
 							data-collapse-toggle="mobile-menu"
 							type="button"
 							className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-grey-200 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
 							aria-controls="mobile-menu"
 							aria-expanded="false"
 						>
-							<Link href="/menu">
-								<img
-									src="/Images/hamburgerNew.png"
-									alt=""
-									className=" h-3 w-5"
-								/>
-							</Link>
+							<img
+								src="/Images/hamburgerNew.png"
+								alt=""
+								className=" h-3 w-5"
+							/>
 						</button>
 					</li>
 				</ul>
