@@ -78,7 +78,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setProductCategory}
 					type="text"
 					nairaSymbol={false}
-					isRequired={false}
+					isRequired={true}
 				/>
 				<FileAComplaintInput
 					label={"Where did this transaction happen?"}
@@ -87,7 +87,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setPlaceOfTransaction}
 					type="text"
 					nairaSymbol={false}
-					isRequired={false}
+					isRequired={true}
 				/>
 				<FileAComplaintInput
 					label={"Title of your complaint"}
@@ -96,7 +96,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setTitleOfComplaint}
 					type="text"
 					nairaSymbol={false}
-					isRequired={false}
+					isRequired={true}
 				/>
 				<FileAComplaintInput
 					label={"Total amount lost from this incident"}
@@ -105,7 +105,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setAmountLost}
 					type="number"
 					nairaSymbol={true}
-					isRequired={false}
+					isRequired={true}
 				/>
 				<FileAComplaintInput
 					label={"Company’s/Brand’s name"}
@@ -114,7 +114,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setCompanyName}
 					type="text"
 					nairaSymbol={false}
-					isRequired={false}
+					isRequired={true}
 				/>
 				<FileAComplaintInput
 					label={"Company’s/Brand’s Social media handle"}
@@ -123,7 +123,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setBrandHandle}
 					type="text"
 					nairaSymbol={false}
-					isRequired={false}
+					isRequired={true}
 				/>
 			</div>
 			<div className="w-full mt-8">
@@ -176,7 +176,7 @@ const Page1: React.FC<Page1Props> = ({
 								setValue={setAccountNumber}
 								type="text"
 								nairaSymbol={false}
-								isRequired={false}
+								isRequired={showing ? true : false}
 							/>
 							<FileAComplaintInput
 								label={"Company's/Brand's Account Name"}
@@ -185,7 +185,7 @@ const Page1: React.FC<Page1Props> = ({
 								setValue={setAccountName}
 								type="text"
 								nairaSymbol={false}
-								isRequired={false}
+								isRequired={showing ? true : false}
 							/>
 							<FileAComplaintInput
 								label={"Company's/Brand's Bank Name"}
@@ -194,7 +194,7 @@ const Page1: React.FC<Page1Props> = ({
 								setValue={setBankName}
 								type="text"
 								nairaSymbol={false}
-								isRequired={false}
+								isRequired={showing ? true : false}
 							/>
 						</div>
 					</div>
