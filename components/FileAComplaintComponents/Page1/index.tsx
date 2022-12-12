@@ -200,11 +200,10 @@ const Page1: React.FC<Page1Props> = ({
 					</div>
 				)}
 			</div>
-			<div className="flex justify-end mt-[40px] lg:mt-[80px] mr-[30px] lg:mr-[120px]">
+			<div className="flex justify-end">
 				<button
 					onClick={onSubmit}
-					className="text-sm lg:text-xl bg-eccblue mt-[40px] lg:mt-[80px] rounded-xl font-[600] text-white py-[14.5px] lg:py-[22px] w-full max-w-[140px] lg:max-w-[216px]"
-					type="submit"
+					className="text-sm bg-eccblue rounded-lg font-semibold text-white h-[45px] w-[131px] hover:scale-[0.95] hover:duration-100 hover:ease-in-out"
 				>
 					Continue
 				</button>

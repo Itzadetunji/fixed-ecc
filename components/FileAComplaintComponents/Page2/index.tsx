@@ -43,11 +43,11 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 		});
 	};
 	return (
-		<div className={`mt-[20px] lg:mt-[90px] ${place === "dashboard" && "bg-white mt-0 lg:mt-0 px-[15px] py-[20px] lg:py-[45px] "}`}>
-			<p className="text-[14px] lg:text-[24px] leading-[30px] lg:leading-[46px]">Kindly upload a document or picture that shows proof of payment or receipt of transaction.</p>
-			<div className="mt-[30px]">
+		<div className={`mt-[20px] lg:mt-[90px] ${place === "dashboard" && "bg-white mt-0 lg:mt-0 px-[15px] py-[20px] lg:py-[45px]"}`}>
+			<p className="text-[14px] lg:text-xl leading-[30px] lg:leading-[46px]">Kindly upload a document or picture that shows proof of payment or receipt of transaction.</p>
+			<div className="mt-[30px] select-none">
 				<div>
-					<p className="text-[14px] lg:text-[20px]">Upload Documents</p>
+					<p className="text-[14px] lg:text-lg">Upload Documents</p>
 				</div>
 				<div className={`flex flex-col justify-center items-center w-full h-[162px] lg:h-[419px] rounded-xl bg-clearblue border-eccblue mt-[15px] lg:mt-6 border-2 border-dashed mx-auto ${selectedFiles ? "" : "pt-[170px]"}`}>
 					<img
@@ -111,19 +111,17 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 							</div>
 						))}
 				</div>
-		</div>
-			<div className="flex justify-center lg:justify-end space-x-[30px] lg:space-x-[37px]">
+			</div>
+			<div className="flex justify-center lg:justify-end space-x-[30px] lg:space-x-6">
 				<button
 					onClick={onPrevious}
-					className="text-[14px] lg:text-[20px] bg-eccblue mt-[40px] lg:mt-[80px] rounded-xl font-[600] text-white py-[14.5px] lg:py-[22px] w-full max-w-[140px] lg:max-w-[216px]"
-					type="submit"
+					className="text-sm bg-eccblue rounded-lg font-semibold text-white h-[45px] w-[131px] hover:scale-[0.95] hover:duration-100 hover:ease-in-out"
 				>
-					Back
+					Previous
 				</button>
 				<button
 					onClick={onSubmit}
-					className="text-[14px] lg:text-[20px] bg-eccblue mt-[40px] lg:mt-[80px] rounded-xl font-[600] text-white py-[14.5px] lg:py-[22px] w-full max-w-[140px] lg:max-w-[216px]"
-					type="submit"
+					className="text-sm bg-eccblue rounded-lg font-semibold text-white h-[45px] w-[131px] hover:scale-[0.95] hover:duration-100 hover:ease-in-out"
 				>
 					Continue
 				</button>
