@@ -6,8 +6,8 @@ const PageIndicator = ({ pageNumber, Message, isActive, PageSet }) => {
 			}}
 			className="flex flex-row gap-x-[7px] items-center font-medium cursor-pointer"
 		>
-			<p className={`w-8 lg:w-12 min-w-[32px] h-8 lg:h-12 flex items-center justify-center font-semibold rounded-full border border-solid text-xs sm:text-sm lg:text-lg ${isActive ? "border-white bg-white text-eccblue" : " border-slate-50 bg-eccblue text-white"} `}>{pageNumber}</p>
-			<p className={`text-[14px] lg:text-lg ${isActive ? "text-white" : "text-slate-50"}`}>{Message}</p>
+			<p className={`w-8 lg:w-12 min-w-[32px] h-8 lg:h-12 flex items-center justify-center font-semibold rounded-full border border-solid text-xs sm:text-sm lg:text-lg ${isActive ? "border-white bg-white text-eccblue" : " border-slate-50 bg-eccblue text-white"}  duration-200 ease-in-out`}>{pageNumber}</p>
+			<p className={`text-[14px] lg:text-lg ${isActive ? "text-white" : "text-slate-50"} duration-200 ease-in-out`}>{Message}</p>
 		</div>
 	);
 };
