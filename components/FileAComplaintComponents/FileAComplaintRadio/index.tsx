@@ -16,7 +16,7 @@ const index: React.FC<FileAComplaintRadioProps> = ({ iconPath, title, descriptio
 				if (setValue) setValue(!value);
 			}}
 			style={{ backgroundColor: value ? "#F1F7FE" : "white" }}
-			className="transition-[80ms] cursor-pointer relative border border-eccblue w-[full] rounded-xl scale-[0.90]"
+			className="transition-[80ms] cursor-pointer relative border border-eccblue w-[full] rounded-xl"
 		>
 			<div className="py-[24px] flex items-center space-x-[10.35px] lg:space-x-[25.03px] pr-[50px] lg:pr-[60px]">
 				<div className="flex space-x-[8.35px] ml-[14px] xl:ml-[22.86px] items-center">
