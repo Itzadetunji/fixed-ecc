@@ -4,11 +4,7 @@ interface Props {
 
 const ComplaintLetterSection: React.FC<Props> = ({ place }) => {
 	return (
-
 		<div className={`md:h-[150px] lg:h-fit w-full bg-darkblue ${place !== "dashboard" && "mt-[60px] lg:mt-[72px]"}`}>
-
-		
-
 			<div className="relative px-[10px] xl:px-[38.5px] flex flex-row justify-between leading-[14.1px] lg:leading-[37px] text-[12px] font-medium lg:w-full max-w-[1600px] mx-auto">
 				<div className="w-[64.3%] lg:w-full text-[12px] lg:text-[18px] xl:text-[20px] pb-[28px] lg:pb-0 mb-[27.55px]">
 					<div className="text-white pt-[17px] lg:pt-[27px] leading-[14.1px] lg:leading-[26.82px] flex-wrap">
