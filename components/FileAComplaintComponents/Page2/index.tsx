@@ -63,6 +63,7 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 						onChange={addDocument}
 						id="inputfile"
 						multiple
+						required={true}
 					/>
 					<div className="text-center mt-[16px] lg:mt-[22px]">
 						<p className="text-[14px] lg:text-[20px] font-[500]">
