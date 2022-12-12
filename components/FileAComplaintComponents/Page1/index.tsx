@@ -69,8 +69,8 @@ const Page1: React.FC<Page1Props> = ({
 	};
 	const [showing, setShowing] = useState(false);
 	return (
-		<div className={`mt-[20px] lg:mt-[90px] ${place === "dashboard" && "bg-white mt-0 lg:mt-0 px-[12px] lg:px-3 py-[30px]"}`}>
-			<div className="grid grid-cols-1 lg:grid-cols-2 gap-x-[32px] gap-y-[16px]">
+		<div className={`mt-[20px] lg:mt-[90px] ${place === "dashboard" && "bg-white mt-0 lg:mt-0 px-3 lg:px-5 py-[30px]"}`}>
+			<div className="grid grid-cols-1 lg:grid-cols-2 gap-x-[32px] gap-y-8">
 				<FileAComplaintInput
 					label={"Product Category"}
 					placeholder={"e.g Gadgets, footwear etc"}
@@ -120,14 +120,16 @@ const Page1: React.FC<Page1Props> = ({
 					nairaSymbol={false}
 				/>
 			</div>
-			<div className="w-full mt-6">
+			<div className="w-full mt-8">
 				<div className="flex flex-row space-x-[10px] pb-[10px]">
-					<p className="text-[14px] lg:text-[20px]">Complaint details</p>
-					<img
+					<label className="text-[14px] lg:text-base xl:text-lg">
+						Complaint details <span className="text-danger">*</span>
+					</label>
+					{/* <img
 						src="/icons/fac-help.svg"
 						alt=""
 						className="cursor-pointer w-[21px] h-[21px] lg:w-[28px] lg:h-[28px]"
-					/>
+					/> */}
 				</div>
 				<textarea
 					value={complaintDetails}
@@ -138,8 +140,8 @@ const Page1: React.FC<Page1Props> = ({
 				/>
 			</div>
 			<div className="mt-6 flex flex-col justify-center">
-				<div className="flex flex-row items-start justify-items-start text-[14px] sm:text-[16px] lg:text-xl xl:text-2xl">
-					<span className="text-eccblue font-semibold">NOTE:</span>
+				<div className="flex flex-row items-center text-sm lg:text-xl">
+					<span className="text-eccblue font-semibold self-start sm:self-auto">NOTE:</span>
 					<div className="ml-1 inline">
 						<p className="inline">If you believe that you have been scammed, click</p>
 						<div
@@ -160,7 +162,7 @@ const Page1: React.FC<Page1Props> = ({
 				{showing && (
 					<div className="mt-[20px] lg:mt-[51.46px]">
 						<h1 className="font-semibold text-[14px] lg:text-[20px] xl:text-[24px] mb-[20px] opacity-80">Kindly fill in these additional fields</h1>
-						<div className=" flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:gap-x-[32px] gap-y-[16px] ">
+						<div className="flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:gap-x-[32px] gap-y-[16px] ">
 							<FileAComplaintInput
 								label={"Company's/Brand's Account Number"}
 								placeholder={"eg 2354556334"}
