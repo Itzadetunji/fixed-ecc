@@ -203,7 +203,7 @@ const Page1: React.FC<Page1Props> = ({
 			<div className="flex justify-end">
 				<button
 					onClick={onSubmit}
-					className="text-sm bg-eccblue rounded-lg font-semibold text-white h-[45px] w-[131px] hover:scale-[0.95] hover:duration-100 hover:ease-in-out"
+					className="text-xs sm:text-sm bg-eccblue rounded-lg font-regular sm:font-semibold text-white h-[35px] sm:h-[45px] w-[100px] sm:w-[131px] hover:scale-[0.95] hover:duration-100 hover:ease-in-out"
 				>
 					Continue
 				</button>
