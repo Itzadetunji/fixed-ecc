@@ -78,6 +78,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setProductCategory}
 					type="text"
 					nairaSymbol={false}
+					isRequired={false}
 				/>
 				<FileAComplaintInput
 					label={"Where did this transaction happen?"}
@@ -86,6 +87,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setPlaceOfTransaction}
 					type="text"
 					nairaSymbol={false}
+					isRequired={false}
 				/>
 				<FileAComplaintInput
 					label={"Title of your complaint"}
@@ -94,6 +96,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setTitleOfComplaint}
 					type="text"
 					nairaSymbol={false}
+					isRequired={false}
 				/>
 				<FileAComplaintInput
 					label={"Total amount lost from this incident"}
@@ -102,6 +105,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setAmountLost}
 					type="number"
 					nairaSymbol={true}
+					isRequired={false}
 				/>
 				<FileAComplaintInput
 					label={"Company’s/Brand’s name"}
@@ -110,6 +114,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setCompanyName}
 					type="text"
 					nairaSymbol={false}
+					isRequired={false}
 				/>
 				<FileAComplaintInput
 					label={"Company’s/Brand’s Social media handle"}
@@ -118,6 +123,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setBrandHandle}
 					type="text"
 					nairaSymbol={false}
+					isRequired={false}
 				/>
 			</div>
 			<div className="w-full mt-8">
@@ -162,7 +168,7 @@ const Page1: React.FC<Page1Props> = ({
 				{showing && (
 					<div className="mt-[20px] lg:mt-[51.46px]">
 						<h1 className="font-semibold text-[14px] lg:text-[20px] xl:text-[24px] mb-[20px] opacity-80">Kindly fill in these additional fields</h1>
-						<div className="flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:gap-x-[32px] gap-y-[16px] ">
+						<div className="flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:gap-x-[32px] gap-y-[32px] ">
 							<FileAComplaintInput
 								label={"Company's/Brand's Account Number"}
 								placeholder={"eg 2354556334"}
@@ -170,6 +176,7 @@ const Page1: React.FC<Page1Props> = ({
 								setValue={setAccountNumber}
 								type="text"
 								nairaSymbol={false}
+								isRequired={false}
 							/>
 							<FileAComplaintInput
 								label={"Company's/Brand's Account Name"}
@@ -178,6 +185,7 @@ const Page1: React.FC<Page1Props> = ({
 								setValue={setAccountName}
 								type="text"
 								nairaSymbol={false}
+								isRequired={false}
 							/>
 							<FileAComplaintInput
 								label={"Company's/Brand's Bank Name"}
@@ -186,6 +194,7 @@ const Page1: React.FC<Page1Props> = ({
 								setValue={setBankName}
 								type="text"
 								nairaSymbol={false}
+								isRequired={false}
 							/>
 						</div>
 					</div>
@@ -194,7 +203,7 @@ const Page1: React.FC<Page1Props> = ({
 			<div className="flex justify-end mt-[40px] lg:mt-[80px] mr-[30px] lg:mr-[120px]">
 				<button
 					onClick={onSubmit}
-					className="text-[14px] lg:text-[20px] bg-eccblue mt-[40px] lg:mt-[80px] rounded-xl font-[600] text-white py-[14.5px] lg:py-[22px] w-full max-w-[140px] lg:max-w-[216px]"
+					className="text-sm lg:text-xl bg-eccblue mt-[40px] lg:mt-[80px] rounded-xl font-[600] text-white py-[14.5px] lg:py-[22px] w-full max-w-[140px] lg:max-w-[216px]"
 					type="submit"
 				>
 					Continue

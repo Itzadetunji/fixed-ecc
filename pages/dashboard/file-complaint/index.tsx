@@ -32,6 +32,10 @@ const FileComplaint: NextPage = () => {
 	const [accountName, setAccountName] = useState("");
 	const [accountNumber, setAccountNumber] = useState("");
 	const [bankName, setBankName] = useState("");
+	const handleSubmit = (event) => {
+		console.log(1);
+		event.preventDefault();
+	};
 	return (
 		<NavWrapper>
 			<div>
@@ -44,61 +48,63 @@ const FileComplaint: NextPage = () => {
 					initial={{ opacity: 0 }}
 					animate={{ opacity: isOpaque ? 1 : 0 }}
 				>
-					{currentPage == 1 && (
-						<Page1
-							place="dashboard"
-							accountName={accountName}
-							setAccountName={setAccountName}
-							accountNumber={accountNumber}
-							setAccountNumber={setAccountNumber}
-							bankName={bankName}
-							setBankName={setBankName}
-							setCurrentPage={setCurrentPage}
-							productCategory={productCategory}
-							setProductCategory={setProductCategory}
-							titleOfComplaint={titleOfComplaint}
-							setTitleOfComplaint={setTitleOfComplaint}
-							companyName={companyName}
-							setCompanyName={setCompanyName}
-							placeOfTransaction={placeOfTransaction}
-							setPlaceOfTransaction={setPlaceOfTransaction}
-							amountLost={amountLost}
-							setAmountLost={setAmountLost}
-							complaintDetails={complaintDetails}
-							setComplaintDetails={setComplaintDetails}
-							brandContact={brandContact}
-							setBrandContact={setBrandContact}
-							brandHandle={brandHandle}
-							setBrandHandle={setBrandHandle}
-							setIsOpaque={setIsOpaque}
-						/>
-					)}
-					{currentPage == 2 && (
-						<Page2
-							place="dashboard"
-							setCurrentPage={setCurrentPage}
-							selectedFiles={selectedFiles}
-							setSelectedFiles={setSelectedFiles}
-							setIsOpaque={setIsOpaque}
-						/>
-					)}
-					{currentPage == 3 && (
-						<Page3
-							setCurrentPage={setCurrentPage}
-							setIsOpaque={setIsOpaque}
-							place="dashboard"
-							wantsRefund={wantsRefund}
-							setWantsRefund={setWantsRefund}
-							wantsCompensation={wantsCompensation}
-							setWantsCompensation={setWantsCompensation}
-							wantsApology={wantsApology}
-							setWantsApology={setWantsApology}
-							wantsReplacement={wantsReplacement}
-							setWantsReplacement={setWantsReplacement}
-							termsAndConditions={termsAndConditions}
-							setTermsAndConditions={setTermsAndConditions}
-						/>
-					)}
+					<form onSubmit={handleSubmit}>
+						{currentPage == 1 && (
+							<Page1
+								place="dashboard"
+								accountName={accountName}
+								setAccountName={setAccountName}
+								accountNumber={accountNumber}
+								setAccountNumber={setAccountNumber}
+								bankName={bankName}
+								setBankName={setBankName}
+								setCurrentPage={setCurrentPage}
+								productCategory={productCategory}
+								setProductCategory={setProductCategory}
+								titleOfComplaint={titleOfComplaint}
+								setTitleOfComplaint={setTitleOfComplaint}
+								companyName={companyName}
+								setCompanyName={setCompanyName}
+								placeOfTransaction={placeOfTransaction}
+								setPlaceOfTransaction={setPlaceOfTransaction}
+								amountLost={amountLost}
+								setAmountLost={setAmountLost}
+								complaintDetails={complaintDetails}
+								setComplaintDetails={setComplaintDetails}
+								brandContact={brandContact}
+								setBrandContact={setBrandContact}
+								brandHandle={brandHandle}
+								setBrandHandle={setBrandHandle}
+								setIsOpaque={setIsOpaque}
+							/>
+						)}
+						{currentPage == 2 && (
+							<Page2
+								place="dashboard"
+								setCurrentPage={setCurrentPage}
+								selectedFiles={selectedFiles}
+								setSelectedFiles={setSelectedFiles}
+								setIsOpaque={setIsOpaque}
+							/>
+						)}
+						{currentPage == 3 && (
+							<Page3
+								setCurrentPage={setCurrentPage}
+								setIsOpaque={setIsOpaque}
+								place="dashboard"
+								wantsRefund={wantsRefund}
+								setWantsRefund={setWantsRefund}
+								wantsCompensation={wantsCompensation}
+								setWantsCompensation={setWantsCompensation}
+								wantsApology={wantsApology}
+								setWantsApology={setWantsApology}
+								wantsReplacement={wantsReplacement}
+								setWantsReplacement={setWantsReplacement}
+								termsAndConditions={termsAndConditions}
+								setTermsAndConditions={setTermsAndConditions}
+							/>
+						)}
+					</form>
 				</motion.div>
 			</div>
 		</NavWrapper>

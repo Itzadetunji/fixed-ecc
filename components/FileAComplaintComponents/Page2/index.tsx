@@ -111,7 +111,7 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 							</div>
 						))}
 				</div>
-			</div>
+		</div>
 			<div className="flex justify-center lg:justify-end space-x-[30px] lg:space-x-[37px]">
 				<button
 					onClick={onPrevious}

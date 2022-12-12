@@ -5,9 +5,10 @@ interface FileAComplaintInputProps {
 	setValue: any;
 	type: string;
 	nairaSymbol: boolean | null;
+	isRequired: boolean;
 }
 
-const FileAComplaintInput: React.FC<FileAComplaintInputProps> = ({ label, placeholder, value, setValue, type, nairaSymbol }) => {
+const FileAComplaintInput: React.FC<FileAComplaintInputProps> = ({ label, placeholder, value, setValue, type, nairaSymbol, isRequired }) => {
 	return (
 		<div>
 			<div className="flex flex-row items-center">
@@ -29,6 +30,7 @@ const FileAComplaintInput: React.FC<FileAComplaintInputProps> = ({ label, placeh
 					}`}
 					placeholder={placeholder ? placeholder : undefined}
 					type={type}
+					required={isRequired}
 				/>
 				{nairaSymbol && (
 					<img

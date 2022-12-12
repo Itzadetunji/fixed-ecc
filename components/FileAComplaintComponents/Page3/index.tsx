@@ -123,7 +123,6 @@ const Page3: React.FC<Page3Props> = ({ place, setCurrentPage, setIsOpaque, wants
 						disabled={!termsAndConditions}
 						onClick={onSubmit}
 						className="text-[14px] transition-[150ms] lg:text-[20px] bg-eccblue mt-[40px] lg:mt-[80px] rounded-xl font-[600] text-white py-[14.5px] lg:py-[22px] w-full max-w-[140px] lg:max-w-[216px]"
-						type="submit"
 					>
 						Continue
 					</button>
