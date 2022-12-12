@@ -6,9 +6,18 @@ const PageIndicator = ({ pageNumber, Message, isActive, PageSet }) => {
 			}}
 			className="flex flex-row gap-x-[7px] items-center font-medium cursor-pointer"
 		>
-			<p className={`xl:w-[63px] lg:w-[55px] w-[28px] xl:h-[63px] lg:h-[55px] h-[28px] text-[14px] flex items-center justify-center font-semibold lg:text-[20px] xl:text-[29px]  rounded-full border border-solid  ${isActive ? "border-white bg-white text-eccblue" : " border-slate-50 bg-eccblue text-white"} `}>{pageNumber}</p>
-			<p className={`xl:text-[24px] lg:text-[20px] text-[14px] ${isActive ? "text-white" : "text-slate-50"}`}>{Message}</p>
+			<p className={`w-8 lg:w-12 h-8 lg:h-12 flex items-center justify-center font-semibold rounded-full border border-solid text-xs sm:text-sm lg:text-lg ${isActive ? "border-white bg-white text-eccblue" : " border-slate-50 bg-eccblue text-white"} `}>{pageNumber}</p>
+			<p className={`text-[14px] lg:text-lg ${isActive ? "text-white" : "text-slate-50"}`}>{Message}</p>
 		</div>
+		// <div
+		// 	onClick={() => {
+		// 		PageSet(pageNumber);
+		// 	}}
+		// 	className="flex flex-row gap-x-[7px] items-center font-medium cursor-pointer"
+		// >
+		// 	<p className={`xl:w-[63px] lg:w-[55px] w-[28px] xl:h-[63px] lg:h-[55px] h-[28px] text-[14px] flex items-center justify-center font-semibold lg:text-[20px] xl:text-[29px] rounded-full border border-solid  ${isActive ? "border-white bg-white text-eccblue" : " border-slate-50 bg-eccblue text-white"} `}>{pageNumber}</p>
+		// 	<p className={`xl:text-[24px] lg:text-[20px] text-[14px] ${isActive ? "text-white" : "text-slate-50"}`}>{Message}</p>
+		// </div>
 	);
 };
 
