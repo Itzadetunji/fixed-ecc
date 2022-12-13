@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const PostaComplaint: React.FC = () => {
 	return (
@@ -17,7 +18,9 @@ const PostaComplaint: React.FC = () => {
 				</p>
 				<div className="pt-[20px] sm:pt-[40px] lg:pt-[72px]">
 					<button className="items-center justify-center text-center bg-blue-600 rounded-[10px] py-3 sm:py-4 px-[15px] sm:px-[30px] lg:px-[45px]">
-						<p className="mx-auto items-center justify-center text-center text-white font-semibold text-[10px] md:text-[13px] lg:text-[15px] xl:text-[18px]">Post a complaint</p>
+						<Link href="/file-complaint">
+							<p className="mx-auto items-center justify-center text-center text-white font-semibold text-[10px] md:text-[13px] lg:text-[15px] xl:text-[18px]">Post a complaint</p>
+						</Link>
 					</button>
 				</div>
 			</div>

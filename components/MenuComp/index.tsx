@@ -19,11 +19,13 @@ const Menu: NextPage<MenuProps> = ({ setExpand, expand }) => {
 			<div className="h-screen w-screen fixed z-20 bg-clearblue">
 				<header className="h-1/6">
 					<div className="flex items-center">
-						<img
-							src="/Images/logo.svg"
-							className="ml-5 h-32 w-32 -my-10"
-							alt="Adetunji's Adeyinka's Logo"
-						/>
+						<Link href="/">
+							<img
+								src="/Images/logo.svg"
+								className="ml-5 h-32 w-32 -my-10"
+								alt="Adetunji's Adeyinka's Logo"
+							/>
+						</Link>
 					</div>
 				</header>
 
@@ -32,11 +34,11 @@ const Menu: NextPage<MenuProps> = ({ setExpand, expand }) => {
 						<ul className="flex flex-col  items-center h-full justify-between">
 							<MenuLink
 								name="Write a complaint letter"
-								href="/file-complaint"
+								href="/write-complaint"
 							/>
 							<MenuLink
 								name="Complaints"
-								href="/Complaints"
+								href="/complaints"
 							/>
 							<MenuLink
 								name="Latest scams"
