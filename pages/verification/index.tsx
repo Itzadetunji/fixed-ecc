@@ -12,7 +12,7 @@ import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
 import Testimonials from "../../Sections/HomeSections/TestimonialsSection";
 import VerificationInputGroup from "../../components/Verification/VerificationInputGroup";
-
+import Menu from "components/MenuComp";
 const VerificationPage: NextPage = () => {
 	const [lastName, setLastName] = useState("");
 	const [firstName, setFirstName] = useState("");
@@ -147,300 +147,316 @@ const VerificationPage: NextPage = () => {
 			}
 		}
 	};
+	const [expand, setExpand] = useState(false);
 	return (
-		<>
-			<NavBar />
-			<motion.div
-				initial={{ opacity: 0, y: 100 }}
-				animate={{ opacity: 1, y: 0 }}
-				className="mt-[198px]"
-			>
-				<div className="">
-					<p className="text-center text-[18px] lg:text-[40px] font-[500]">You will have to verify yourself before you continue </p>
-					<p className="text-center text-[20px] font-[300] mt-[30px]">
-						Already have an account?{" "}
-						<Link href="/login">
-							<span className="text-[#0B63C5] cursor-pointer">Login</span>
-						</Link>
-					</p>
-				</div>
-				<div className="mt-[99px] mx-[12.5px] lg:mx-[109px]">
-					<div className="flex lg:grid flex-col lg:grid-cols-2 gap-x-[65px] space-y-[30px] lg:space-y-0 lg:gap-y-[52px]">
-						<VerificationInputGroup
-							label="First Name"
-							placeholder="Last Name"
-							value={firstName}
-							setValue={setFirstName}
-							maxlength={11}
-							type="text"
-							errorMessage={errors.firstName}
-						/>
-						<VerificationInputGroup
-							label="Last Name"
-							placeholder="Last Name"
-							value={lastName}
-							setValue={setLastName}
-							type="text"
-							max={`${new Date().getMonth() + 1}-${new Date().getDate()}-${new Date().getFullYear()}`}
-							errorMessage={errors.lastName}
-						/>
-						<VerificationInputGroup
-							label="Phone Number"
-							placeholder="Enter Phone Number"
-							value={phoneNumber}
-							setValue={setPhoneNumber}
-							maxlength={11}
-							type="number"
-							errorMessage={errors.phoneNumber}
-						/>
-						<VerificationInputGroup
-							label="Date Of Birth"
-							placeholder="DD/MM/YYYY"
-							value={dob}
-							setValue={setDob}
-							type="date"
-							max={`${new Date().getMonth() + 1}-${new Date().getDate()}-${new Date().getFullYear()}`}
-							errorMessage={errors.dob}
-						/>
-						<div className="flex flex-col">
-							<p className="text-[14px] lg:text-[20px]">State</p>
-							<select
-								value={state}
-								onChange={(e) => setState(e.target.value)}
-								style={{ color: state ? "black" : "#9ca3af" }}
-								className="transition-[150ms] py-[12.5px] lg:py-[20px] xl:py-[25px] px-[20px] focus:outline-none rounded-[10px] border-2 border-[#C5C5C5] mt-[10px] w-full focus:border-[#0B63C5] text-[14px] lg:text-[16px] placeholder:text-[14px] lg:placeholder:text-[16px]"
-							>
-								<option
-									value=""
-									selected
-								>
-									Enter your Residential State
-								</option>
-								{states.map((state, index) => (
-									<option
-										key={index}
-										className="text-black"
-										value={state.name}
+		<div>
+			<div>
+				{expand && (
+					<Menu
+						expand={expand}
+						setExpand={setExpand}
+					/>
+				)}
+			</div>
+			{!expand && (
+				<div>
+					<NavBar
+						expand={expand}
+						setExpand={setExpand}
+					/>
+					<motion.div
+						initial={{ opacity: 0, y: 100 }}
+						animate={{ opacity: 1, y: 0 }}
+						className="mt-[198px]"
+					>
+						<div className="">
+							<p className="text-center text-[18px] lg:text-[40px] font-[500]">You will have to verify yourself before you continue </p>
+							<p className="text-center text-[20px] font-[300] mt-[30px]">
+								Already have an account?{" "}
+								<Link href="/login">
+									<span className="text-[#0B63C5] cursor-pointer">Login</span>
+								</Link>
+							</p>
+						</div>
+						<div className="mt-[99px] mx-[12.5px] lg:mx-[109px]">
+							<div className="flex lg:grid flex-col lg:grid-cols-2 gap-x-[65px] space-y-[30px] lg:space-y-0 lg:gap-y-[52px]">
+								<VerificationInputGroup
+									label="First Name"
+									placeholder="Last Name"
+									value={firstName}
+									setValue={setFirstName}
+									maxlength={11}
+									type="text"
+									errorMessage={errors.firstName}
+								/>
+								<VerificationInputGroup
+									label="Last Name"
+									placeholder="Last Name"
+									value={lastName}
+									setValue={setLastName}
+									type="text"
+									max={`${new Date().getMonth() + 1}-${new Date().getDate()}-${new Date().getFullYear()}`}
+									errorMessage={errors.lastName}
+								/>
+								<VerificationInputGroup
+									label="Phone Number"
+									placeholder="Enter Phone Number"
+									value={phoneNumber}
+									setValue={setPhoneNumber}
+									maxlength={11}
+									type="number"
+									errorMessage={errors.phoneNumber}
+								/>
+								<VerificationInputGroup
+									label="Date Of Birth"
+									placeholder="DD/MM/YYYY"
+									value={dob}
+									setValue={setDob}
+									type="date"
+									max={`${new Date().getMonth() + 1}-${new Date().getDate()}-${new Date().getFullYear()}`}
+									errorMessage={errors.dob}
+								/>
+								<div className="flex flex-col">
+									<p className="text-[14px] lg:text-[20px]">State</p>
+									<select
+										value={state}
+										onChange={(e) => setState(e.target.value)}
+										style={{ color: state ? "black" : "#9ca3af" }}
+										className="transition-[150ms] py-[12.5px] lg:py-[20px] xl:py-[25px] px-[20px] focus:outline-none rounded-[10px] border-2 border-[#C5C5C5] mt-[10px] w-full focus:border-[#0B63C5] text-[14px] lg:text-[16px] placeholder:text-[14px] lg:placeholder:text-[16px]"
 									>
-										{state.name}
-									</option>
-								))}
-							</select>
-							{errors.state && (
-								<motion.p
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									className="text-[13px] md:text-[15px] lg:text-[18px] mt-[5px] text-red-500 font-medium"
-								>
-									{errors.state}
-								</motion.p>
-							)}
-						</div>
-						<div className="flex flex-col">
-							<p className="text-[14px] lg:text-[20px]">L.G.A</p>
-							<select
-								value={lga}
-								onChange={(e) => setLga(e.target.value)}
-								style={{
-									color: state && lga ? "black" : "#9ca3af",
-								}}
-								className="transition-[150ms] py-[12.5px] lg:py-[20px] xl:py-[25px] px-[20px] focus:outline-none rounded-[10px] border-2 border-[#C5C5C5] mt-[10px] w-full focus:border-[#0B63C5] text-[14px] lg:text-[16px] placeholder:text-[14px] lg:placeholder:text-[16px]"
-							>
-								<option
-									value=""
-									selected
-								>
-									Enter your Local Government Area
-								</option>
-								{states
-									.find((item) => item.name == state)
-									?.lgas.map((state, index) => (
 										<option
-											key={index}
-											className="text-black"
-											value={state}
+											value=""
+											selected
 										>
-											{state}
+											Enter your Residential State
 										</option>
-									))}
-							</select>
-							{errors.lga && (
-								<motion.p
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									className="text-[13px] md:text-[15px] lg:text-[18px] mt-[5px] text-red-500 font-medium"
-								>
-									{errors.lga}
-								</motion.p>
-							)}
-						</div>
-
-						<VerificationInputGroup
-							label="Adress Line"
-							placeholder="Enter Valid Address"
-							value={address}
-							setValue={setAddress}
-							type="text"
-							className="col-span-2"
-							errorMessage={errors.address}
-						/>
-					</div>
-					<div className="mt-[30px] lg:mt-[66px]">
-						<div>
-							<p className="text-[20px]">Upload Document</p>
-						</div>
-						<div className="bg-[#F1F7FE]">
-							<div className="w-full py-[27.5px] lg:py-[122px] rounded-[12px] border-[#0B63C5] mt-[25px] border lg:border-2 border-dashed flex flex-col items-center justify-center">
-								<div className={`w-full mx-auto`}>
-									<img
-										src="icons/paste.svg"
-										alt=""
-										className="mx-auto cursor-pointer w-[41px] lg:w-[137px] h-[41px] lg:h-[137px]"
-										onClick={() => filePickerRef.current?.click()}
-									/>
-									<input
-										type="file"
-										ref={filePickerRef}
-										hidden
-										accept=".jpg, .jpeg, .png, .pdf"
-										onChange={addDocument}
-										id="inputfile"
-									/>
-									<div className="text-center mt-[16px]">
-										<p className="text-[14px] lg:text-[20px] font-[400]">
-											Click to upload your{" "}
-											<span
-												className="text-[#0B63C5] cursor-pointer"
-												onClick={() => filePickerRef.current?.click()}
+										{states.map((state, index) => (
+											<option
+												key={index}
+												className="text-black"
+												value={state.name}
 											>
-												document
-											</span>{" "}
-											here
-										</p>
-										<p className="text-[12px] lg:text-[18px] mt-[6px] lg:mt-[22px]">Supported format: JPEG, PNG, PDF</p>
-									</div>
-
-									<AnimatePresence>
-										{selectedFile && (
-											<motion.div
-												initial={{
-													opacity: 0,
-													scale: 0.6,
-												}}
-												animate={{
-													opacity: 1,
-													scale: 1,
-												}}
-												exit={{
-													opacity: 0,
-													scale: 1,
-												}}
-												className="bg-[#0B63C5] h-[101px] w-[708px] mx-auto mt-[43px] rounded-[12px]"
-											>
-												<div className="ml-[33px] mr-[50px]">
-													<div className="pt-[27px] relative">
-														<div className="flex flex-row space-x-[37px]">
-															<img
-																src="icons/file-check.svg"
-																alt=""
-															/>
-															<p className="text-[20px] font-[600] text-white">{selectedFile.name}</p>
-														</div>
-														<img
-															src="icons/close-1.svg"
-															className=" absolute right-0 top-[27px] w-[18px] h-[18px] mt-[5px] cursor-pointer"
-															onClick={removeDocument}
-															alt=""
-														/>
-													</div>
-													{/* <hr className="mt-[12.12px] border-[3.5px] rounded-full"/> */}
-													<div className="w-full mt-[12.12px] bg-[#C5C5C5] h-[5px] rounded-full">
-														<div
-															className="bg-white h-[5px] rounded-full transition-[50000ms]"
-															style={{
-																width: progress ? `${progress}%` : `0%`,
-															}}
-														></div>
-													</div>
-												</div>
-											</motion.div>
-										)}
-									</AnimatePresence>
+												{state.name}
+											</option>
+										))}
+									</select>
+									{errors.state && (
+										<motion.p
+											initial={{ opacity: 0 }}
+											animate={{ opacity: 1 }}
+											className="text-[13px] md:text-[15px] lg:text-[18px] mt-[5px] text-red-500 font-medium"
+										>
+											{errors.state}
+										</motion.p>
+									)}
 								</div>
+								<div className="flex flex-col">
+									<p className="text-[14px] lg:text-[20px]">L.G.A</p>
+									<select
+										value={lga}
+										onChange={(e) => setLga(e.target.value)}
+										style={{
+											color: state && lga ? "black" : "#9ca3af",
+										}}
+										className="transition-[150ms] py-[12.5px] lg:py-[20px] xl:py-[25px] px-[20px] focus:outline-none rounded-[10px] border-2 border-[#C5C5C5] mt-[10px] w-full focus:border-[#0B63C5] text-[14px] lg:text-[16px] placeholder:text-[14px] lg:placeholder:text-[16px]"
+									>
+										<option
+											value=""
+											selected
+										>
+											Enter your Local Government Area
+										</option>
+										{states
+											.find((item) => item.name == state)
+											?.lgas.map((state, index) => (
+												<option
+													key={index}
+													className="text-black"
+													value={state}
+												>
+													{state}
+												</option>
+											))}
+									</select>
+									{errors.lga && (
+										<motion.p
+											initial={{ opacity: 0 }}
+											animate={{ opacity: 1 }}
+											className="text-[13px] md:text-[15px] lg:text-[18px] mt-[5px] text-red-500 font-medium"
+										>
+											{errors.lga}
+										</motion.p>
+									)}
+								</div>
+
+								<VerificationInputGroup
+									label="Adress Line"
+									placeholder="Enter Valid Address"
+									value={address}
+									setValue={setAddress}
+									type="text"
+									className="col-span-2"
+									errorMessage={errors.address}
+								/>
+							</div>
+							<div className="mt-[30px] lg:mt-[66px]">
+								<div>
+									<p className="text-[20px]">Upload Document</p>
+								</div>
+								<div className="bg-[#F1F7FE]">
+									<div className="w-full py-[27.5px] lg:py-[122px] rounded-[12px] border-[#0B63C5] mt-[25px] border lg:border-2 border-dashed flex flex-col items-center justify-center">
+										<div className={`w-full mx-auto`}>
+											<img
+												src="icons/paste.svg"
+												alt=""
+												className="mx-auto cursor-pointer w-[41px] lg:w-[137px] h-[41px] lg:h-[137px]"
+												onClick={() => filePickerRef.current?.click()}
+											/>
+											<input
+												type="file"
+												ref={filePickerRef}
+												hidden
+												accept=".jpg, .jpeg, .png, .pdf"
+												onChange={addDocument}
+												id="inputfile"
+											/>
+											<div className="text-center mt-[16px]">
+												<p className="text-[14px] lg:text-[20px] font-[400]">
+													Click to upload your{" "}
+													<span
+														className="text-[#0B63C5] cursor-pointer"
+														onClick={() => filePickerRef.current?.click()}
+													>
+														document
+													</span>{" "}
+													here
+												</p>
+												<p className="text-[12px] lg:text-[18px] mt-[6px] lg:mt-[22px]">Supported format: JPEG, PNG, PDF</p>
+											</div>
+
+											<AnimatePresence>
+												{selectedFile && (
+													<motion.div
+														initial={{
+															opacity: 0,
+															scale: 0.6,
+														}}
+														animate={{
+															opacity: 1,
+															scale: 1,
+														}}
+														exit={{
+															opacity: 0,
+															scale: 1,
+														}}
+														className="bg-[#0B63C5] h-[101px] w-[708px] mx-auto mt-[43px] rounded-[12px]"
+													>
+														<div className="ml-[33px] mr-[50px]">
+															<div className="pt-[27px] relative">
+																<div className="flex flex-row space-x-[37px]">
+																	<img
+																		src="icons/file-check.svg"
+																		alt=""
+																	/>
+																	<p className="text-[20px] font-[600] text-white">{selectedFile.name}</p>
+																</div>
+																<img
+																	src="icons/close-1.svg"
+																	className=" absolute right-0 top-[27px] w-[18px] h-[18px] mt-[5px] cursor-pointer"
+																	onClick={removeDocument}
+																	alt=""
+																/>
+															</div>
+															{/* <hr className="mt-[12.12px] border-[3.5px] rounded-full"/> */}
+															<div className="w-full mt-[12.12px] bg-[#C5C5C5] h-[5px] rounded-full">
+																<div
+																	className="bg-white h-[5px] rounded-full transition-[50000ms]"
+																	style={{
+																		width: progress ? `${progress}%` : `0%`,
+																	}}
+																></div>
+															</div>
+														</div>
+													</motion.div>
+												)}
+											</AnimatePresence>
+										</div>
+									</div>
+								</div>
+								{errors.photoIdUrl && (
+									<motion.p
+										initial={{ opacity: 0 }}
+										animate={{ opacity: 1 }}
+										className="text-[13px] md:text-[15px] lg:text-[18px] mt-[5px] text-red-500 font-medium"
+									>
+										{errors.photoIdUrl}
+									</motion.p>
+								)}
 							</div>
 						</div>
-						{errors.photoIdUrl && (
-							<motion.p
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								className="text-[13px] md:text-[15px] lg:text-[18px] mt-[5px] text-red-500 font-medium"
-							>
-								{errors.photoIdUrl}
-							</motion.p>
-						)}
-					</div>
+						<div className="hidden lg:block mx-[120px] mt-[63px]">
+							<p className="text-[20px] font-[500] leading-[30px]">You can use any of these means of identification</p>
+							<ul className="text-[20px] text-[#0B63C5] font-[600] space-y-[11px] mt-[30px] -ml-[10px]">
+								<li className="flex flex-row space-x-[37px]">
+									{" "}
+									<img
+										src="icons/check.svg"
+										alt=""
+									/>{" "}
+									<p>Voter&apos;s Card</p>
+								</li>
+								<li className="flex flex-row space-x-[37px]">
+									{" "}
+									<img
+										src="icons/check.svg"
+										alt=""
+									/>{" "}
+									<p>International Passport</p>
+								</li>
+								<li className="flex flex-row space-x-[37px]">
+									{" "}
+									<img
+										src="icons/check.svg"
+										alt=""
+									/>{" "}
+									<p>National ID card</p>
+								</li>
+								<li className="flex flex-row space-x-[37px]">
+									{" "}
+									<img
+										src="icons/check.svg"
+										alt=""
+									/>{" "}
+									<p>National Identification Slip (NIN)</p>
+								</li>
+								<li className="flex flex-row space-x-[37px]">
+									{" "}
+									<img
+										src="icons/check.svg"
+										alt=""
+									/>{" "}
+									<p>Driver’s Licence</p>
+								</li>
+							</ul>
+						</div>
+						<div className="mx-[12.5px] lg:hidden leading-[24px] mt-[22px] font-[500] text-[12px]">
+							<p>You can use any of these means of identification:</p>
+							<p className="text-[#0B63C5]">Voter’s Card, International passport, National ID card, Driver’s licence and National identification slip (NIN) </p>
+						</div>
+						<div
+							onClick={onSubmit}
+							className="my-[63px] mx-[12.5px] lg:mx-auto rounded-[12px] bg-[#0B63C5] lg:w-[587px] transition-[150ms] active:scale-95 "
+						>
+							<p className="text-center text-white text-[20px] font-[600] flex items-center justify-center py-[14.5px] cursor-pointer">Continue</p>
+						</div>
+						<div className="mt-[118px]">
+							<Testimonials />
+						</div>
+						<Footer />
+					</motion.div>
 				</div>
-				<div className="hidden lg:block mx-[120px] mt-[63px]">
-					<p className="text-[20px] font-[500] leading-[30px]">You can use any of these means of identification</p>
-					<ul className="text-[20px] text-[#0B63C5] font-[600] space-y-[11px] mt-[30px] -ml-[10px]">
-						<li className="flex flex-row space-x-[37px]">
-							{" "}
-							<img
-								src="icons/check.svg"
-								alt=""
-							/>{" "}
-							<p>Voter&apos;s Card</p>
-						</li>
-						<li className="flex flex-row space-x-[37px]">
-							{" "}
-							<img
-								src="icons/check.svg"
-								alt=""
-							/>{" "}
-							<p>International Passport</p>
-						</li>
-						<li className="flex flex-row space-x-[37px]">
-							{" "}
-							<img
-								src="icons/check.svg"
-								alt=""
-							/>{" "}
-							<p>National ID card</p>
-						</li>
-						<li className="flex flex-row space-x-[37px]">
-							{" "}
-							<img
-								src="icons/check.svg"
-								alt=""
-							/>{" "}
-							<p>National Identification Slip (NIN)</p>
-						</li>
-						<li className="flex flex-row space-x-[37px]">
-							{" "}
-							<img
-								src="icons/check.svg"
-								alt=""
-							/>{" "}
-							<p>Driver’s Licence</p>
-						</li>
-					</ul>
-				</div>
-				<div className="mx-[12.5px] lg:hidden leading-[24px] mt-[22px] font-[500] text-[12px]">
-					<p>You can use any of these means of identification:</p>
-					<p className="text-[#0B63C5]">Voter’s Card, International passport, National ID card, Driver’s licence and National identification slip (NIN) </p>
-				</div>
-				<div
-					onClick={onSubmit}
-					className="my-[63px] mx-[12.5px] lg:mx-auto rounded-[12px] bg-[#0B63C5] lg:w-[587px] transition-[150ms] active:scale-95 "
-				>
-					<p className="text-center text-white text-[20px] font-[600] flex items-center justify-center py-[14.5px] cursor-pointer">Continue</p>
-				</div>
-				<div className="mt-[118px]">
-					<Testimonials />
-				</div>
-				<Footer />
-			</motion.div>
-		</>
+			)}
+		</div>
 	);
 };
 
