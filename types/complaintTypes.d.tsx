@@ -74,9 +74,17 @@ export type UserObject = {
 	userEmail: string;
 };
 
+export type Activity = {
+	id: string;
+	action: string;
+	usernameorGID: string;
+	time: string;
+};
+
 export type Admin = {
 	username: string;
 	email: string;
 	id: string;
 	registered: string;
+	activities: Activity[];
 };
