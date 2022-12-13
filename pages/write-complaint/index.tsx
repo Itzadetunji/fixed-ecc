@@ -31,13 +31,13 @@ const WriteComplaintPage: NextPage = () => {
 								alt=""
 							/>
 						</div>
-						<div className="text-[12px] sm:text-[15px] lg:text-[20px] py-[10px] lg:py-[37px] pr-[8px] lg:pr-[42px] text-white">
+						<div className="text-[12px] sm:text-[15px] lg:text-[18px] py-[10px] lg:py-[37px] pr-[8px] lg:pr-[42px] text-white">
 							<p className="leading-[18px] lg:leading-[50px] mb-[5px]">Use this tool to create an email you can send to the business you bought the product or received the service from. If you prefer, you can print the letter and send via the post. </p>
 							<p className="leading-[18px] lg:leading-[50px]">Remember to attach or include any relevant documentation, such as a receipt or photo of the faulty product, when you send the letter.</p>
 						</div>
 					</div>
 				</div>
-				<div className="mt-[50px] lg:mt-[87px] text-[14px] sm:text-[17px] lg:text-[20px] leading-[21px] lg:leading-[30px]">
+				<div className="mt-[50px] lg:mt-[87px] text-[14px] sm:text-[17px] lg:text-[17px] leading-[21px] lg:leading-[30px]">
 					<p className="text-[#858383] border-b-[1px] text-left w-fit">To whom it may concern</p>
 					<div className="mt-[20px] lg:mt-[73px] flex justify-start items-center flex-wrap gap-y-[15px]">
 						<p className="">On</p>
@@ -91,7 +91,7 @@ const WriteComplaintPage: NextPage = () => {
 							/>
 						</div>
 						{shouldInclude && (
-							<div className="mt-[20px] bg-clearblue rounded-xl relative text-[12px] sm:text-[15px] lg:text-[20px]">
+							<div className="mt-[20px] bg-clearblue rounded-xl relative text-[12px] sm:text-[15px] lg:text-[18px]">
 								<p className="py-[18px] lg:pt-7 lg:pb-[50px] pl-[12px] lg:pl-[26px] pr-[35px] lg:pr-[76px] text-eccblue leading-[18px] lg:leading-[50px] break-words">
 									Use this tool to create an email you can send to the business you bought the product or received the service from. If you prefer, you can print the letter and send via the post thfhhffffhfhfhfhfhfhfhffhfhfhfhfhfhfhhfhfhfhjgkjgfokgffv
 								</p>
@@ -105,7 +105,7 @@ const WriteComplaintPage: NextPage = () => {
 						)}
 					</div>
 					<div className="mt-[30px] lg:mt-11">
-						<p className="text-[14px] sm:text-[17px]  lg:text-[20px] leading-[25px] lg:leading-[35px]">I understand that under the Nigerian Consumer Law, when I buy products and services they come with automatic guarantees that they will work and do what I asked for.</p>
+						<p className="text-[14px] sm:text-[15px]  lg:text-[18px] leading-[25px] lg:leading-[35px]">I understand that under the Nigerian Consumer Law, when I buy products and services they come with automatic guarantees that they will work and do what I asked for.</p>
 					</div>
 					<div className="mt-5 lg:mt-11">
 						<textarea
@@ -124,7 +124,7 @@ const WriteComplaintPage: NextPage = () => {
 							/>
 						</div>
 						{shouldPurchase && (
-							<div className="mt-[20px] bg-clearblue rounded-xl relative text-[12px] sm:text-[15px] lg:text-[20px]">
+							<div className="mt-[20px] bg-clearblue rounded-xl relative text-[12px] sm:text-[15px] lg:text-[18px]">
 								<p className="py-[18px] lg:pt-7 lg:pb-[50px] pl-[12px] lg:pl-[26px] pr-[35px] lg:pr-[76px] text-eccblue leading-[18px] lg:leading-[50px] break-words">
 									Use this tool to create an email you can send to the business you bought the product or received the service from. If you prefer, you can print the letter and send via the post thfhhffffhfhfhfhfhfhfhffhfhfhfhfhfhfhhfhfhfhjgkjgfokgffv
 								</p>
@@ -154,7 +154,7 @@ const WriteComplaintPage: NextPage = () => {
 							/>
 						</div>
 						{entitleTo && (
-							<div className="mt-[20px] bg-clearblue rounded-xl relative text-[12px] sm:text-[15px] lg:text-[20px]">
+							<div className="mt-[20px] bg-clearblue rounded-xl relative text-[12px] sm:text-[15px] lg:text-[18px]">
 								<p className="py-[18px] lg:pt-7 lg:pb-[50px] pl-[12px] lg:pl-[26px] pr-[35px] lg:pr-[76px] text-eccblue leading-[18px] lg:leading-[50px] break-words">
 									Use this tool to create an email you can send to the business you bought the product or received the service from. If you prefer, you can print the letter and send via the post thfhhffffhfhfhfhfhfhfhffhfhfhfhfhfhfhhfhfhfhjgkjgfokgffv
 								</p>
@@ -167,7 +167,7 @@ const WriteComplaintPage: NextPage = () => {
 							</div>
 						)}
 					</div>
-					<div className="text-[14px] sm:text-[17px] lg:text-[20px] mt-[20px] lg:mt-[35px] lg:mt-[44px]">
+					<div className="text-[14px] sm:text-[15px] lg:text-[18px] mt-[20px] lg:mt-[35px] lg:mt-[44px]">
 						<div className="leading-[21px] lg:leading-[30px] break-words">
 							<p className="inline">If I do not hear from you within </p>
 							<div className="inline relative">
@@ -175,7 +175,7 @@ const WriteComplaintPage: NextPage = () => {
 									type="text"
 									name=""
 									id=""
-									className="w-[150px] sm:w-[170px] lg:w-[200px] border-b-[1px] mx-[2px] outline-none placeholder:text-[14px] sm:placeholder:text-[17px] lg:placeholder:text-[20px] placeholder:text-[#858383] text-[14px] sm:text-[17px] lg:text-[20px]"
+									className="w-[150px] sm:w-[170px] lg:w-[200px] border-b-[1px] mx-[2px] outline-none placeholder:text-[14px] sm:placeholder:text-[17px] lg:placeholder:text-[20px] placeholder:text-[#858383] text-[14px] sm:text-[17px] lg:text-[18px]"
 									placeholder="select a date range"
 									value={dateRange}
 								/>
@@ -237,7 +237,7 @@ const WriteComplaintPage: NextPage = () => {
 								type="email"
 								name=""
 								id=""
-								className="w-[120px] sm:w-[160px] lg:w-[180px] lg:mt-[10px] mx-[4px] lg:mr-[10px] border-b-[1px] outline-none placeholder:text-[14px] sm:placeholder:text-[17px] lg:placeholder:text-[20px] placeholder:text-[#858383] text-[14px] sm:text-[17px] lg:text-[20px]"
+								className="w-[120px] sm:w-[160px] lg:w-[180px] lg:mt-[10px] mx-[4px] lg:mr-[10px] border-b-[1px] outline-none placeholder:text-[14px] sm:placeholder:text-[17px] lg:placeholder:text-[20px] placeholder:text-[#858383] text-[14px] sm:text-[17px] lg:text-[18px]"
 								placeholder="your email address"
 							/>
 							<p className="inline">or call me on</p>
@@ -245,7 +245,7 @@ const WriteComplaintPage: NextPage = () => {
 								type="tel"
 								name=""
 								id=""
-								className="w-[130px] sm:w-[150px] lg:w-[200px] mx-[5px] lg:mx-[10px] lg:mr-[250px] border-b-[1px] outline-none placeholder:text-[14px] sm:placeholder:text-[17px] lg:placeholder:text-[20px] placeholder:text-[#858383] text-[14px] sm:text-[17px] lg:text-[20px]"
+								className="w-[130px] sm:w-[150px] lg:w-[200px] mx-[5px] lg:mx-[10px] lg:mr-[250px] border-b-[1px] outline-none placeholder:text-[14px] sm:placeholder:text-[17px] lg:placeholder:text-[20px] placeholder:text-[#858383] text-[14px] sm:text-[17px] lg:text-[18px]"
 								placeholder="your phone number"
 							/>
 							<p className="mr-[9px] inline">during business hours</p>
@@ -257,12 +257,12 @@ const WriteComplaintPage: NextPage = () => {
 							type="text"
 							name=""
 							id=""
-							className="w-[70px] sm:w-[100px] lg:w-[120px] mt-[10px] lg:mr-[10px] border-b-[1px] outline-none placeholder:text-[14px] sm:placeholder:text-[17px] lg:placeholder:text-[20px] placeholder:text-[#858383] text-[14px] sm:text-[17px] lg:text-[20px]"
+							className="w-[70px] sm:w-[100px] lg:w-[120px] mt-[10px] lg:mr-[10px] border-b-[1px] outline-none placeholder:text-[14px] sm:placeholder:text-[17px] lg:placeholder:text-[20px] placeholder:text-[#858383] text-[14px] sm:text-[17px] lg:text-[18px]"
 							placeholder="your name"
 						/>
 					</div>
 					<Link href={"/write-complaint/preview"}>
-						<div className="bg-eccblue mt-[40px] lg:mt-[102px] mb-[56px] lg:mb-[79px] mx-auto cursor-pointer text-[14px] sm:text-[17px] lg:text-[20px] font-semibold text-white rounded-xl lg:rounded-lg  w-fit">
+						<div className="bg-eccblue mt-[40px] lg:mt-[102px] mb-[56px] lg:mb-[79px] mx-auto cursor-pointer text-[14px] sm:text-[17px] lg:text-[18px] font-semibold text-white rounded-xl lg:rounded-lg  w-fit">
 							<div className="mx-auto px-[70px] sm:px-[101px] lg:px-[193.15px] flex space-x-[10px] lg:space-x-[20px]">
 								<img
 									src="/icons/eye.svg"
