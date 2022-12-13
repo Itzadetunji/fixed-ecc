@@ -29,18 +29,18 @@ const WriteComplaintPreview: NextPage = () => {
 						<div className="mt-[84px]">
 							<div>
 								<p className="text-7 font-medium">Review your complaint letter</p>
-								<p className="mt-7 text-[20px] leading-[30px]">Your complaint letter has been generated based on the information you provided. Please review it carefully. Remember to provide the business with the evidence you listed in the letter. If you don’t have an email address for the business, you should be able to find one on their website or send it via their social media handle.</p>
+								<p className="mt-7 text-[17px] leading-[30px]">Your complaint letter has been generated based on the information you provided. Please review it carefully. Remember to provide the business with the evidence you listed in the letter. If you don’t have an email address for the business, you should be able to find one on their website or send it via their social media handle.</p>
 							</div>
 							<div className="mt-[26px]">
 								<p className="text-[24px]">Complaint Subject</p>
 								<div className="border-2 border-eccblue rounded-[30px] rounded-tl-none mt-[19px]">
-									<p className="px-[20px] py-[29px] text-[20px]">Complaint about (SAMPLE) product or service name purchased on (SAMPLE) date from (SAMPLE) the place of purchase</p>
+									<p className="px-[20px] py-[29px] text-[17px]">Complaint about (SAMPLE) product or service name purchased on (SAMPLE) date from (SAMPLE) the place of purchase</p>
 								</div>
 							</div>
 							<div className="mt-[66px]">
-								<p className="text-[24px]">Complaint Content</p>
+								<p className="text-[22px]">Complaint Content</p>
 								<div className="border-2 border-eccblue rounded-[30px] rounded-tl-none mt-[19px]">
-									<div className="px-[30px] pt-[37px] pb-[62px] text-[20px] flex flex-col space-y-[50px]">
+									<div className="px-[30px] pt-[37px] pb-[62px] text-[17px] flex flex-col space-y-[50px]">
 										<p>To whom it may concern</p>
 										<p>On (SAMPLE) date, I purchased (SAMPLE) product or service name from (SAMPLE) the place of purchase.</p>
 										<p>(SAMPLE) Explain what the problem is and what you have done so far to resolve it.</p>
