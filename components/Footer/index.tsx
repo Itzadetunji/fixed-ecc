@@ -16,25 +16,40 @@ export const Footer: React.FC = (props) => {
 					/>
 					<p className=" text-[16px] text-grey-200 leading-[37px] w-[528px]">ecc is complaints a distributor of pine tm from vizag andhra pradesh as of oct all our costumer bills got reversed and my money lost no responce from them as nearly ****/- lost </p>
 				</div>
-				<div className=" w-[40%] flex flex-col gap-[50px] lg:mx-0 mx-auto lg:gap-[30px]">
+				<div className=" lg:w-[40%] w-full flex flex-col gap-[50px] lg:mx-0 mx-auto lg:gap-[30px]">
 					<div className="flex flex-row w-[100%]   justify-around">
 						<FooterList
 							title="NAVIGATE THROUGH"
-							items={["Home", "Complaints", "Latest Scams", "Statistics", "Complaint letter"]}
+							items={[
+								{ label: "Home", href: "/" },
+								{ label: "Complaints", href: "/complaints" },
+								{ label: "Latest Scams", href: "/latest" },
+								{ label: "Statistics", href: "/statistics" },
+								{ label: "Complaint letter", href: "/write-complaint" },
+							]}
 						/>
 
 						<FooterList
 							title="SUPPORT"
-							items={["Contact Us", "FAQs"]}
+							items={[
+								{ label: "Contact Us", href: "/" },
+								{ label: "FAQs", href: "/faq" },
+							]}
 						/>
 						<FooterList
 							title="COMPANY"
-							items={["Terms of Service", "Privacy Policy"]}
+							items={[
+								{ label: "Terms of Service", href: "/t-and-c" },
+								{ label: "Privacy Policy", href: "/t-and-c" },
+							]}
 						/>
 					</div>
 					<FooterList
 						title=""
-						items={["Post a Complaint", "Login/Signup"]}
+						items={[
+							{ label: "Post a Complaint", href: "/write-complaint" },
+							{ label: "Login/Signup", href: "/login" },
+						]}
 						areButtons={true}
 					/>
 				</div>
@@ -48,12 +63,12 @@ export const Footer: React.FC = (props) => {
 			<div className="flex-col gap-[30px] lg:hidden flex">
 				<img
 					src="/Images/eccLogo-2.svg"
-					className="w-[35px]"
+					className="w-[35px] ml-4"
 					alt="ECC's Logo"
 				/>
-				<p className=" text-[12px] text-grey-200 leading-[19.4px] w-[100%]">ecc is complaints a distributor of pine tm from vizag andhra pradesh as of oct all our costumer bills got reversed and my money lost no responce from them as nearly ****/- lost </p>
+				<p className=" text-[12px] text-grey-200 p-4 leading-[19.4px] w-[100%]">ecc is complaints a distributor of pine tm from vizag andhra pradesh as of oct all our costumer bills got reversed and my money lost no responce from them as nearly ****/- lost </p>
 			</div>
-			<div className="w-[100%] mb-[54px]">
+			<div className="w-[100%]  mb-[54px]">
 				<p className="text-center text-[10px] leading-[15px] lg:text-[16px] lg:leading-[24px]">&copy; Copyright 2022. E-commerce complaints, Nigeria.</p>
 			</div>
 		</footer>
