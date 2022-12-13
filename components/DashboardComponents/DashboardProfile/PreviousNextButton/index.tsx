@@ -10,7 +10,7 @@ const PreviousNextButton: React.FC<ButtonProps> = ({ pageNumber, setPageNumber, 
 	return (
 		<div className="flex flex-row gap-x-4 lg:gap-x-6 lg:text-[18px] text-[14px] font-semibold w-full justify-end">
 			<button
-				className="cursor-pointer rounded-md w-[100px] h-[35px] lg:w-[160px] lg:rounded-[12px] lg:h-[55px] border border-solid border-eccblue bg-clearblue text-eccblue"
+				className="cursor-pointer rounded-md w-[100px] h-[30px] lg:w-[142px] lg:rounded-[12px] lg:h-[40px] border border-solid border-eccblue bg-clearblue text-eccblue"
 				disabled={pageNumber === 1}
 				onClick={() => {
 					setPageNumber(pageNumber--);
@@ -19,7 +19,7 @@ const PreviousNextButton: React.FC<ButtonProps> = ({ pageNumber, setPageNumber, 
 				Previous
 			</button>
 			<button
-				className="cursor-pointer rounded-md w-[100px] h-[35px] lg:w-[192px] lg:h-[60px] lg:rounded-[12px] border border-solid border-eccblue bg-eccblue text-white"
+				className="cursor-pointer rounded-md w-[100px] h-[30px] lg:w-[144px] lg:h-[40px] lg:rounded-[12px] border border-solid border-eccblue bg-eccblue text-white"
 				disabled={listLength < maxNumber * pageNumber}
 				onClick={() => {
 					setPageNumber(pageNumber++);
