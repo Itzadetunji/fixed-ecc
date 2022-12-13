@@ -53,7 +53,7 @@ const Page3: React.FC<Page3Props> = ({ place, setCurrentPage, setIsOpaque, wants
 				/>
 			)}
 			<div>
-				<p className="text-[14px] lg:text-[24px] leading-[21px] lg:leading-[37px] font-[400]">Kindly let us know what you want the end of this process.</p>
+				<p className="text-[14px] lg:text-xl">Kindly let us know what you want the end of this process.</p>
 			</div>
 			<form action="">
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-x-[20px] lg:gap-x-[36px] gap-y-[16px] lg:gap-y-[38px] mt-[19px] lg:mt-[40px]">
@@ -94,36 +94,35 @@ const Page3: React.FC<Page3Props> = ({ place, setCurrentPage, setIsOpaque, wants
 						/>
 					</div>
 				</div>
-				<div className="flex gap-x-[15px] lg:gap-x-[26px] mt-[25.71px] lg:mt-[60px] w-full">
+				<div className="flex items-center space-x-2 lg:space-x-3 mt-[25.71px] lg:mt-[60px] w-full">
 					<div
 						onClick={() => setTermsAndConditions(!termsAndConditions)}
 						style={{
 							borderColor: termsAndConditions ? "#005cc8" : "#4f4f4f",
 						}}
-						className="transition-[80ms] cursor-pointer  w-[20px] lg:w-[25px] h-[20px] lg:h-[25px]  border rounded-full bg-transparent flex items-center justify-center"
+						className="transition-[80ms] cursor-pointer  w-[20px] lg:w-[25px] h-[20px] lg:h-[25px]  border rounded-full bg-transparent flex items-center justify-center self-start sm:self-auto scale-[0.85]"
 					>
 						<div
 							style={{ opacity: termsAndConditions ? 1 : 0 }}
 							className="transition-[80ms] w-[12px] lg:w-[15px] h-[12px] lg:h-[15px] bg-[#005cc8] rounded-full"
 						></div>
 					</div>
-					<p className="text-[14px] lg:text-[20px]">
+					<p className="text-[14px] lg:text-lg self-start sm:self-auto">
 						I agree with the <span className="text-eccblue"> Terms & Conditions</span>
 					</p>
 				</div>
-				<div className="flex justify-center lg:justify-end space-x-[30px] lg:space-x-[37px]">
+				<div className="flex justify-center lg:justify-end space-x-[30px] lg:space-x-6 mt-10 lg:mt-0">
 					<button
 						onClick={onPrevious}
-						className="text-[14px] lg:text-[20px] bg-eccblue mt-[40px] lg:mt-[80px] rounded-xl font-[600] text-white py-[14.5px] lg:py-[22px] w-full max-w-[140px] lg:max-w-[216px]"
+						className="text-xs sm:text-sm bg-eccblue rounded-lg font-regular sm:font-semibold text-white h-[35px] sm:h-[45px] w-[100px] sm:w-[131px] hover:scale-[0.95] hover:duration-100 hover:ease-in-out"
 					>
 						Back
 					</button>
 					<button
 						style={{ opacity: termsAndConditions ? 1 : 0.6 }}
-						disabled={!termsAndConditions}
 						onClick={onSubmit}
-						className="text-[14px] transition-[150ms] lg:text-[20px] bg-eccblue mt-[40px] lg:mt-[80px] rounded-xl font-[600] text-white py-[14.5px] lg:py-[22px] w-full max-w-[140px] lg:max-w-[216px]"
-						type="submit"
+						disabled={!termsAndConditions}
+						className="text-xs sm:text-sm bg-eccblue rounded-lg font-regular sm:font-semibold text-white h-[35px] sm:h-[45px] w-[100px] sm:w-[131px] hover:scale-[0.95] duration-200 hover:duration-100 ease-in-out"
 					>
 						Continue
 					</button>

@@ -43,13 +43,13 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 		});
 	};
 	return (
-		<div className={`mt-[20px] lg:mt-[90px] ${place === "dashboard" && "bg-white mt-0 lg:mt-0 px-[15px] py-[20px] lg:py-[45px] "}`}>
-			<p className="text-[14px] lg:text-[24px] leading-[30px] lg:leading-[46px]">Kindly upload a document or picture that shows proof of payment or receipt of transaction.</p>
-			<div className="mt-[30px]">
+		<div className={`mt-[20px] lg:mt-[90px] ${place === "dashboard" && "bg-white mt-0 lg:mt-0 px-[15px] py-[20px] lg:py-[45px]"}`}>
+			<p className="text-[14px] lg:text-xl">Kindly upload a document or picture that shows proof of payment or receipt of transaction.</p>
+			<div className="mt-6">
 				<div>
-					<p className="text-[14px] lg:text-[20px]">Upload Documents</p>
+					<p className="text-[14px] lg:text-lg">Upload Documents</p>
 				</div>
-				<div className={`flex flex-col justify-center items-center w-full h-[162px] lg:h-[419px] rounded-xl bg-clearblue border-eccblue mt-[15px] lg:mt-6 border-2 border-dashed mx-auto ${selectedFiles ? "" : "pt-[170px]"}`}>
+				<div className={`flex flex-col justify-center items-center w-full h-[162px] lg:h-[419px] rounded-xl bg-clearblue border-eccblue mt-[15px] lg:mt-6 border-2 border-dashed mx-auto select-none ${selectedFiles ? "" : "pt-[170px]"}`}>
 					<img
 						src="/icons/paste.svg"
 						alt=""
@@ -63,6 +63,7 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 						onChange={addDocument}
 						id="inputfile"
 						multiple
+						required={true}
 					/>
 					<div className="text-center mt-[16px] lg:mt-[22px]">
 						<p className="text-[14px] lg:text-[20px] font-[500]">
@@ -77,7 +78,7 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 						<p className="text-[12px] lg:text-[18px] mt-[6px] lg:mt-[22px]">Supported format: JPEG, PNG, PDF</p>
 					</div>
 				</div>
-				<p className="text-[14px] lg:text-[24px] mt-[16px] lg:mt-[40px] leading-[25px] lg:leading-[46px]">You can provide additional documents that can support your claim e.g screenshots of chats. You can upload multiple documents</p>
+				<p className="text-[14px] lg:text-xl mt-[16px] lg:mt-10 leading-[25px] lg:leading-[46px]">You can provide additional documents that can support your claim e.g screenshots of chats. You can upload multiple documents</p>
 				<div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-x-[27.34px]">
 					{selectedFiles.length > 0 &&
 						selectedFiles.map((item, index) => (
@@ -112,18 +113,16 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 						))}
 				</div>
 			</div>
-			<div className="flex justify-center lg:justify-end space-x-[30px] lg:space-x-[37px]">
+			<div className="flex justify-center lg:justify-end space-x-[30px] lg:space-x-6 mt-10 lg:mt-0">
 				<button
 					onClick={onPrevious}
-					className="text-[14px] lg:text-[20px] bg-eccblue mt-[40px] lg:mt-[80px] rounded-xl font-[600] text-white py-[14.5px] lg:py-[22px] w-full max-w-[140px] lg:max-w-[216px]"
-					type="submit"
+					className="text-xs sm:text-sm bg-eccblue rounded-lg font-regular sm:font-semibold text-white h-[35px] sm:h-[45px] w-[100px] sm:w-[131px] hover:scale-[0.95] hover:duration-100 hover:ease-in-out"
 				>
-					Back
+					Previous
 				</button>
 				<button
 					onClick={onSubmit}
-					className="text-[14px] lg:text-[20px] bg-eccblue mt-[40px] lg:mt-[80px] rounded-xl font-[600] text-white py-[14.5px] lg:py-[22px] w-full max-w-[140px] lg:max-w-[216px]"
-					type="submit"
+					className="text-xs sm:text-sm bg-eccblue rounded-lg font-regular sm:font-semibold text-white h-[35px] sm:h-[45px] w-[100px] sm:w-[131px] hover:scale-[0.95] hover:duration-100 hover:ease-in-out"
 				>
 					Continue
 				</button>

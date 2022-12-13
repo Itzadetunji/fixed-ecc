@@ -69,8 +69,8 @@ const Page1: React.FC<Page1Props> = ({
 	};
 	const [showing, setShowing] = useState(false);
 	return (
-		<div className={`mt-[20px] lg:mt-[90px] ${place === "dashboard" && "bg-white mt-0 lg:mt-0 px-[12px] lg:px-3 py-[30px]"}`}>
-			<div className="grid grid-cols-1 lg:grid-cols-2 gap-x-[32px] gap-y-[16px]">
+		<div className={`mt-[20px] lg:mt-[90px] ${place === "dashboard" && "bg-white mt-0 lg:mt-0 px-3 lg:px-5 py-[30px]"}`}>
+			<div className="grid grid-cols-1 lg:grid-cols-2 gap-x-[32px] gap-y-8">
 				<FileAComplaintInput
 					label={"Product Category"}
 					placeholder={"e.g Gadgets, footwear etc"}
@@ -78,6 +78,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setProductCategory}
 					type="text"
 					nairaSymbol={false}
+					isRequired={true}
 				/>
 				<FileAComplaintInput
 					label={"Where did this transaction happen?"}
@@ -86,6 +87,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setPlaceOfTransaction}
 					type="text"
 					nairaSymbol={false}
+					isRequired={true}
 				/>
 				<FileAComplaintInput
 					label={"Title of your complaint"}
@@ -94,6 +96,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setTitleOfComplaint}
 					type="text"
 					nairaSymbol={false}
+					isRequired={true}
 				/>
 				<FileAComplaintInput
 					label={"Total amount lost from this incident"}
@@ -102,6 +105,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setAmountLost}
 					type="number"
 					nairaSymbol={true}
+					isRequired={true}
 				/>
 				<FileAComplaintInput
 					label={"Company’s/Brand’s name"}
@@ -110,6 +114,7 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setCompanyName}
 					type="text"
 					nairaSymbol={false}
+					isRequired={true}
 				/>
 				<FileAComplaintInput
 					label={"Company’s/Brand’s Social media handle"}
@@ -118,16 +123,19 @@ const Page1: React.FC<Page1Props> = ({
 					setValue={setBrandHandle}
 					type="text"
 					nairaSymbol={false}
+					isRequired={true}
 				/>
 			</div>
-			<div className="w-full mt-6">
+			<div className="w-full mt-8">
 				<div className="flex flex-row space-x-[10px] pb-[10px]">
-					<p className="text-[14px] lg:text-[20px]">Complaint details</p>
-					<img
+					<label className="text-[14px] lg:text-base xl:text-lg">
+						Complaint details <span className="text-danger">*</span>
+					</label>
+					{/* <img
 						src="/icons/fac-help.svg"
 						alt=""
 						className="cursor-pointer w-[21px] h-[21px] lg:w-[28px] lg:h-[28px]"
-					/>
+					/> */}
 				</div>
 				<textarea
 					value={complaintDetails}
@@ -138,8 +146,8 @@ const Page1: React.FC<Page1Props> = ({
 				/>
 			</div>
 			<div className="mt-6 flex flex-col justify-center">
-				<div className="flex flex-row items-start justify-items-start text-[14px] sm:text-[16px] lg:text-xl xl:text-2xl">
-					<span className="text-eccblue font-semibold">NOTE:</span>
+				<div className="flex flex-row items-center text-sm lg:text-xl">
+					<span className="text-eccblue font-semibold self-start sm:self-auto">NOTE:</span>
 					<div className="ml-1 inline">
 						<p className="inline">If you believe that you have been scammed, click</p>
 						<div
@@ -160,7 +168,7 @@ const Page1: React.FC<Page1Props> = ({
 				{showing && (
 					<div className="mt-[20px] lg:mt-[51.46px]">
 						<h1 className="font-semibold text-[14px] lg:text-[20px] xl:text-[24px] mb-[20px] opacity-80">Kindly fill in these additional fields</h1>
-						<div className=" flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:gap-x-[32px] gap-y-[16px] ">
+						<div className="flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:gap-x-[32px] gap-y-[32px] ">
 							<FileAComplaintInput
 								label={"Company's/Brand's Account Number"}
 								placeholder={"eg 2354556334"}
@@ -168,6 +176,7 @@ const Page1: React.FC<Page1Props> = ({
 								setValue={setAccountNumber}
 								type="text"
 								nairaSymbol={false}
+								isRequired={showing ? true : false}
 							/>
 							<FileAComplaintInput
 								label={"Company's/Brand's Account Name"}
@@ -176,6 +185,7 @@ const Page1: React.FC<Page1Props> = ({
 								setValue={setAccountName}
 								type="text"
 								nairaSymbol={false}
+								isRequired={showing ? true : false}
 							/>
 							<FileAComplaintInput
 								label={"Company's/Brand's Bank Name"}
@@ -184,16 +194,16 @@ const Page1: React.FC<Page1Props> = ({
 								setValue={setBankName}
 								type="text"
 								nairaSymbol={false}
+								isRequired={showing ? true : false}
 							/>
 						</div>
 					</div>
 				)}
 			</div>
-			<div className="flex justify-end mt-[40px] lg:mt-[80px] mr-[30px] lg:mr-[120px]">
+			<div className="flex justify-end">
 				<button
 					onClick={onSubmit}
-					className="text-[14px] lg:text-[20px] bg-eccblue mt-[40px] lg:mt-[80px] rounded-xl font-[600] text-white py-[14.5px] lg:py-[22px] w-full max-w-[140px] lg:max-w-[216px]"
-					type="submit"
+					className="text-xs sm:text-sm bg-eccblue rounded-lg font-regular sm:font-semibold text-white h-[35px] sm:h-[45px] w-[100px] sm:w-[131px] hover:scale-[0.95] hover:duration-100 hover:ease-in-out"
 				>
 					Continue
 				</button>

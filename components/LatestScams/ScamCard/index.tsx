@@ -5,7 +5,7 @@ interface ScamCardProps {
 
 const ScamCard: React.FC<ScamCardProps> = ({ data }) => {
 	return (
-		<div className="w-[80vw] sm:w-[375px]  h-[197px] bg-[#f9fafc] flex flex-col justify-around ">
+		<div className="w-[80vw] sm:w-[375px]  h-[197px] bg-[#f9fafc] flex flex-col justify-around shadow-lg ">
 			<div className="flex flex-col justify-start ml-2 mt-6 mb-3">
 				<p className=" font-[500] text-[14px] text-[#1a1a1a]">Francis Chukwuemeka</p>
 				<p className=" font-normal text-sm text-[#5b5959]  ">{data.bankAccountDetails.input1}</p>

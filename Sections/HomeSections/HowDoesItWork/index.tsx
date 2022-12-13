@@ -32,7 +32,7 @@ const HowDoesItWork: React.FC = (props) => {
 							bgIcon={"#fff"}
 						/>
 					</div>
-					<div className="flex flex-col lg:flex-row space-x-[0px] lg:space-x-[19px] space-y-[54px] lg:space-y-0 howItWorksContent2">
+					<div className="flex flex-col items-center lg:flex-row space-x-[0px] lg:space-x-[19px] space-y-[54px] lg:space-y-0 howItWorksContent2">
 						<HowItWorksCard
 							title={"Send legal notice"}
 							description={"Get resolution with minimum efforts and reclaim your family time."}

@@ -9,6 +9,7 @@ import ComplaintLetterSection from "../../../components/FileAComplaintComponents
 const Index: NextPage = () => {
 	const [resolution, setResolution] = useState("");
 	const [successModalShowing, setSuccessModalShowing] = useState(false);
+	const [expand, setExpand] = useState(false);
 	return (
 		<>
 			{successModalShowing && (
@@ -17,7 +18,10 @@ const Index: NextPage = () => {
 					grievanceId="423576275442ecc"
 				/>
 			)}
-			<NavBar />
+			<NavBar
+				expand={expand}
+				setExpand={setExpand}
+			/>
 			<ComplaintLetterSection place="main" />
 			<div className="mx-[100px] mt-[72px] mb-[147px]">
 				<div className="mx-auto text-center">

@@ -10,11 +10,11 @@ const SearchResultIndicator: React.FC<SearchResultIndicatorProps> = ({ areSearch
 	};
 
 	return (
-		<div>
+		<div className="lg:w-full w-[80%] mx-auto ">
 			{!areSearchResults && (
 				<div
 					onClick={() => closeResultIndicator()}
-					className="w-full sm:py-4 sm:px-5 flex space-x-3 bg-warn-bg rounded-xl border border-warn-border text-warn-text"
+					className="w-full py-4 px-5  flex space-x-3 bg-warn-bg rounded-xl border flex-row justify-between  border-warn-border text-warn-text"
 				>
 					<p>No item on our list match your search. Make sure you enter the correct keyword</p>
 					<img

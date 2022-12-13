@@ -129,7 +129,7 @@ const LoginPage: NextPage = () => {
 							</div>
 							<p
 								onClick={() => router.replace("/forgot-password")}
-								className="text-center my-[30px] cursor-pointer"
+								className="text-center text-eccblue my-[30px] cursor-pointer"
 							>
 								Forgot Password?
 							</p>

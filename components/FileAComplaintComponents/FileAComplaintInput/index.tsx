@@ -5,30 +5,32 @@ interface FileAComplaintInputProps {
 	setValue: any;
 	type: string;
 	nairaSymbol: boolean | null;
+	isRequired: boolean;
 }
 
-const FileAComplaintInput: React.FC<FileAComplaintInputProps> = ({ label, placeholder, value, setValue, type, nairaSymbol }) => {
+const FileAComplaintInput: React.FC<FileAComplaintInputProps> = ({ label, placeholder, value, setValue, type, nairaSymbol, isRequired }) => {
 	return (
 		<div>
-			<div className="flex flex-row space-x-[12px] items-center mb-[8px] xl:mb-[14px]">
-				<p className="text-[14px] lg:text-[20px] w-fit">
+			<div className="flex flex-row items-center">
+				<label className="text-[14px] lg:text-base xl:text-lg w-fit">
 					{label} <span className="text-danger">*</span>
-				</p>
-				<img
+				</label>
+				{/* <img
 					className="w-[21px] h-[21px] lg:w-[28px] lg:h-[28px]"
 					src="/icons/fac-help.svg"
 					alt=""
-				/>
+				/> */}
 			</div>
 			<div className="relative">
 				<input
 					value={value}
 					onChange={(e) => setValue(e.target.value)}
-					className={`transition-[150ms] py-[12.5px] lg:py-[20px] xl:py-[25px] ${nairaSymbol ? "" : ""} focus:outline-none rounded-[10px] border-2 border-[#C5C5C5] mt-[10px] w-full focus:border-eccblue text-[10px] sm:text-[13px] lg:text-[16px] placeholder:text-[10px] sm:placeholder:text-[13px] lg:placeholder:text-[16px] placeholder:text-[#C5C5C5] cursor-pointer ${
+					className={`transition-[150ms] py-[12px] lg:py-[18px] xl:py-[18px] ${nairaSymbol ? "" : ""} focus:outline-none rounded-[10px] border-2 border-[#C5C5C5] mt-[10px] w-full focus:border-eccblue text-[10px] sm:text-[13px] lg:text-[16px] placeholder:text-[10px] sm:placeholder:text-[13px] lg:placeholder:text-[16px] placeholder:text-[#C5C5C5] ${
 						nairaSymbol ? "px-[37.81px]" : "px-[12px] lg:px-[20px]"
 					}`}
 					placeholder={placeholder ? placeholder : undefined}
 					type={type}
+					required={isRequired}
 				/>
 				{nairaSymbol && (
 					<img

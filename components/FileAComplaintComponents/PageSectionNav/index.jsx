@@ -6,8 +6,8 @@ const PageIndicator = ({ pageNumber, Message, isActive, PageSet }) => {
 			}}
 			className="flex flex-row gap-x-[7px] items-center font-medium cursor-pointer"
 		>
-			<p className={`xl:w-[63px] lg:w-[55px] w-[28px] xl:h-[63px] lg:h-[55px] h-[28px] text-[14px] flex items-center justify-center font-semibold lg:text-[20px] xl:text-[29px]  rounded-full border border-solid  ${isActive ? "border-white bg-white text-eccblue" : " border-slate-50 bg-eccblue text-white"} `}>{pageNumber}</p>
-			<p className={`xl:text-[24px] lg:text-[20px] text-[14px] ${isActive ? "text-white" : "text-slate-50"}`}>{Message}</p>
+			<p className={`w-8 lg:w-12 min-w-[32px] h-8 lg:h-12 flex items-center justify-center font-semibold rounded-full border border-solid text-xs sm:text-sm lg:text-lg ${isActive ? "border-white bg-white text-eccblue" : " border-slate-50 bg-eccblue text-white"}  duration-200 ease-in-out`}>{pageNumber}</p>
+			<p className={`text-[14px] lg:text-lg ${isActive ? "text-white" : "text-slate-50"} duration-200 ease-in-out`}>{Message}</p>
 		</div>
 	);
 };
@@ -15,7 +15,7 @@ const PageIndicator = ({ pageNumber, Message, isActive, PageSet }) => {
 const PageSectionNav = ({ currentPage, setPage }) => {
 	return (
 		<div className="w-full py-[11px] px-[10px] lg:rounded-t-[20px] flex lg:flex-row space-y-[13px] justify-center items-center lg:justify-around flex-col h-[100px] bg-eccblue">
-			<div className="flex-row flex w-full gap-x-[20px] justify-around">
+			<div className="flex-row flex w-full gap-x-[20px] justify-around select-none">
 				<PageIndicator
 					PageSet={setPage}
 					pageNumber={1}
@@ -44,7 +44,7 @@ const PageSectionNav = ({ currentPage, setPage }) => {
 					Message="Resolution"
 					isActive={3 <= currentPage ? true : false}
 				/>
-				<pageIndicator />
+				<PageIndicator />
 			</div>
 		</div>
 	);
