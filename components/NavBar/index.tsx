@@ -117,8 +117,8 @@ export const NavBar: React.FC<NavBarProps> = ({ hasWhiteText, searchIconIsPresen
 							hasWhiteText={hasWhiteText ? hasWhiteText : false}
 						/>
 						<NavItem
-							title="For Law Practitioners"
-							href="/lawPractitioners"
+							title="Write a complaint letter"
+							href="/write-complaint"
 							isTransparent={isTransparent}
 							hasWhiteText={hasWhiteText ? hasWhiteText : false}
 						/>
