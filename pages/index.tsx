@@ -49,16 +49,18 @@ const Home: NextPage = () => {
 						setExpand={setExpand}
 						searchIconIsPresent={true}
 					/>
-					<div className="pt-48 mx-auto items-center justify-center text-center bg-clearblue">
-						<p className="mx-auto text-[30px] sm:text-4xl font-bold">
+					<div className=" pt-44 mx-auto items-center justify-center text-center bg-clearblue">
+						<p className="mx-auto text-[40px] sm:text-[60px] font-bold">
 							Make & <span className="text-eccblue">resolve</span>
 							<br />
 							complaints easily
 						</p>
-						<p className="mt-4 font-medium sm:text-[14px] px-[15px] sm:px-[0]">
-							Hair vendor don block you <br />
-							after you make payment for Instagram?
+
+						<p className="mt-4 font-semibold sm:text-[14px] px-[15px] sm:px-[0]">
+							Hair vendor don block you after you make <br />
+							payment online?
 						</p>
+
 						<img
 							src="/Images/man-freaked-out.png"
 							alt=""
