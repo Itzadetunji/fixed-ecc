@@ -5,7 +5,7 @@ export const Footer: React.FC = (props) => {
 	return (
 		<footer
 			data-aos="fade-up"
-			className="flex flex-col gap-[36px] lg:gap-[70px] mt-[72px] mx-auto max-w-screen w-screen lg:w-[95%]"
+			className="flex flex-col pt-[60px] lg:pl-4 bg-clearblue gap-[36px] lg:gap-[70px] mt-[72px] mx-auto max-w-screen w-screen lg:w-[100%]"
 		>
 			<div className="flex flex-row justify-between ">
 				<div className="flex-col w-[40%]  gap-[50px] hidden lg:flex">
@@ -14,7 +14,33 @@ export const Footer: React.FC = (props) => {
 						className="w-[65px]"
 						alt="ECC's Logo"
 					/>
-					<p className=" text-[16px] text-grey-200 leading-[37px] w-[528px]">ecc is complaints a distributor of pine tm from vizag andhra pradesh as of oct all our costumer bills got reversed and my money lost no responce from them as nearly ****/- lost </p>
+					<p className=" text-[16px] text-grey-200 leading-[37px] w-[528px]">ecommerce complaint is a consumer complaint platform for resolving disputes between consumers and brands. We are on a mission to make shopping experience better for consumers by empowering them with the tools and resources to avoid common scams and make online purchases as smooth as possible.</p>
+					<div className="flex flex-row w-[156px] justify-between">
+						<a href="https://www.instagram.com/ecommercecomplaint">
+							<Image
+								src="/../icons/instagram-icon.svg"
+								alt="instagram link"
+								width={100}
+								height={100}
+							/>
+						</a>
+						<a href="">
+							<Image
+								src="/../icons/facebook-icon.svg"
+								alt="facebook icon"
+								width={100}
+								height={100}
+							/>
+						</a>
+						<a href="">
+							<Image
+								src="/../icons/twitter-icon.svg"
+								alt="twitter-icon"
+								width={100}
+								height={100}
+							/>
+						</a>
+					</div>
 				</div>
 				<div className=" lg:w-[40%] w-full flex flex-col gap-[50px] lg:mx-0 mx-auto lg:gap-[30px]">
 					<div className="flex flex-row w-[100%]   justify-around">
@@ -66,7 +92,33 @@ export const Footer: React.FC = (props) => {
 					className="w-[35px] ml-4"
 					alt="ECC's Logo"
 				/>
-				<p className=" text-[12px] text-grey-200 p-4 leading-[19.4px] w-[100%]">ecc is complaints a distributor of pine tm from vizag andhra pradesh as of oct all our costumer bills got reversed and my money lost no responce from them as nearly ****/- lost </p>
+				<p className=" text-[12px] text-grey-200 pl-4 leading-[19.4px] w-[100%]">ecommerce complaint is a consumer complaint platform for resolving disputes between consumers and brands. We are on a mission to make shopping experience better for consumers by empowering them with the tools and resources to avoid common scams and make online purchases as smooth as possible.</p>
+				<div className="flex flex-row w-[110px] pl-4  justify-between">
+					<a href="https://www.instagram.com/ecommercecomplaint">
+						<Image
+							src="/../icons/instagram-icon.svg"
+							alt="instagram link"
+							width={30}
+							height={30}
+						/>
+					</a>
+					<a href="">
+						<Image
+							src="/../icons/facebook-icon.svg"
+							alt="facebook icon"
+							width={30}
+							height={30}
+						/>
+					</a>
+					<a href="">
+						<Image
+							src="/../icons/twitter-icon.svg"
+							alt="twitter-icon"
+							width={30}
+							height={30}
+						/>
+					</a>
+				</div>
 			</div>
 			<div className="w-[100%]  mb-[54px]">
 				<p className="text-center text-[10px] leading-[15px] lg:text-[16px] lg:leading-[24px]">&copy; Copyright 2022. E-commerce complaints, Nigeria.</p>

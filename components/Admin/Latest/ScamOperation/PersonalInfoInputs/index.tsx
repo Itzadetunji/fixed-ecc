@@ -55,10 +55,13 @@ const PersonalInfoInputs: React.FC<ComponentProps> = ({ setData, Email, BankDeta
 	const addInput = (field: string) => {
 		const addNew = (arrayofInputs: string[], setArrayOfInputs: Dispatch<SetStateAction<string[]>>, inputValues: any, setInputValues: any) => {
 			const arrayofInputsTest = [...arrayofInputs];
-			arrayofInputsTest.push(`input${arrayofInputs.length + 1}`);
+			let newInputName = arrayofInputs[arrayofInputs.length - 1];
+			const newStringNumber = parseInt(newInputName.replace("input", "")) + 1;
+
+			arrayofInputsTest.push(`input${newStringNumber}`);
 			setArrayOfInputs(arrayofInputsTest);
 			const inputValuesTest = { ...inputValues };
-			inputValuesTest[`input${arrayofInputs.length + 1}`] = "";
+			inputValuesTest[`input${newStringNumber}`] = "";
 			setInputValues(inputValuesTest);
 		};
 		switch (field) {
@@ -76,11 +79,40 @@ const PersonalInfoInputs: React.FC<ComponentProps> = ({ setData, Email, BankDeta
 				break;
 		}
 	};
+	const removeInput = (field: string, input: string) => {
+		const remove = (arrayofInputs: string[], setArrayOfInputs: Dispatch<SetStateAction<string[]>>, inputValues: any, setInputValues: any) => {
+			const arrayofInputsTest = [...arrayofInputs];
+			//find the index of input
+			const indexOfInput = arrayofInputsTest.indexOf(input);
+			//remove the input from the array
+			arrayofInputsTest.splice(indexOfInput, 1);
+			setArrayOfInputs(arrayofInputsTest);
+			const inputValuesTest = { ...inputValues };
+
+			delete inputValuesTest[input];
+			setInputValues(inputValuesTest);
+		};
+		switch (field) {
+			case "Bank Details":
+				remove(bankDetailsInputs, setBankDetailsInputs, bankDetailsValues, setBankDetailsValues);
+				break;
+			case "Website":
+				remove(websiteInputs, setWebSitesInputs, websiteInputValues, setWebsiteInputValues);
+				break;
+			case "Phone Number":
+				remove(phoneNumberInputs, setPhoneNumberInputs, phoneNumberInputValues, setPhoneNUmberInputVales);
+				break;
+			case "Social Media":
+				remove(socialMediaInputs, setSocialMediaInputs, socialMediaInputValues, setSocialMediaInputValues);
+				break;
+		}
+	};
 	const setInputValues = (e: any, field: string) => {
 		const handleChange = (inputValues: { input1: string }, setInputValues: Dispatch<SetStateAction<{ input1: string }>>) => {
 			const id = e.currentTarget.id;
 			const inputValuesTest = { ...inputValues };
-			Object.values(inputValues)[Object.keys(inputValues).indexOf(id)] = e.currentTarget.value;
+			inputValuesTest[Object.keys(inputValuesTest)[Object.keys(inputValues).indexOf(id)]] = e.currentTarget.value;
+
 			setInputValues(inputValuesTest);
 		};
 		switch (field) {
@@ -121,6 +153,7 @@ const PersonalInfoInputs: React.FC<ComponentProps> = ({ setData, Email, BankDeta
 				addInput={addInput}
 				setInputValues={setInputValues}
 				field={"Bank Details"}
+				removeInput={removeInput}
 			/>
 			<MultiScamInput
 				label="Website URL"
@@ -130,6 +163,7 @@ const PersonalInfoInputs: React.FC<ComponentProps> = ({ setData, Email, BankDeta
 				addInput={addInput}
 				setInputValues={setInputValues}
 				field={"Website"}
+				removeInput={removeInput}
 			/>
 			<MultiScamInput
 				label="Phone Number"
@@ -139,6 +173,7 @@ const PersonalInfoInputs: React.FC<ComponentProps> = ({ setData, Email, BankDeta
 				addInput={addInput}
 				setInputValues={setInputValues}
 				field={"Phone Number"}
+				removeInput={removeInput}
 			/>
 			<MultiScamInput
 				label="Social Media Handle"
@@ -148,6 +183,7 @@ const PersonalInfoInputs: React.FC<ComponentProps> = ({ setData, Email, BankDeta
 				addInput={addInput}
 				setInputValues={setInputValues}
 				field={"Social Media"}
+				removeInput={removeInput}
 			/>
 		</div>
 	);
