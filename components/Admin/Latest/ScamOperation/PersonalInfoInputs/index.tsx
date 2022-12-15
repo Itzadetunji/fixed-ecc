@@ -55,7 +55,7 @@ const PersonalInfoInputs: React.FC<ComponentProps> = ({ setData, Email, BankDeta
 	const addInput = (field: string) => {
 		const addNew = (arrayofInputs: string[], setArrayOfInputs: Dispatch<SetStateAction<string[]>>, inputValues: any, setInputValues: any) => {
 			const arrayofInputsTest = [...arrayofInputs];
-			let newInputName = arrayofInputs[arrayofInputs.length - 1];
+			const newInputName = arrayofInputs[arrayofInputs.length - 1];
 			const newStringNumber = parseInt(newInputName.replace("input", "")) + 1;
 
 			arrayofInputsTest.push(`input${newStringNumber}`);

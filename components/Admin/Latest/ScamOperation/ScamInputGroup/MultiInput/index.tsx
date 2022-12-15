@@ -17,7 +17,10 @@ const MultiScamInput: React.FC<InputGroupProps> = ({ label, arrayOfInputs, setIn
 				<div className="flex flex-row gap-x-3 items-start">
 					<div className="flex flex-col gap-y-1 t">
 						{arrayOfInputs.map((input: string, index) => (
-							<div className={input !== "input1" ? "flex flex-row gap-x-3 items-center" : ""}>
+							<div
+								key={index}
+								className={input !== "input1" ? "flex flex-row gap-x-3 items-center" : ""}
+							>
 								<input
 									key={index}
 									className="w-[250px] rounded-md border p-2 border-[#bdbcdb] h-[30px] focus:outline-none focus:border-eccblue"
