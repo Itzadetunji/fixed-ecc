@@ -2,14 +2,23 @@ import type { NextPage } from "next";
 import { Footer, NavBar } from "../../components";
 import { useState } from "react";
 import Menu from "components/MenuComp";
+import { useRouter } from "next/router";
+import { format } from "date-fns";
 
 const WriteComplaintPreview: NextPage = () => {
-	const [shouldInclude, setShouldInclude] = useState(false);
-	const [shouldPurchase, setShouldPurchase] = useState(false);
-	const [entitleTo, setEntitleTo] = useState(false);
-	const [showDateRange, setShowDateRange] = useState(false);
-	const [dateRange, setDateRange] = useState("");
 	const [expand, setExpand] = useState(false);
+	const router = useRouter();
+	const date = router.query.date;
+	const dateRange = router.query.dateRange;
+	const email = router.query.email;
+	const name = router.query.name;
+	const phone = router.query.phone;
+	const purchase = router.query.purchase;
+	const complaintDetails = router.query.complaintDetails;
+	const complaintEvidence = router.query.complaintEvidence;
+	const purchasePlace = router.query.purchasePlace;
+	const wantedAction = router.query.wantedAction;
+
 	return (
 		<div>
 			{expand && (
@@ -41,20 +50,20 @@ const WriteComplaintPreview: NextPage = () => {
 								<p className="text-[22px]">Complaint Content</p>
 								<div className="border-2 border-eccblue rounded-[30px] rounded-tl-none mt-[19px]">
 									<div className="px-[30px] pt-[37px] pb-[62px] text-[17px] flex flex-col space-y-[50px]">
-										<p>To whom it may concern</p>
-										<p>On (SAMPLE) date, I purchased (SAMPLE) product or service name from (SAMPLE) the place of purchase.</p>
-										<p>(SAMPLE) Explain what the problem is and what you have done so far to resolve it.</p>
+										<p>To whom it may concern,</p>
+										<p>{`On ${date}, I purchased ${purchase} product or service name from ${purchasePlace} the place of purchase.`}</p>
+										<p>{complaintDetails}</p>
 										<p>I understand that under the Nigerian Consumer Law, when I buy products and services they come with automatic guarantees that they will work and do what I asked for.</p>
-										<p>(SAMPLE) Explain what evidence you are providing to support your complaint, such as your proof of purchase or photographs of the faulty product (you can include this when you send the letter).</p>
-										<p>(SAMPLE) What would you like the business to do to resolve the issue?</p>
+										<p>{`${complaintEvidence}`}</p>
+										<p>{wantedAction}</p>
 										<p>
-											If I do not hear from you within 5 working days I will lodge a formal complaint with e-commerce complaints <span className="font-bold">(ecc)</span>
+											{`If I do not hear from you within ${dateRange}, I will lodge a formal complaint with e-commerce complaints`} <span className="font-bold">(ecc)</span>
 										</p>
-										<p>You can contact me about this complaint via email at (SAMPLE) your email or call me on (SAMPLE) phone number during business hours.</p>
+										<p>{`You can contact me about this complaint via email at ${email} or call me on ${phone} phone number during business hours.`}</p>
 										<p>Thank you for your assistance in this matter.</p>
 										<div>
-											<p>Regards</p>
-											<p>(SAMPLE) Your name</p>
+											<p>Regards,</p>
+											<p>{name}</p>
 										</div>
 									</div>
 								</div>
