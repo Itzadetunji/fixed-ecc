@@ -33,29 +33,35 @@ export const NavBar: React.FC<NavBarProps> = ({ hasWhiteText, searchIconIsPresen
 			<div className="container flex flex-wrap justify-between items-center mx-auto ">
 				{!hasWhiteText && (
 					<div className="flex items-center">
-						<img
-							src="/Images/logo.svg"
-							className="ml-5 h-32 w-32 -my-10"
-							alt="Adetunji's Adeyinka's Logo"
-						/>
+						<Link href="/">
+							<img
+								src="/Images/logo.svg"
+								className="ml-5 h-32 w-32 -my-10"
+								alt="Adetunji's Adeyinka's Logo"
+							/>
+						</Link>
 					</div>
 				)}
 				{hasWhiteText && !isTransparent && (
 					<div className="flex items-center">
-						<img
-							src="/Images/logo.svg"
-							className="ml-5 h-32 w-32 -my-10"
-							alt="Adetunji's Adeyinka's Logo"
-						/>
+						<Link href="/">
+							<img
+								src="/Images/logo.svg"
+								className="ml-5 h-32 w-32 -my-10"
+								alt="Adetunji's Adeyinka's Logo"
+							/>
+						</Link>
 					</div>
 				)}
 				{hasWhiteText && isTransparent && (
 					<div className="flex items-center">
-						<img
-							src="/Images/whiteEccLogo.svg"
-							className="ml-12 h-16 w-16 -my-10"
-							alt="Adetunji's Adeyinka's Logo"
-						/>
+						<Link href="/">
+							<img
+								src="/Images/whiteEccLogo.svg"
+								className="ml-12 h-16 w-16 -my-10"
+								alt="Adetunji's Adeyinka's Logo"
+							/>
+						</Link>
 					</div>
 				)}
 				{/* Created a list a seperate list for the mobile components of the nabar: the hamburger icon and the File a complaint button */}
@@ -111,8 +117,8 @@ export const NavBar: React.FC<NavBarProps> = ({ hasWhiteText, searchIconIsPresen
 							hasWhiteText={hasWhiteText ? hasWhiteText : false}
 						/>
 						<NavItem
-							title="For Law Practitioners"
-							href="/lawPractitioners"
+							title="Write a complaint letter"
+							href="/write-complaint"
 							isTransparent={isTransparent}
 							hasWhiteText={hasWhiteText ? hasWhiteText : false}
 						/>

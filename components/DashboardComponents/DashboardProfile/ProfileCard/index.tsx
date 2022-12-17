@@ -24,7 +24,7 @@ const Profile: NextPage = () => {
 			initial={{ opacity: 0, scale: 0.95 }}
 			animate={{ opacity: 1, scale: 1, transition: { duration: 0.3 } }}
 		>
-			<div className=" lg:block hidden bg-white rounded-[20px] overflow-hidden w-full">
+			<div className=" lg:block hidden bg-white rounded-[20px] overflow-hidden w-full h-full">
 				<div className="relative rounded-t-[20px] h-[150px] xl:h-[175px]">
 					<Image
 						src={profileHeader}
@@ -56,13 +56,13 @@ const Profile: NextPage = () => {
 					<p className="mt-[10px] text-[18px] font-medium opacity-70">{`${user?.email}`}</p>
 				</div>
 				<div className="mt-[31px] flex flex-col space-y-[60px] xl:space-y-[86px]">
-					<div className="flex justify-around flex-row space-x-[80px] xl:space-x-[120px]">
+					<div className="flex justify-around flex-row space-x-[80px] xl:space-x-[120px] my-[100px]">
 						<div>
 							<div>
 								<div className="border-b-[0.5px] border-b-[#C5C5C5] w-[165px]">
 									<p className="text-eccblue text-[16px] -tracking-[0.02em] font-medium">Phone Number</p>
 								</div>
-								<div className="mt-[10px]">
+								<div className="mt-[2px]">
 									<p className="text-[18px] -tracking-[0.02em] font-medium opacity-70">{`${user?.phoneNumber}`}</p>
 								</div>
 							</div>
@@ -72,7 +72,7 @@ const Profile: NextPage = () => {
 								<div className="border-b-[0.5px] border-b-[#C5C5C5] w-[122px]">
 									<p className="text-eccblue font-medium text-[16px] -tracking-[0.02em]">Date of Birth</p>
 								</div>
-								<div className="mt-[10px]">
+								<div className="mt-[2px]">
 									<p className="text-[18px] font-medium -tracking-[0.02em] opacity-70">{user?.createdAt && <p className="text-[18px] font-medium -tracking-[0.02em]">{`${format(parse(user?.createdAt, "isoDateTime")!, "isoDate")}`}</p>}</p>
 								</div>
 							</div>
