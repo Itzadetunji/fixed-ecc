@@ -5,17 +5,17 @@ interface ScamCardProps {
 
 const ScamCard: React.FC<ScamCardProps> = ({ data }) => {
 	return (
-		<div className="w-[80vw] sm:w-[375px]  h-[197px] bg-[#f9fafc] flex flex-col justify-around shadow-lg ">
-			<div className="flex flex-col justify-start ml-2 mt-6 mb-3">
-				<p className=" font-[500] text-[14px] text-[#1a1a1a]">Francis Chukwuemeka</p>
-				<p className=" font-normal text-sm text-[#5b5959]  ">{data.bankAccountDetails.input1}</p>
+		<div className="w-full h-[197px] bg-[#f9fafc] flex flex-col justify-center shadow-lg px-4">
+			<div className="flex flex-col justify-start text-sm">
+				<p className=" font-[600] text-[#1a1a1a]">Francis Chukwuemeka</p>
+				<p className=" font-normal text-[#5b5959]  ">{data.bankAccountDetails.input1}</p>
 			</div>
-			<div className="w-full mb-[1rem] mt-0 mx-auto border-solid border border-[#c1c1c1] bg-[#c1c1c1] h-0"></div>
-			<div className="flex flex-row justify-between text-[14px] px-4">
+			<div className="w-full my-4 mx-auto border-solid border border-[#c1c1c1] bg-[#c1c1c1] h-0"></div>
+			<div className="flex flex-row justify-between text-[14px]">
 				<div>
-					<p className=" font-normal text-sm text-[#5b5959]  ">Social media handle</p>
-					<p className=" font-normal text-sm text-[#5b5959]  ">Phone number</p>
-					<p className=" font-normal text-sm text-[#5b5959]  ">Website</p>
+					<p className="font-normal text-sm text-[#5b5959]">Social media handle</p>
+					<p className="font-normal text-sm text-[#5b5959]">Phone number</p>
+					<p className="font-normal text-sm text-[#5b5959]">Website</p>
 				</div>
 				<div>
 					<p className="font-sans font-normal text-sm text-black">{data.socialMediaHandle.input1}</p>

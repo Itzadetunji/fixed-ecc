@@ -29,7 +29,7 @@ const PaginationButton: React.FC<PaginationButtonProps> = ({ text, pageSize, isP
 						color: isPage ? (isActive ? "white" : "#979797") : "white",
 						border: isPage ? (isActive ? "none" : "1px solid #979797") : "none",
 					}}
-					className="transition-[200ms] py-[7px] px-[10px] text-white text-[7px] rounded-[5.26px] cursor-pointer"
+					className="transition-[200ms] py-[7px] px-[12px] text-white text-[10px] sm:text-[14px] rounded-[5.26px] cursor-pointer"
 				>
 					{text}
 				</div>
