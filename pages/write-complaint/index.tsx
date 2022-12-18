@@ -13,7 +13,7 @@ const WriteComplaintPage: NextPage = () => {
 	const [entitleTo, setEntitleTo] = useState(false);
 	const [showDateRange, setShowDateRange] = useState(false);
 	const [dateRange, setDateRange] = useState("");
-	const [date, setDate] = useState("");
+	const [date, setDate] = useState<string>("");
 	const [purchase, setPurchase] = useState("");
 	const [purchasePlace, setPurchasePlace] = useState("");
 	const [complaintDetails, setComplaintDetails] = useState("");
