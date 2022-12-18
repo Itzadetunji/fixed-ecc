@@ -21,11 +21,11 @@ const LatestScams: NextPage = () => {
 	const [expand, setExpand] = useState(false);
 	const maxResultsPerPage = 20;
 	const maxResultsPerSmallPage = 6;
-	console.log(expand);
+
 	const handleSearch = () => {
 		setResultIndicatorShowing(true);
 
-		const result = scamData.filter((item) => Object.values(item.phoneNumber).includes(searchText) || Object.values(item.socialMediaHandle).includes(searchText) || Object.values(item.bankAccountDetails).includes(searchText) || Object.values(item.website).includes(searchText));
+		const result = scamData.filter((item) => Object.values(item.phoneNumber).includes(searchText) || Object.values(item.socialMediaHandle).includes(searchText) || Object.values(item.bankAccountDetails).includes(searchText) || Object.values(item.website).includes(searchText) || item.scammer.includes(searchText));
 		if (result.length !== 0 && searchText.length !== 0) {
 			setSearchResults(result);
 			setAreSearchResults(true);
@@ -84,6 +84,9 @@ const LatestScams: NextPage = () => {
 								</div>
 								<input
 									type="text"
+									onKeyDown={(e) => {
+										e.key == "Enter" ? handleSearch() : "";
+									}}
 									value={searchText}
 									onChange={(e) => setSearchText(e.target.value)}
 									className="sm:pr-[209px] flex-grow focus:outline-none text-[14px] sm:text-[20px] placeholder:text-sm sm:placeholder:text-[20px]  placeholder:font-light sm:placeholder:font-normal placeholder:text-black placeholder:opacity-[0.62] text-black"

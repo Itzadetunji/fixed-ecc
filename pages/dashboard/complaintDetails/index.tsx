@@ -25,10 +25,10 @@ const Mycomplaints: NextPage = () => {
 				<div className="w-full h-full lg:mt-6 lg:pb-6 lg:px-2 bg-clearblue  ">
 					<div className="lg:mx-[5px] lg:mt-[20px] w-full lg:h-[827px] h-auto bg-clearblue  lg:rounded-[20px]">
 						<div className="bg-eccblue lg:rounded-t-[20px] h-[78px]">
-							<div className="flex flex-row space-x-[40px]  ml-[27px] py-[17px] ">
+							<div className="flex items-center flex-row space-x-[40px]  ml-[27px] py-[17px] ">
 								<img
 									src="/icons/dashboard-icons/arrow.svg"
-									className="w-[36px] h-[36px]"
+									className="w-[20px] h-[20px]"
 									alt=""
 									onClick={() => router.back()}
 								/>
