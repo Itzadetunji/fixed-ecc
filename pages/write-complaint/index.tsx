@@ -6,6 +6,7 @@ import Head from "next/head";
 import { MutableRefObject } from "react";
 import Menu from "components/MenuComp";
 import { useRouter } from "next/router";
+import { format } from "date-fns";
 
 const WriteComplaintPage: NextPage = () => {
 	const [shouldInclude, setShouldInclude] = useState(false);
@@ -26,6 +27,7 @@ const WriteComplaintPage: NextPage = () => {
 	const [expand, setExpand] = useState(false);
 	const HandleDateClick = () => dateRef.current.showPicker();
 	const router = useRouter();
+	const [showDate, setShowDate] = useState("");
 
 	return (
 		<div>
@@ -68,8 +70,12 @@ const WriteComplaintPage: NextPage = () => {
 								<div className="ml-[7px] mr-[3px] flex items-center border-b-[1px] w-[100px] sm:w-[120px] lg:w-[140px]">
 									<input
 										type="date"
-										onChange={(e) => setDate(e.currentTarget.value)}
-										value={date}
+										onChange={(e) => {
+											setDate(format(new Date(e.currentTarget.value), "d MMMM yyyy"));
+											setShowDate(e.currentTarget.value);
+											console.log(date);
+										}}
+										value={showDate}
 										id=""
 										ref={dateRef}
 										className=" w-full outline-none"

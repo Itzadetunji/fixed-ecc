@@ -88,10 +88,12 @@ const RecoverPage: NextPage = () => {
 						className="absolute bottom-0 ml-[100px] w-[300px] xl:w-[374px]"
 						src="/Images/triangle2.svg"
 					/>
-					<img
-						className="w-[98px] ml-[50px] pt-[55px]"
-						src="/Images/whiteEccLogo.svg"
-					/>
+					<Link href={"/"}>
+						<img
+							className="w-[98px] ml-[50px] pt-[55px]"
+							src="/Images/whiteEccLogo.svg"
+						/>
+					</Link>
 					<div className="ml-[50px] mt-[120px] text-white">
 						<p className="text-[40px] xl:text-[40px] font-bold">Recover Password</p>
 						<p className="text-[17px] pr-[35px] xl:text-[17px] font-semibold max-w-[460px] mt-[15px]">Enter your email address to recover your password</p>
@@ -146,10 +148,12 @@ const RecoverPage: NextPage = () => {
 			</div>
 			{/* Start of mobile design */}
 			<div className="lg:hidden bg-eccblue w-full min-h-screen poppinsFont pb-[70px] relative flex flex-col justify-center">
-				<img
-					className="absolute w-[50px] left-[15px] top-[30px]"
-					src="/Images/whiteEccLogo.svg"
-				/>
+				<Link href={"/"}>
+					<img
+						className="absolute w-[50px] left-[15px] top-[30px]"
+						src="/Images/whiteEccLogo.svg"
+					/>
+				</Link>
 				<div className="pl-[17px] w-full">
 					<div className="w-full text-white max-w-[467px] mx-auto">
 						<p className="text-[24px] font-bold mt-[60px] max-w-[500px] mx-auto"> Recover Password</p>

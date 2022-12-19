@@ -56,7 +56,7 @@ const WriteComplaintPreview: NextPage = () => {
 										className="px-[30px] pt-[37px] pb-[62px] text-[17px] flex flex-col space-y-[50px]"
 									>
 										<p>To whom it may concern,</p>
-										<p>{`On ${date}, I purchased ${purchase} product or service name from ${purchasePlace} the place of purchase.`}</p>
+										<p>{`On ${date}, I purchased ${purchase} from ${purchasePlace}.`}</p>
 										<p>{complaintDetails}</p>
 										<p>I understand that under the Nigerian Consumer Law, when I buy products and services they come with automatic guarantees that they will work and do what I asked for.</p>
 										<p>{`${complaintEvidence}`}</p>
