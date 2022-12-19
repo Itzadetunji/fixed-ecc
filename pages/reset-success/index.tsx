@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Success: NextPage = () => {
 	const router = useRouter();
@@ -9,11 +10,13 @@ const Success: NextPage = () => {
 			<div className="h-screen w-screen bg-eccblue">
 				<header className="  h-1/6">
 					<div className="flex items-center">
-						<img
-							src="/Images/whiteEccLogo.svg"
-							className="ml-5 h-32 w-32 -my-10"
-							alt="Adetunji's Adeyinka's Logo"
-						/>
+						<Link href={"/"}>
+							<img
+								src="/Images/whiteEccLogo.svg"
+								className="ml-5 h-32 w-32 -my-10"
+								alt="Adetunji's Adeyinka's Logo"
+							/>{" "}
+						</Link>
 					</div>
 				</header>
 

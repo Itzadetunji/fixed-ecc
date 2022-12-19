@@ -86,10 +86,12 @@ const LoginPage: NextPage = () => {
 						className="absolute bottom-0 ml-[100px] w-[300px] xl:w-[374px]"
 						src="/Images/triangle2.svg"
 					/>
-					<img
-						className="w-[98px] ml-[50px] pt-[55px]"
-						src="/Images/whiteEccLogo.svg"
-					/>
+					<Link href={"/"}>
+						<img
+							className="w-[98px] ml-[50px] pt-[55px]"
+							src="./Images/whiteEccLogo.svg"
+						/>
+					</Link>
 					<div className="ml-[50px] mt-[120px] text-white">
 						<p className="text-[40px] xl:text-[40px] font-bold">Welcome Back!</p>
 						<p className="text-[17px] pr-[35px] xl:text-[17px] font-semibold max-w-[460px] mt-[15px]">Login to you your account to file a complaint or proceed with others submitted</p>
@@ -129,7 +131,7 @@ const LoginPage: NextPage = () => {
 							</div>
 							<p
 								onClick={() => router.replace("/forgot-password")}
-								className="text-center text-eccblue my-[30px] cursor-pointer"
+								className="text-center my-[30px] cursor-pointer"
 							>
 								Forgot Password?
 							</p>
@@ -167,18 +169,18 @@ const LoginPage: NextPage = () => {
 				/>
 				<div className="pl-[17px] w-full">
 					<div className="w-full text-white max-w-[467px] mx-auto">
-						<p className="text-[24px] font-bold mt-[60px] max-w-[500px] mx-auto">Join the Fight!</p>
-						<p className="text-[14px] pr-[35px] xl:text-[17px] font-medium max-w-[460px] mt-[8px]">Join others to help us eliminate online fraud by reporting a scam</p>
+						<p className="text-[24px] font-bold mt-[60px] max-w-[500px] mx-auto">Welcome Back!</p>
+						<p className="text-[14px] pr-[35px] xl:text-[17px] font-medium max-w-[460px] mt-[8px]">Log into your account to file a complaint or proceed with others submitted </p>
 					</div>
 				</div>
 				<div className="px-[9px] mt-[30px] max-w-[500px] mx-auto w-full">
 					<div className="w-full px-[14px] flex flex-col overflow-y-auto py-[22px] bg-white rounded-[20px]">
 						<div>
-							<p className="text-[18px] text-center font-semibold">Create your account</p>
+							<p className="text-[18px] text-center font-semibold">Log into your account</p>
 							<p className="text-center mt-[2px] mb-[30px]">
-								Already have an account?{" "}
-								<Link href="/login">
-									<span className="text-eccblue cursor-pointer">Login</span>
+								Dont have an account?{" "}
+								<Link href="/signup">
+									<span className="text-eccblue cursor-pointer">Signup</span>
 								</Link>
 							</p>
 							<form>

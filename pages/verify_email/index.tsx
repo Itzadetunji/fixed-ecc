@@ -102,10 +102,12 @@ const RecoverPage: NextPage = () => {
 						className="absolute bottom-0 ml-[100px] w-[300px] xl:w-[374px]"
 						src="/Images/triangle2.svg"
 					/>
-					<img
-						className="w-[98px] ml-[50px] pt-[55px]"
-						src="/Images/whiteEccLogo.svg"
-					/>
+					<Link href={"/"}>
+						<img
+							className="w-[98px] ml-[50px] pt-[55px]"
+							src="/Images/whiteEccLogo.svg"
+						/>
+					</Link>
 					<motion.div
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
@@ -196,10 +198,12 @@ const RecoverPage: NextPage = () => {
 			</div>
 			{/* Start of mobile design */}
 			<div className="lg:hidden bg-eccblue w-full min-h-screen poppinsFont pb-[70px] relative flex flex-col justify-center">
-				<img
-					className="absolute w-[50px] left-[15px] top-[30px]"
-					src="/Images/whiteEccLogo.svg"
-				/>
+				<Link href={"/"}>
+					<img
+						className="absolute w-[50px] left-[15px] top-[30px]"
+						src="/Images/whiteEccLogo.svg"
+					/>
+				</Link>
 				<div className="pl-[17px] w-full">
 					<div className="w-full text-white max-w-[467px] mx-auto">
 						<p className="text-[24px] font-bold mt-[60px] max-w-[500px] mx-auto">Verify your email</p>

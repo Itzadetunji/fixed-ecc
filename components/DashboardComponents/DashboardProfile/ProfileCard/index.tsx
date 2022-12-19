@@ -1,9 +1,6 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import profileHeader from "@icons/dashboard-icons/profile-header.svg";
-import dummyProfile from "@images/dummy-profile.png";
-import camera from "@icons/dashboard-icons/camera.svg";
-import cOutline from "@icons/dashboard-icons/camera-outline.svg";
+
 import Link from "next/link";
 import Details from "../PersonalDetails";
 import { useState, useEffect, useContext } from "react";
@@ -19,6 +16,10 @@ const Profile: NextPage = () => {
 		if (cookie.user) setUser(cookie.user);
 	});
 	const [isShowing, setIsShowing] = useState("personal");
+
+	const dummyProfile = "/../../Images/dummy-profile.png";
+	const camera = "/../../icons/dashboard-icons/camera.svg";
+	const cOutline = "/../../icons/dashboard-icons/camera-outline.svg";
 	return (
 		<motion.div
 			initial={{ opacity: 0, scale: 0.95 }}
@@ -27,7 +28,7 @@ const Profile: NextPage = () => {
 			<div className=" lg:block hidden bg-white rounded-[20px] overflow-hidden w-full h-full">
 				<div className="relative rounded-t-[20px] h-[150px] xl:h-[175px]">
 					<Image
-						src={profileHeader}
+						src={"/../../icons/dashboard-icons/profile-header.svg"}
 						alt="Profile Header"
 						layout="fill"
 						objectFit="cover"
@@ -117,18 +118,16 @@ const Profile: NextPage = () => {
 			<div className="lg:hidden w-full bg-clearblue relative">
 				<div className="relative rounded-t-[20px] h-[105.44px]">
 					<Image
-						src={profileHeader}
+						src={"/../../icons/dashboard-icons/profile-header.svg"}
 						alt="Profile Header"
 						layout="fill"
 						objectFit="cover"
 					/>
 					<div className="relative flex flex-col items-center pt-[49.7px]">
 						<div className="relative w-[100px] h-[100px]">
-							<Image
+							<img
 								src={dummyProfile}
-								alt="Dummy Profile"
-								layout="fill"
-								objectFit="contain"
+								alt=""
 							/>
 						</div>
 						<div className="relative w-[27.39px] h-[28.67px] bottom-[20px] left-[20px] cursor-pointer">
