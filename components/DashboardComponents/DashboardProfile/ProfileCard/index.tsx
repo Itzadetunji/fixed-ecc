@@ -35,11 +35,9 @@ const Profile: NextPage = () => {
 					/>
 					<div className="relative flex flex-col items-center pt-[55px] xl:pt-[100px]">
 						<div className="relative w-[157px] h-[150px]">
-							<Image
+							<img
 								src={dummyProfile}
 								alt="Dummy Profile"
-								layout="fill"
-								objectFit="contain"
 							/>
 						</div>
 						<div className="relative w-[43px] h-[43px] bottom-[48px] left-[56px] cursor-pointer">

@@ -14,7 +14,7 @@ const NavWrapper: React.FC<NavWrapperProps> = ({ children }) => {
 	};
 
 	return (
-		<div className="overflow-hidden flex flex-row">
+		<div className="flex flex-row">
 			<SideNav
 				openSide={openSide}
 				open={Open}
@@ -29,7 +29,7 @@ const NavWrapper: React.FC<NavWrapperProps> = ({ children }) => {
 
 				<div
 					onClick={() => setIsOpen(false)}
-					className="  lg:hidden mt-[56.7px] min-h-screen   w-full h-full bg-clearblue"
+					className="  lg:hidden mt-[56.7px] min-h-screen    w-full h-full bg-clearblue"
 				>
 					<div className={`w-full absolute -z-10   h-full  ${Open && ` bg-black z-40  opacity-50`}`}></div>
 					{children}
