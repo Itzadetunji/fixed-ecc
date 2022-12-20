@@ -18,7 +18,8 @@ const Manage = () => {
 	const [isOperation, setOperation] = useState(false);
 	const [operationType, setOperationType] = useState("");
 	const [currentUserId, setUserId] = useState("");
-
+	const [allSelected, setAllSelected] = useState(false);
+	const [statusShowing, setStatusShowing] = useState(false);
 	useEffect(() => {
 		function filterBySearch() {
 			const filteredData = userData.filter((user) => user.userEmail.toLowerCase().includes(value.toLowerCase()) || user.userName.toLowerCase().includes(value.toLowerCase()) || user.userPhone.toLowerCase().includes(value.toLowerCase()));
@@ -44,6 +45,30 @@ const Manage = () => {
 			selectedItems = [...selected, id];
 		}
 		setSelected(selectedItems);
+	};
+	const selectAll = () => {
+		if (selected.length < userData.length) {
+			let selectedItems: Array<string> = [];
+			userData.forEach((item) => selectedItems.push(item.userId));
+
+			setSelected(selectedItems);
+			setAllSelected(true);
+		} else if (selected.length === userData.length) {
+			let selectedItems = [...selected];
+			selectedItems.length = 0;
+			setSelected(selectedItems);
+			setAllSelected(false);
+		}
+	};
+	const handleStatusChange = (text: string) => {
+		text = text === "Verify" ? "Verified" : "Unverified";
+		const userDataTest = [...userData];
+		userDataTest.forEach((item) => {
+			if (selected.includes(item.userId)) {
+				item.status = text;
+			}
+		});
+		setData(userDataTest);
 	};
 	const addUser = (userObject: any) => {
 		const userData1 = [...userData];
@@ -118,7 +143,35 @@ const Manage = () => {
 											setValue={setValue}
 										/>
 									</div>
-									<button
+									{selected.length > 0 && (
+										<div>
+											<button
+												onClick={() => {
+													setStatusShowing(!statusShowing);
+												}}
+												className="bg-[#D6D6D6] text-[#6D6D6D] w-[121px] py-2 rounded-lg font-semibold "
+											>
+												Status
+											</button>
+										</div>
+									)}
+									{selected.length > 0 && (
+										<button
+											disabled={isOperation}
+											className=""
+											onClick={() => {
+												setOperation(true);
+												setOperationType("delete");
+												setUserId("1234");
+											}}
+										>
+											<img
+												src="/icons/admin-icons/delete.svg"
+												alt=""
+											/>
+										</button>
+									)}
+									{/* <button6D6D6D
 										disabled={isOperation}
 										onClick={() => {
 											setOperation(true);
@@ -132,9 +185,35 @@ const Manage = () => {
 											alt=""
 										/>
 										Add user
-									</button>
+									</button> */}
+									{statusShowing && (
+										<div className="flex flex-col relative  mt-4 items-center justify-center gap-y-2 h-auto w-[150px] rounded-md  px-4 py-4 border border-eccblue bg-white z-20">
+											<div className={` w-[94px] h-fit bg-white cursor-pointer flex items-center justify-center rounded-md `}>
+												<ul className="space-y-4">
+													<li
+														onClick={(e) => {
+															handleStatusChange(e.currentTarget.innerText);
+														}}
+														className="text-success text-center bg-[#EBF6EB] py-2 w-[108px] rounded-[12px]"
+													>
+														Verify
+													</li>
+													<li
+														onClick={(e) => {
+															handleStatusChange(e.currentTarget.innerText);
+														}}
+														className="text-[#EF2E2E] text-center bg-[#FFF0F0] py-2 w-[108px] rounded-[12px]"
+													>
+														Unverify
+													</li>
+												</ul>
+											</div>
+										</div>
+									)}
 								</div>
 								<UserTable
+									allSelected={allSelected}
+									selectAll={selectAll}
 									selected={selected}
 									select={onSelect}
 									userData={userData}
