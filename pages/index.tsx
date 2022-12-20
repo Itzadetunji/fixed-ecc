@@ -13,12 +13,25 @@ import HowDoesItWork from "../Sections/HomeSections/HowDoesItWork";
 import AOS from "aos";
 import { useEffect, useState } from "react";
 import Menu from "components/MenuComp";
+import { motion } from "framer-motion";
 
 const Home: NextPage = () => {
 	useEffect(() => {
 		AOS.init();
 	}, []);
 	const [expand, setExpand] = useState(false);
+	const [currentSlide, setCurrentSlide] = useState(0);
+	// const setNextSlide = () => {
+	// 	let index = currentSlide;
+	// 	if (index == 2) {
+	// 		setCurrentSlide(0);
+	// 	} else setCurrentSlide(index + 1);
+
+	// 	console.log(index);
+	// };
+	// setInterval(() => {
+	// 	setNextSlide();
+	// }, 3000);
 	return (
 		<div>
 			{expand && (
@@ -56,10 +69,25 @@ const Home: NextPage = () => {
 							complaints easily
 						</p>
 
-						<p className="mt-4 font-semibold sm:text-[14px] px-[15px] sm:px-[0]">
-							Hair vendor don block you after you make <br />
-							payment online?
-						</p>
+						<div>
+							{[
+								{ topText: "VENDOR DON BLOCK YOU AFTER YOU MAKE", buttomText: "PAYMENT ONLINE?" },
+								{ topText: "DEBITED FOR A TRANSFER AND RECIPIENT NOT", buttomText: "CREDITED?" },
+								{ topText: "WHAT I ORDERED VERSUS WHAT I GOT", buttomText: "" },
+							].map(
+								(text, index) =>
+									index == currentSlide && (
+										<motion.div key={index}>
+											{
+												<p className="mt-4 font-semibold sm:text-[14px] px-[15px] sm:px-[0]">
+													{text.topText} <br />
+													{text.buttomText}
+												</p>
+											}
+										</motion.div>
+									)
+							)}
+						</div>
 
 						<img
 							src="/Images/man-freaked-out.png"

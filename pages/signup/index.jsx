@@ -86,10 +86,12 @@ const SignupPage = () => {
 						className="absolute bottom-0 ml-[100px] w-[200px] xl:w-[200px]"
 						src="/Images/triangle2.svg"
 					/>
-					<img
-						className="w-[98px] ml-[50px] pt-[55px]"
-						src="/Images/whiteEccLogo.svg"
-					/>
+					<Link href={"/"}>
+						<img
+							className="w-[98px] ml-[50px] pt-[55px]"
+							src="/Images/whiteEccLogo.svg"
+						/>
+					</Link>
 					<motion.img
 						initial={{ opacity: 0, scale: 1.1 }}
 						animate={{ opacity: 1, scale: 1 }}
@@ -175,10 +177,12 @@ const SignupPage = () => {
 			</div>
 			{/* MOBILE VERSION */}
 			<div className="lg:hidden bg-eccblue w-full min-h-screen poppinsFont pb-[70px] relative">
-				<img
-					className="w-[50px] ml-[15px] pt-[30px]"
-					src="/Images/whiteEccLogo.svg"
-				/>
+				<Link href={"/"}>
+					<img
+						className="w-[50px] ml-[15px] pt-[30px]"
+						src="/Images/whiteEccLogo.svg"
+					/>
+				</Link>
 				<div className="pl-[17px] w-full">
 					<div className="w-full text-white max-w-[467px] mx-auto">
 						<p className="text-[24px] font-bold mt-[27px] max-w-[500px] mx-auto">Join the Fight!</p>

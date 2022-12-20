@@ -5,7 +5,7 @@ export const Footer: React.FC = (props) => {
 	return (
 		<footer
 			data-aos="fade-up"
-			className="flex flex-col pt-[60px] lg:pl-4 bg-clearblue gap-[36px] lg:gap-[70px] mt-[72px] mx-auto max-w-screen w-screen lg:w-[100%]"
+			className="flex flex-col pt-[60px] lg:pl-4 bg-clearblue gap-[36px] lg:gap-[70px]  mx-auto max-w-screen w-screen lg:w-[100%]"
 		>
 			<div className="flex flex-row justify-between ">
 				<div className="flex-col w-[40%]  gap-[50px] hidden lg:flex">

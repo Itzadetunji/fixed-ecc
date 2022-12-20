@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Image from "next/image";
 import { useState } from "react";
 import LatestScamStep from "../../components/LatestScams/LatestScamsStep";
 import { Footer, KonfamPayCallout, NavBar } from "../../components/";
@@ -20,11 +21,11 @@ const LatestScams: NextPage = () => {
 	const [expand, setExpand] = useState(false);
 	const maxResultsPerPage = 20;
 	const maxResultsPerSmallPage = 6;
-	console.log(expand);
+
 	const handleSearch = () => {
 		setResultIndicatorShowing(true);
 
-		const result = scamData.filter((item) => Object.values(item.phoneNumber).includes(searchText) || Object.values(item.socialMediaHandle).includes(searchText) || Object.values(item.bankAccountDetails).includes(searchText) || Object.values(item.website).includes(searchText));
+		const result = scamData.filter((item) => Object.values(item.phoneNumber).includes(searchText) || Object.values(item.socialMediaHandle).includes(searchText) || Object.values(item.bankAccountDetails).includes(searchText) || Object.values(item.website).includes(searchText) || item.scammer.includes(searchText));
 		if (result.length !== 0 && searchText.length !== 0) {
 			setSearchResults(result);
 			setAreSearchResults(true);
@@ -49,45 +50,58 @@ const LatestScams: NextPage = () => {
 						expand={expand}
 						setExpand={setExpand}
 					/>
-
-					<div className="relative w-full mt-[73px] bg-darkblue pt-[115px] text-white text-center">
-						<div className="mx-9">
-							<p className="text-2xl leading-[125%] sm:text-5xl max-w-[513px] mx-auto font-semibold">
-								Be Informed, stay woke, <br /> stay smart!
-							</p>
-							<p className="max-w-[1000px] text-2xl mx-auto mt-2 sm:mt-11 font-medium"> Search through over 10,000 scam details .They have scammed millions of Naira from Nigerian buyers. Beware of them and do not trust them or buy anything from them</p>
+					<div className="relative w-full mt-[73px] bg-darkblue pt-[30px] sm:pt-[50px] lg:pt-[115px] text-white text-center">
+						<>
+							<div className="mx-[49px]">
+								<p className="text-2xl sm:text-5xl max-w-[563px] mx-auto font-semibold">
+									Be Informed, stay woke, <br /> stay smart!
+								</p>
+							</div>
+							<div className="mx-[34px] mt-2 sm:mt-11">
+								<p className="max-w-[1000px] text-[15px] sm:text-2xl font-medium -tracking-[0.02em] mx-auto"> Search through over 10,000 scam details. They have scammed millions of Naira from Nigerian buyers. Beware of them and do not trust them or buy anything from them</p>
+							</div>
+						</>
+						<div className="relative mx-auto w-[209px] sm:w-[592px] h-[147.51px] sm:h-[384.9px]">
+							<Image
+								src="/Images/searchingImage.png"
+								alt="an image of a  man searching"
+								layout="fill"
+								objectFit="contain"
+							/>
 						</div>
-						<img
-							src="/Images/searchingImage.png"
-							className="mx-auto"
-						/>
-						<div className="w-full px-3 sm:px-7 md:px-[50px] lg:px-[100px] absolute -bottom-[52px]">
-							<div className="bg-white relative flex flex-row items-center space-x-3 sm:space-x-8 max-w-[1160px] mx-auto pl-2.5 sm:pl-14 py-[24px] sm:min-h-[106px] rounded-xl shadow-[2px_2px_15px_-3px_rgba(0,0,0,0.1)]">
-								<img
+						<div className="w-full px-[18px] sm:px-7 md:px-[50px] lg:px-[100px] absolute -bottom-[52px]">
+							<div className="bg-white relative flex flex-row items-center space-x-2 sm:space-x-8 max-w-[1160px] mx-auto pl-2.5 pr-4 sm:pl-14 py-[24px] sm:min-h-[106px] rounded sm:rounded-lg lg:rounded-xl shadow-[2px_2px_15px_-3px_rgba(0,0,0,0.1)]">
+								<div
+									className="relative w-5 sm:w-10 h-5 sm:h-10"
 									onClick={handleSearch}
-									src="/Images/searchIcon.svg"
-									className="w-5 sm:w-10 h-5 sm:h-10"
-								/>
+								>
+									<Image
+										src="/Images/searchIcon.svg"
+										alt="search icon"
+										layout="fill"
+										objectFit="contain"
+									/>
+								</div>
 								<input
 									type="text"
+									onKeyDown={(e) => {
+										e.key == "Enter" ? handleSearch() : "";
+									}}
 									value={searchText}
 									onChange={(e) => setSearchText(e.target.value)}
-									className="flex-grow mr-[93px] focus:outline-none text-[14px] sm:text-[20px] placeholder:text-sm sm:placeholder:text-[20px]  placeholder:font-light sm:placeholder:font-normal placeholder:text-black placeholder:opacity-[0.62] text-black"
-									placeholder="Search for complaints made"
+									className="sm:pr-[209px] flex-grow focus:outline-none text-[14px] sm:text-[20px] placeholder:text-sm sm:placeholder:text-[20px]  placeholder:font-light sm:placeholder:font-normal placeholder:text-black placeholder:opacity-[0.62] text-black"
+									placeholder="Search for phone number, e.t.c"
 								/>
 								<button
 									onClick={handleSearch}
-									className="absolute right-7 top-6 hidden sm:block py-[14.5px] px-[48px] bg-[#0A5EBC] rounded-xl active:scale-95 transition-[100ms]"
+									className="m-0 absolute right-7 top-6 hidden sm:block py-[14.5px] px-[48px] bg-[#0A5EBC] rounded-xl active:scale-95 transition-[100ms]"
 								>
 									Search
 								</button>
 							</div>
 						</div>
 					</div>
-					<div
-						className="lg:px-[100px]
-mt-[110px] "
-					>
+					<div className="lg:px-[100px] mt-[90px] lg:mt-[100px]">
 						{resultIndicatorShowing && (
 							<SearchResultIndicator
 								setIsShowing={setResultIndicatorShowing}
@@ -95,14 +109,26 @@ mt-[110px] "
 							/>
 						)}
 
-						<div className="w-full p-4 my-4 flex justify-start">
-							<p className="text-eccblue text-left text-sm lg:hidden">{`showing ${maxResultsPerSmallPage} of ${searchResults.length} results`}</p>
+						<div className="w-full px-[24px] mt-7 mb-2  flex justify-between lg:hidden">
+							<p className="font-sans text-eccblue text-left text-sm sm:text-lg">{`showing ${maxResultsPerSmallPage} of ${searchResults.length} results`}</p>
+							<div
+								className="relative w-[24px] sm:w-[30px] h-[24px] sm:h-[30px]"
+								onClick={() => {
+									searchResults.sort();
+								}}
+							>
+								<Image
+									src="/icons/filter_list_icon.svg"
+									alt="search icon"
+									layout="fill"
+									objectFit="contain"
+								/>
+							</div>
 						</div>
 						{searchResults.length !== 0 && (
 							<>
-								<div className="lg:block hidden mx-auto   ">
-									<div className="h-[10px] w-full bg-eccblue rounded-t-[10px] mt-[20px]"></div>
-									<table className="mx-auto w-full ">
+								<div className="lg:block hidden mx-auto mt-[40px]">
+									<table className="mx-auto w-full rounded-t-[10px] overflow-hidden">
 										<thead className="bg-eccblue text-white  ">
 											<tr className="">
 												<th className="py-[16px]">Count</th>
@@ -129,11 +155,11 @@ mt-[110px] "
 										</tbody>
 									</table>
 								</div>
-								<div className="lg:hidden">
+								<div className="lg:hidden sm:grid grid-cols-2 gap-x-3 sm:mx-4">
 									{searchResults.slice(maxResultsPerSmallPage * (currentSearchPage - 1), maxResultsPerSmallPage * currentSearchPage).map((item, index) => (
 										<div
 											key={index}
-											className="flex flex-col items-center mb-4"
+											className="flex flex-col items-center mb-5"
 										>
 											<ScamCard data={item} />
 										</div>
@@ -149,7 +175,7 @@ mt-[110px] "
 										numberOfPages={Math.ceil(searchResults.length / maxResultsPerPage)}
 									/>
 								</div>
-								<div className="lg:hidden">
+								{/* <div className="lg:hidden">
 									<PaginationSection
 										pageSize={pageSize}
 										searchResults={searchResults}
@@ -158,43 +184,47 @@ mt-[110px] "
 										setCurrentSearchPage={setCurrentSearchPage}
 										numberOfPages={Math.ceil(searchResults.length / maxResultsPerSmallPage)}
 									/>
-								</div>
+								</div> */}
 							</>
 						)}
 					</div>
-					<div className="mt-24 w-full bg-clearblue pt-[46px] px-4 sm:px-8 md:px-12 lg:px-24">
+					<div className="mt-12 w-full bg-clearblue pt-[46px] px-4 sm:px-8 md:px-12 lg:px-24">
 						<div className="max-w-[1231px] mx-auto">
-							<h1 className="text-[40px] max-w-[500px] text-center mx-auto font-semibold leading-[50px]">
+							<h1 className="text-[22px] px-[40px] sm:px-0 sm:text-[40px] max-w-[500px] text-center mx-auto font-semibold leading-[27px] sm:leading-[50px]">
 								How we have identified these <span className="text-eccblue">scams</span>
 							</h1>
-							<div className="flex flex-col sm:flex-row sm:space-x-[31px] space-y-3 sm:space-y-0 items-center mt-5 sm:mt-[144px]">
+							<div className="flex flex-col sm:flex-row sm:space-x-[31px] space-y-2 sm:space-y-0 items-center mt-5 sm:mt-[144px]">
 								<div className="w-8 sm:w-24 shrink-0 h-8 sm:h-24 bg-danger rounded sm:rounded-xl flex items-center justify-center self-start sm:self-auto">
-									<img
-										className="w-3.5 sm:w-[46px] h-3.5 sm:h-[46px]"
-										src="/Images/pencilIcon.svg"
-									/>
+									<div className="relative w-3.5 sm:w-[46px] h-3.5 sm:h-[46px]">
+										<Image
+											src="/Images/pencilIcon.svg"
+											alt="pencil icon"
+											layout="fill"
+											objectFit="contain"
+										/>
+									</div>
 								</div>
-								<p className="text-sm sm:text-xl text-danger font-medium ">The list is compiled based on inputs from our users. If you are a website or phone owner and think that your details are wrongly included please contact us so that we can remove you. We have taken below factors into consideration while categorizing a website as Scam</p>
+								<p className="text-sm sm:text-xl xl:leading-[31px] text-danger font-semibold lg:font-medium">The list is compiled based on inputs from our users. If you are a website or phone owner and think that your details are wrongly included please contact us so that we can remove you. We have taken below factors into consideration while categorizing a website as Scam</p>
 							</div>
-							<section className="flex flex-col space-y-7 sm:space-y-[73px] mt-[98px] pb-[109px]">
+							<section className="flex flex-col space-y-7 sm:space-y-[73px] mt-[29px] sm:mt-[98px] pb-3 sm:pb-[109px]">
 								<WayIdentified
 									number={1}
-									text={
-										"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius nullam et nibh nisl dignissim elementum. Vulputate nulla fermentum risus habitant cursus risus amet, et, lacinia. Et gravida pharetra, pretium, pellentesque. Sit auctor lacus, sed nisi, eu placerat pharetra. Suspendisse vitae ornare diam egestas. Posuere dictumst donec consectetur imperdiet neque ultrices consectetur velit. Tincidunt non fusce enim eu vel auctor mauris. Purus a vehicula facilisi dignissim etiam arcu, eu. Potenti amet malesuada morbi in. Viverra nisl massa duis volutpat iaculis elementum tincidunt neque. Sit a ac ornare odio."
-									}
+									title={"RECIEVE COMPLAINT"}
+									text={"When a consumer files a complaint about a scam, the first step in the investigation process is for ecommerce complaint to gather all relevant information from the consumer. This may include details about the alleged scammer's profile, the nature of the scam, and any evidence the consumer has collected, such as messages or financial transactions"}
 								/>
 								<WayIdentified
 									number={2}
-									text={
-										"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius nullam et nibh nisl dignissim elementum. Vulputate nulla fermentum risus habitant cursus risus amet, et, lacinia. Et gravida pharetra, pretium, pellentesque. Sit auctor lacus, sed nisi, eu placerat pharetra. Suspendisse vitae ornare diam egestas. Posuere dictumst donec consectetur imperdiet neque ultrices consectetur velit. Tincidunt non fusce enim eu vel auctor mauris. Purus a vehicula facilisi dignissim etiam arcu, eu. Potenti amet malesuada morbi in. Viverra nisl massa duis volutpat iaculis elementum tincidunt neque. Sit a ac ornare odio."
-									}
+									title={"INVESTIGATE"}
+									text={"Next, ecommerce complaint will conduct its own investigation into the alleged scammer's activity online. This may involve reviewing the alleged scammer's profile and posts, searching for similar complaints or reports about the alleged scammer, and contacting the person or brand to notify them about the complaint."}
 								/>
-								<WayIdentified
-									number={3}
-									text={
-										"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius nullam et nibh nisl dignissim elementum. Vulputate nulla fermentum risus habitant cursus risus amet, et, lacinia. Et gravida pharetra, pretium, pellentesque. Sit auctor lacus, sed nisi, eu placerat pharetra. Suspendisse vitae ornare diam egestas. Posuere dictumst donec consectetur imperdiet neque ultrices consectetur velit. Tincidunt non fusce enim eu vel auctor mauris. Purus a vehicula facilisi dignissim etiam arcu, eu. Potenti amet malesuada morbi in. Viverra nisl massa duis volutpat iaculis elementum tincidunt neque. Sit a ac ornare odio."
-									}
-								/>
+								<div>
+									<WayIdentified
+										number={3}
+										title={"DECISION MAKING"}
+										text={`Next, ecommerce complaint will conduct its own investigation into the alleged scammer's activity online. This may involve reviewing the alleged scammer's profile and posts, searching for similar complaints or reports about the alleged scammer, and contacting the person or brand to notify them about the complaint.`}
+									/>
+									<div className="text-sm sm:text-xl mt-5 xl:mt-6 w-full">Overall, the process of investigating a consumer complaint about a scam online involves gathering information, conducting an investigation, and taking appropriate action against the scammer to protect consumers and prevent further scams.</div>
+								</div>
 							</section>
 						</div>
 					</div>
@@ -204,25 +234,29 @@ mt-[110px] "
 						</h1>
 						<div className="mt-7 flex flex-col space-y-5">
 							<LatestScamStep
-								number={1}
-								text={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius nullam et nibh nisl dignissim elementum. Vulputate"}
+								number={"1"}
+								text={"If in doubt, always reach out to us via all available channels, we can help you verify a business or brand, also explore using the search option on our website. check for reviews online, read comments."}
 							/>
 							<LatestScamStep
-								number={2}
-								text={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius nullam et nibh nisl dignissim elementum. Vulputate"}
+								number={"2"}
+								text={"Be cautious of offers that seem too good to be true. If an offer seems too good to be true, it probably is. Scammers often use the pricing tactics lure victims in by offering outrageous discounts on items."}
 							/>
 							<LatestScamStep
-								number={3}
-								text={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius nullam et nibh nisl dignissim elementum. Vulputate"}
+								number={"3"}
+								text={"Don't give out personal information. Be careful not to reveal personal information, such as your Bank Verification number, bank account number, or debit card number, to anyone."}
 							/>
 							<LatestScamStep
-								number={4}
-								text={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius nullam et nibh nisl dignissim elementum. Vulputate"}
+								number={"4"}
+								text={`Scammers are usually very desperate; they will say or do anything to try to get you to make payment. Always make payments for items at your own pace, when a vendor or brand is offering you mouth-watering deals to get you to make payment almost immediately, it is usually a red flag. "AWOOF DEY PURGE BELLE!!"`}
+							/>
+							<LatestScamStep
+								number={"X"}
+								text={"By following these tips, you can reduce the risk of being scammed online. It's also a good idea to regularly monitor your bank for any unauthorized charges. If you suspect that you have been a victim of a scam, contact us, your bank or the financial institution involved immediately."}
 							/>
 						</div>
 					</section>
 					<KonfamPayCallout />
-					<Footer />
+					{/* <Footer /> */}
 				</div>
 			)}
 		</div>

@@ -5,6 +5,8 @@ import Link from "next/link";
 import Head from "next/head";
 import { MutableRefObject } from "react";
 import Menu from "components/MenuComp";
+import { useRouter } from "next/router";
+import { format } from "date-fns";
 
 const WriteComplaintPage: NextPage = () => {
 	const [shouldInclude, setShouldInclude] = useState(false);
@@ -12,9 +14,21 @@ const WriteComplaintPage: NextPage = () => {
 	const [entitleTo, setEntitleTo] = useState(false);
 	const [showDateRange, setShowDateRange] = useState(false);
 	const [dateRange, setDateRange] = useState("");
+	const [date, setDate] = useState<string>("");
+	const [purchase, setPurchase] = useState("");
+	const [purchasePlace, setPurchasePlace] = useState("");
+	const [complaintDetails, setComplaintDetails] = useState("");
+	const [complaintEvidence, setComplaintEvidence] = useState("");
+	const [wantedAction, setWantedAction] = useState("");
+	const [phone, setPhone] = useState("");
+	const [email, setEmail] = useState("");
+	const [name, setName] = useState("");
 	const dateRef: MutableRefObject<any> = useRef();
 	const [expand, setExpand] = useState(false);
 	const HandleDateClick = () => dateRef.current.showPicker();
+	const router = useRouter();
+	const [showDate, setShowDate] = useState("");
+
 	return (
 		<div>
 			{expand && (
@@ -56,7 +70,12 @@ const WriteComplaintPage: NextPage = () => {
 								<div className="ml-[7px] mr-[3px] flex items-center border-b-[1px] w-[100px] sm:w-[120px] lg:w-[140px]">
 									<input
 										type="date"
-										name=""
+										onChange={(e) => {
+											setDate(format(new Date(e.currentTarget.value), "d MMMM yyyy"));
+											setShowDate(e.currentTarget.value);
+											console.log(date);
+										}}
+										value={showDate}
 										id=""
 										ref={dateRef}
 										className=" w-full outline-none"
@@ -72,6 +91,8 @@ const WriteComplaintPage: NextPage = () => {
 								<p className="">, I purchased</p>
 								<input
 									type="text"
+									value={purchase}
+									onChange={(e) => setPurchase(e.currentTarget.value)}
 									name=""
 									id=""
 									className="w-[85px] sm:w-[120px] lg:w-[200px] mx-1.5 lg:mx-[6px] border-b-[1px] placeholder:text-[#858383] outline-none"
@@ -80,16 +101,16 @@ const WriteComplaintPage: NextPage = () => {
 								<p>from</p>
 								<input
 									type="text"
-									name=""
-									id=""
+									value={purchasePlace}
+									onChange={(e) => setPurchasePlace(e.currentTarget.value)}
 									className="w-[140px] sm:w-[200px] mx-1.5 lg:mx-2 border-b-[1px] placeholder:text-[#858383] outline-none"
 									placeholder="the place of purchase"
 								/>
 							</div>
 							<div className="mt-[20px] lg:mt-11">
 								<textarea
-									name=""
-									id=""
+									value={complaintDetails}
+									onChange={(e) => setComplaintDetails(e.currentTarget.value)}
 									className="w-full h-[231px] rounded-md lg:rounded-xl border-[1px] resize-none outline-none placeholder:text-[12px] sm:placeholder:text-[15px] lg:placeholder:text-[18px] placeholder:text-[#838383] px-[9px] lg:px-[20px] py-[9px] lg:py-[25px]"
 									placeholder="Explain what the problem is and what you have done so far to resolve it."
 								/>
@@ -121,8 +142,8 @@ const WriteComplaintPage: NextPage = () => {
 							</div>
 							<div className="mt-5 lg:mt-11">
 								<textarea
-									name=""
-									id=""
+									value={complaintEvidence}
+									onChange={(e) => setComplaintEvidence(e.currentTarget.value)}
 									className="w-full h-[231px] rounded-xl border-[1px] resize-none outline-none placeholder:text-[12px] placeholder:text-[15px] lg:placeholder:text-[18px] placeholder:text-[#838383] px-[9px] lg:px-[20px] py-[5px] lg:py-[25px] text-[12px] sm:text-[15px] lg:text-[18px]"
 									placeholder="Explain what evidence you are providing to support your complaint, such as your proof of purchase or photographs of the faulty product (you can include this when you send the letter)."
 								/>
@@ -151,8 +172,8 @@ const WriteComplaintPage: NextPage = () => {
 							</div>
 							<div className="mt-[35px] lg:mt-[44px]">
 								<textarea
-									name=""
-									id=""
+									value={wantedAction}
+									onChange={(e) => setWantedAction(e.currentTarget.value)}
 									className="w-full h-[231px] rounded-md lg:rounded-xl border-[1px] resize-none outline-none placeholder:text-[12px] placeholder:text-[15px] lg:placeholder:text-[18px] placeholder:text-[#838383] px-[20px] py-[25px] text-[12px] sm:text-[15px] lg:text-[18px]"
 									placeholder="What would you like the business to do to resolve the issue?)."
 								/>
@@ -190,6 +211,7 @@ const WriteComplaintPage: NextPage = () => {
 											className="w-[150px] sm:w-[170px] lg:w-[200px] border-b-[1px] mx-[2px] outline-none placeholder:text-[14px] sm:placeholder:text-[17px] lg:placeholder:text-[20px] placeholder:text-[#858383] text-[14px] sm:text-[17px] lg:text-[20px]"
 											placeholder="select a date range"
 											value={dateRange}
+											onChange={(e) => setDateRange(e.currentTarget.value)}
 										/>
 										<img
 											src="/icons/chevron-down-grey.svg"
@@ -247,16 +269,16 @@ const WriteComplaintPage: NextPage = () => {
 									<p className="mr-[6px] inline">You can contact me about this complaint via email</p>
 									<input
 										type="email"
-										name=""
-										id=""
+										value={email}
+										onChange={(e) => setEmail(e.currentTarget.value)}
 										className="w-[120px] sm:w-[160px] lg:w-[180px] lg:mt-[10px] mx-[4px] lg:mr-[10px] border-b-[1px] outline-none placeholder:text-[14px] sm:placeholder:text-[17px] lg:placeholder:text-[20px] placeholder:text-[#858383] text-[14px] sm:text-[17px] lg:text-[20px]"
 										placeholder="your email address"
 									/>
 									<p className="inline">or call me on</p>
 									<input
 										type="tel"
-										name=""
-										id=""
+										value={phone}
+										onChange={(e) => setPhone(e.currentTarget.value)}
 										className="w-[130px] sm:w-[150px] lg:w-[200px] mx-[5px] lg:mx-[10px] lg:mr-[250px] border-b-[1px] outline-none placeholder:text-[14px] sm:placeholder:text-[17px] lg:placeholder:text-[20px] placeholder:text-[#858383] text-[14px] sm:text-[17px] lg:text-[20px]"
 										placeholder="your phone number"
 									/>
@@ -267,24 +289,26 @@ const WriteComplaintPage: NextPage = () => {
 								<p className="mt-[18px] lg:mt-[30px]">Regards.</p>
 								<input
 									type="text"
-									name=""
-									id=""
+									value={name}
+									onChange={(e) => setName(e.currentTarget.value)}
 									className="w-[70px] sm:w-[100px] lg:w-[120px] mt-[10px] lg:mr-[10px] border-b-[1px] outline-none placeholder:text-[14px] sm:placeholder:text-[17px] lg:placeholder:text-[20px] placeholder:text-[#858383] text-[14px] sm:text-[17px] lg:text-[20px]"
 									placeholder="your name"
 								/>
 							</div>
-							<Link href={"/write-complaint/preview"}>
-								<div className="bg-eccblue mt-[40px] lg:mt-[102px] mb-[56px] lg:mb-[79px] mx-auto cursor-pointer text-[14px] sm:text-[17px] lg:text-[20px] font-semibold text-white rounded-xl lg:rounded-lg  w-fit">
-									<div className="mx-auto px-[70px] sm:px-[101px] lg:px-[193.15px] flex space-x-[10px] lg:space-x-[20px]">
-										<img
-											src="/icons/eye.svg"
-											className=""
-											alt=""
-										/>
-										<p className="py-[14px] lg:py-[22px] lg:text-center">Preview Letter</p>
-									</div>
+
+							<div
+								onClick={() => router.push({ pathname: "/write-complaint/preview", query: { dateRange: dateRange, complaintDetails: complaintDetails, name: name, email: email, wantedAction: wantedAction, date: date, purchase: purchase, purchasePlace: purchasePlace, complaintEvidence: complaintEvidence, phone: phone } })}
+								className="bg-eccblue mt-[40px] lg:mt-[102px] mb-[56px] lg:mb-[79px] mx-auto cursor-pointer text-[14px] sm:text-[17px] lg:text-[20px] font-semibold text-white rounded-xl lg:rounded-lg  w-fit"
+							>
+								<div className="mx-auto px-[70px] sm:px-[101px] lg:px-[193.15px] flex space-x-[10px] lg:space-x-[20px]">
+									<img
+										src="/icons/eye.svg"
+										className=""
+										alt=""
+									/>
+									<p className="py-[14px] lg:py-[22px] lg:text-center">Preview Letter</p>
 								</div>
-							</Link>
+							</div>
 						</div>
 					</section>
 					{/* <Footer /> */}
