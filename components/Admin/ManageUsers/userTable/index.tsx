@@ -12,9 +12,11 @@ interface TableProps {
 	setOperationType: Dispatch<SetStateAction<string>>;
 	setUserId: Dispatch<SetStateAction<string>>;
 	isOperation: boolean;
+	selectAll: () => void;
+	allSelected: boolean;
 }
 
-const UserTable: React.FC<TableProps> = ({ isOperation, userData, maxNumber, pageNumber, select, setUserId, selected, setOperation, setOperationType }) => {
+const UserTable: React.FC<TableProps> = ({ allSelected, selectAll, isOperation, userData, maxNumber, pageNumber, select, setUserId, selected, setOperation, setOperationType }) => {
 	const router = useRouter();
 	return (
 		<>
@@ -23,9 +25,17 @@ const UserTable: React.FC<TableProps> = ({ isOperation, userData, maxNumber, pag
 					<thead className="border-y border-y-[#e4e4ef]  border-solid">
 						<tr>
 							<th>
-								<button className="w-[24px] ml-4 my-4 h-[24px] border border-solid border-[#e4e4e7]"></button>
+								<button
+									onClick={() => selectAll()}
+									className={`w-[24px]  ml-4 h-[24px] ${allSelected && selected.length === userData.length && "bg-eccblue"} flex justify-center items-center border border-solid border-[#e4e4e7]`}
+								>
+									<img
+										src="/icons/check-white.svg"
+										alt=""
+									/>
+								</button>
 							</th>
-							<th>User</th>
+							<th className="py-4">User</th>
 							<th>Date Registered</th>
 							<th>Phone Number</th>
 							<th>Status</th>
