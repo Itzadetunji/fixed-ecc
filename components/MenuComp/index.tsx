@@ -4,7 +4,7 @@ import MenuLink from "../Menu/menuLinks";
 import { useRouter } from "next/router";
 import { Dispatch } from "react";
 import { SetStateAction } from "react";
-import { boolean } from "joi";
+// import { boolean } from "joi";
 import Image from "next/image";
 
 interface MenuProps {
@@ -22,7 +22,7 @@ const Menu: NextPage<MenuProps> = ({ setExpand, expand }) => {
 						<Link href="/">
 							<img
 								src="/Images/logo.svg"
-								className="ml-5 h-32 w-32 -my-10"
+								className="h-32 w-32 -my-[10px]"
 								alt="Adetunji's Adeyinka's Logo"
 							/>
 						</Link>
@@ -54,13 +54,15 @@ const Menu: NextPage<MenuProps> = ({ setExpand, expand }) => {
 					<div className="flex flex-row items-start p-1 gap-4">
 						<div>
 							<button className="bg-eccblue  w-40 h-11 rounded-md font-semibold text-white">
-								<span>File a complaint</span>
+								<Link href={"/login"}>
+									<p>Login</p>
+								</Link>
 							</button>
 						</div>
 						<div>
 							<button className="bg-clearblue w-[142.27px] h-11 border border-solid border-eccblue   rounded-md font-semibold text-eccblue">
-								<Link href={"/login"}>
-									<p>Login/Signup</p>
+								<Link href={"/signup"}>
+									<p>Signup</p>
 								</Link>
 							</button>
 						</div>
