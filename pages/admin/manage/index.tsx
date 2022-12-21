@@ -48,13 +48,13 @@ const Manage = () => {
 	};
 	const selectAll = () => {
 		if (selected.length < userData.length) {
-			let selectedItems: Array<string> = [];
+			const selectedItems: Array<string> = [];
 			userData.forEach((item) => selectedItems.push(item.userId));
 
 			setSelected(selectedItems);
 			setAllSelected(true);
 		} else if (selected.length === userData.length) {
-			let selectedItems = [...selected];
+			const selectedItems = [...selected];
 			selectedItems.length = 0;
 			setSelected(selectedItems);
 			setAllSelected(false);
