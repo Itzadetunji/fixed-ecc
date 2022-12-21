@@ -1,4 +1,3 @@
-import ComplaintLetterSection from "../../../components/FileAComplaintComponents/ComplaintLetterSection";
 import NavWrapper from "./../../../components/DashboardNav/NavWrapper";
 import PageSectionNav from "../../../components/FileAComplaintComponents/PageSectionNav";
 
@@ -11,6 +10,7 @@ import Page2 from "../../../components/FileAComplaintComponents/Page2";
 import Page3 from "../../../components/FileAComplaintComponents/Page3";
 
 import { motion } from "framer-motion";
+import DashboardSection from "components/FileAComplaintComponents/DashboardSection";
 
 const FileComplaint: NextPage = () => {
 	const [currentPage, setCurrentPage] = useState(1);
@@ -43,7 +43,7 @@ const FileComplaint: NextPage = () => {
 					setPage={setCurrentPage}
 					currentPage={currentPage}
 				/>
-
+				<DashboardSection place="main" />
 				<motion.div
 					initial={{ opacity: 0 }}
 					animate={{ opacity: isOpaque ? 1 : 0 }}
