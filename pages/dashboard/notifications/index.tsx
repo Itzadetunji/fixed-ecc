@@ -9,12 +9,14 @@ import { Notification } from "../../../components/Types";
 import { useCookies } from "react-cookie";
 import client from "../../../pages/api/Services/AxiosClient";
 import { motion } from "framer-motion";
+import { SideNavContext } from "components/Contexts/SideNavContext";
 
 interface NotificationsPageProps {
 	notificationData: Notification[];
 }
 
 const NotificationsPage: NextPage<NotificationsPageProps> = () => {
+	const { Open } = useContext(SideNavContext);
 	const { notificationData, markAllNotificationsAsRead } = useContext(NotificationContext);
 	const router = useRouter();
 
@@ -27,13 +29,13 @@ const NotificationsPage: NextPage<NotificationsPageProps> = () => {
 			<motion.div
 				initial={{ opacity: 0, scale: 0.95 }}
 				animate={{ opacity: 1, scale: 1, transition: { duration: 0.3 } }}
-				className="w-full h-full rounded-[15px] overflow-hidden"
+				className={`w-full  ${Open ? `h-screen overflow-hidden` : `h-full`}   lg:rounded-[15px] `}
 			>
 				<div className="py-[16px] pl-[54px] bg-eccblue">
 					<p className="text-[24px] font-medium poppinsFont text-white">All Notifications</p>
 				</div>
 
-				<div className="pt-[39px] pb-[49px] bg-white flex flex-col gap-y-[40px] overflow-y-scroll h-[calc(100vh-280px)] custom-scrollbar">
+				<div className="pt-[39px] pb-[49px] bg-white flex flex-col gap-y-[40px] overflow-y-scroll h-screen lg:h-[calc(100vh-280px)] custom-scrollbar">
 					{notificationData?.map((item: any, index: number) => (
 						<div
 							key={index}

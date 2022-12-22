@@ -146,17 +146,26 @@ const SideNav = ({ open, openSide }) => {
 							<NavButton
 								isActive={router.pathname == "/dashboard"}
 								text="Dashboard"
-								onClick={() => router.push("/dashboard")}
+								onClick={() => {
+									router.push("/dashboard");
+									openSide();
+								}}
 							/>
 							<NavButton
 								isActive={router.pathname == "/dashboard/profile"}
 								text="My Profile"
-								onClick={() => router.push("/dashboard/profile")}
+								onClick={() => {
+									router.push("/dashboard/profile");
+									openSide();
+								}}
 							/>
 							<NavButton
 								isActive={router.pathname == "/dashboard/mycomplaints" || router.pathname == "/complaintDetails"}
 								text="My Complaints"
-								onClick={() => router.push("/dashboard/mycomplaints")}
+								onClick={() => {
+									router.push("/dashboard/mycomplaints");
+									openSide();
+								}}
 							/>
 							<NavButton
 								isActive={router.pathname == "/dashboard/talktoalawyer"}
