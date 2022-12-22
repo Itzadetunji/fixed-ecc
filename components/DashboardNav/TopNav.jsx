@@ -72,10 +72,12 @@ const TopNav = (props) => {
 						<Notifications />
 						<div className="flex gap-x-[21px]">
 							<div className="w-[50px] h-[50px] rounded-full overflow-hidden">
-								<img
-									className="w-full"
-									src={user.profilePic || "/Images/profilePic.png"}
-								/>
+								<Link href={"/dashboard/profile"}>
+									<img
+										className="w-full"
+										src={user.profilePic || "/Images/profilePic.png"}
+									/>
+								</Link>
 							</div>
 							<div className="flex flex-col items-start ">
 								<p className="font-semibold opacity-70 text-[20px]">{`${user.firstName} ${user.lastName}`}</p>
@@ -107,10 +109,12 @@ const TopNav = (props) => {
 						<Notifications newNotifications={false} />
 						<div className="flex gap-x-[21px] items-center ml-4">
 							<div className="w-[30px] h-[30px] rounded-full overflow-hidden">
-								<img
-									className="w-full"
-									src={user.profilePic || "/Images/profilePic.png"}
-								/>
+								<Link href={"/dashboard/profile"}>
+									<img
+										className="w-full"
+										src={user.profilePic || "/Images/profilePic.png"}
+									/>
+								</Link>
 							</div>
 							<div className="flex flex-col items-start ">
 								<p className="font-semibold opacity-70 text-[14px]">{`${user.firstName} ${user.lastName}`}</p>
