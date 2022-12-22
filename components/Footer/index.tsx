@@ -73,7 +73,7 @@ export const Footer: React.FC = (props) => {
 					<FooterList
 						title=""
 						items={[
-							{ label: "Post a Complaint", href: "/write-complaint" },
+							{ label: "Post a Complaint", href: "/login" },
 							{ label: "Login/Signup", href: "/login" },
 						]}
 						areButtons={true}
