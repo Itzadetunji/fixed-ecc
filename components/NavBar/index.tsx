@@ -36,7 +36,7 @@ export const NavBar: React.FC<NavBarProps> = ({ hasWhiteText, searchIconIsPresen
 						<Link href="/">
 							<img
 								src="/Images/logo.svg"
-								className="ml-5 h-32 w-32 -my-10"
+								className="-ml-[15px] h-32 w-32 -my-10"
 								alt="Adetunji's Adeyinka's Logo"
 							/>
 						</Link>
@@ -47,18 +47,18 @@ export const NavBar: React.FC<NavBarProps> = ({ hasWhiteText, searchIconIsPresen
 						<Link href="/">
 							<img
 								src="/Images/logo.svg"
-								className="ml-5 h-32 w-32 -my-10"
+								className="-ml-[15px] h-32 w-32 -my-10"
 								alt="Adetunji's Adeyinka's Logo"
 							/>
 						</Link>
 					</div>
 				)}
 				{hasWhiteText && isTransparent && (
-					<div className="flex items-center">
+					<div className="flex items-center h-12">
 						<Link href="/">
 							<img
 								src="/Images/whiteEccLogo.svg"
-								className="ml-12 h-16 w-16 -my-10"
+								className="ml-3 h-16 w-16"
 								alt="Adetunji's Adeyinka's Logo"
 							/>
 						</Link>
