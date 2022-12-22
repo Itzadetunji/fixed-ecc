@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import Image from "next/image";
 
 interface SearchResultIndicatorProps {
 	areSearchResults: boolean;
@@ -10,29 +11,37 @@ const SearchResultIndicator: React.FC<SearchResultIndicatorProps> = ({ areSearch
 	};
 
 	return (
-		<div className="lg:w-full w-[80%] mx-auto ">
+		<div className="lg:w-full w-[90%] mx-auto ">
 			{!areSearchResults && (
 				<div
 					onClick={() => closeResultIndicator()}
-					className="w-full py-4 px-5  flex space-x-3 bg-warn-bg rounded-xl border flex-row justify-between  border-warn-border text-warn-text"
+					className="w-full py-4 px-5  flex space-x-3 bg-warn-bg rounded-xl border flex-row justify-between items-center border-warn-border text-warn-text"
 				>
-					<p>No item on our list match your search. Make sure you enter the correct keyword</p>
-					<img
-						className="cursor-pointer"
-						src="/icons/orangeXIcon.svg"
-					/>
+					<p className="text-[15px] sm:text-[18px] -tracking-[0.01em]">No item on our list match your search. Make sure you enter the correct keyword</p>
+					<div className="relative cursor-pointer w-[23px] h-[23px]">
+						<Image
+							src="/icons/orangeXIcon.svg"
+							alt="orange X Icon"
+							layout="fill"
+							objectFit="contain"
+						/>
+					</div>
 				</div>
 			)}
 			{areSearchResults && (
 				<div
 					onClick={() => closeResultIndicator()}
-					className="w-full sm:py-4 sm:px-5 flex space-x-3 bg-complaint-success-bg rounded-xl border border-complaint-success-border"
+					className="w-full py-4 px-5  flex space-x-3 flex-row justify-between items-center  bg-complaint-success-bg rounded-xl border border-complaint-success-border"
 				>
-					<p className="text-complaint-success-text">Your search succesfully made a match on our list. It has been highlighted on our list</p>
-					<img
-						className="cursor-pointer"
-						src="/icons/greenXIcon.svg"
-					/>
+					<p className="text-complaint-success-text -tracking-[0.01em] text-[15px] sm:text-[18px]">Your search succesfully made a match on our list. It has been highlighted on our list</p>
+					<div className="relative cursor-pointer w-[23px] h-[23px]">
+						<Image
+							src="/icons/greenXIcon.svg"
+							alt="orange X Icon"
+							layout="fill"
+							objectFit="contain"
+						/>
+					</div>
 				</div>
 			)}
 		</div>

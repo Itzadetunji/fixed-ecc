@@ -8,6 +8,7 @@ import MyProfileIcon from "./icons/myprofileicon";
 import TalkToLawyerIcon from "./icons/talktolawayericon";
 import HireLawyerIcon from "./icons/hirelawyericon";
 import HelpIcon from "./icons/helpicon";
+import { motion } from "framer-motion";
 
 const getIcon = (iconName, stroke) => {
 	switch (iconName) {
@@ -110,9 +111,13 @@ const SideNav = ({ open, openSide }) => {
 
 			<div>
 				{open ? (
-					<div
-						style={{ zIndex: 30 }}
-						className="fixed h-screen w-[295px] pl-[32px] pt-[35px] bg-white "
+					<motion.div
+						initial={{ x: -100 }}
+						animate={{ x: 0 }}
+						exit={{ x: -100 }}
+						transition={{ duration: 0.5 }}
+						style={{ zIndex: 60 }}
+						className="fixed overflow-y-scroll h-screen w-[295px] pl-[32px] pt-[35px]  bg-white pb-4 "
 					>
 						<div className="mb-[40px] flex flex-row justify-between">
 							<Image
@@ -200,7 +205,7 @@ const SideNav = ({ open, openSide }) => {
 								<button className=" mt-4 w-[80%] rounded-md h-auto bg-[#67b467] text-center mx-auto py-2 ">Learn More</button>
 							</div>
 						</div>
-					</div>
+					</motion.div>
 				) : (
 					<div></div>
 				)}
