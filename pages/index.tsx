@@ -14,6 +14,7 @@ import AOS from "aos";
 import { useEffect, useState } from "react";
 import Menu from "components/MenuComp";
 import { motion } from "framer-motion";
+import Slider from "components/Slider";
 
 const Home: NextPage = () => {
 	useEffect(() => {
@@ -69,24 +70,8 @@ const Home: NextPage = () => {
 							complaints easily
 						</p>
 
-						<div>
-							{[
-								{ topText: "VENDOR DON BLOCK YOU AFTER YOU MAKE", buttomText: "PAYMENT ONLINE?" },
-								{ topText: "DEBITED FOR A TRANSFER AND RECIPIENT NOT", buttomText: "CREDITED?" },
-								{ topText: "WHAT I ORDERED VERSUS WHAT I GOT", buttomText: "" },
-							].map(
-								(text, index) =>
-									index == currentSlide && (
-										<motion.div key={index}>
-											{
-												<p className="mt-4 font-semibold sm:text-[14px] px-[15px] sm:px-[0]">
-													{text.topText} <br />
-													{text.buttomText}
-												</p>
-											}
-										</motion.div>
-									)
-							)}
+						<div className="lg:w-[380px] lg:mx-auto  ">
+							<Slider />
 						</div>
 
 						<img
