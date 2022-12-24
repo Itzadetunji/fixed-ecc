@@ -7,7 +7,7 @@ const ScamCard: React.FC<ScamCardProps> = ({ data }) => {
 	return (
 		<div className="w-full h-[197px] bg-[#f9fafc] flex flex-col justify-center shadow-lg px-4">
 			<div className="flex flex-col justify-start text-sm">
-				<p className=" font-[600] text-[#1a1a1a]">Francis Chukwuemeka</p>
+				<p className=" font-[600] text-[#1a1a1a]">{data.scammer}</p>
 				<p className=" font-normal text-[#5b5959]  ">{data.bankAccountDetails.input1}</p>
 			</div>
 			<div className="w-full my-4 mx-auto border-solid border border-[#c1c1c1] bg-[#c1c1c1] h-0"></div>

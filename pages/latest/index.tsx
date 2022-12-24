@@ -21,11 +21,16 @@ const LatestScams: NextPage = () => {
 	const [expand, setExpand] = useState(false);
 	const maxResultsPerPage = 20;
 	const maxResultsPerSmallPage = 6;
+	const getMatches = (obj) => {
+		const arrayOfItems: string[] = Object.values(obj);
 
+		return arrayOfItems.some((item) => item.toLowerCase().includes(searchText.toLowerCase()));
+	};
 	const handleSearch = () => {
 		setResultIndicatorShowing(true);
 
-		const result = scamData.filter((item) => Object.values(item.phoneNumber).includes(searchText) || Object.values(item.socialMediaHandle).includes(searchText) || Object.values(item.bankAccountDetails).includes(searchText) || Object.values(item.website).includes(searchText) || item.scammer.includes(searchText));
+		const result = scamData.filter((item) => getMatches(item.phoneNumber) || getMatches(item.socialMediaHandle) || getMatches(item.bankAccountDetails) || getMatches(item.website) || item.scammer.toLowerCase().includes(searchText.toLowerCase()));
+
 		if (result.length !== 0 && searchText.length !== 0) {
 			setSearchResults(result);
 			setAreSearchResults(true);
@@ -175,7 +180,7 @@ const LatestScams: NextPage = () => {
 										numberOfPages={Math.ceil(searchResults.length / maxResultsPerPage)}
 									/>
 								</div>
-								{/* <div className="lg:hidden">
+								<div className="lg:hidden">
 									<PaginationSection
 										pageSize={pageSize}
 										searchResults={searchResults}
@@ -184,7 +189,7 @@ const LatestScams: NextPage = () => {
 										setCurrentSearchPage={setCurrentSearchPage}
 										numberOfPages={Math.ceil(searchResults.length / maxResultsPerSmallPage)}
 									/>
-								</div> */}
+								</div>
 							</>
 						)}
 					</div>
