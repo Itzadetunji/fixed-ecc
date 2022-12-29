@@ -8,6 +8,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import NotificationContextProvider from "../components/Contexts/NotificationContext";
 import UserContextProvider from "../components/Contexts/UserContext";
+import SideNavContextProvider from "components/Contexts/SideNavContext";
 
 const queryClient = new QueryClient();
 function MyApp({ Component, pageProps, router }: AppProps) {
@@ -19,10 +20,12 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 					<CookiesProvider>
 						<NotificationContextProvider>
 							<UserContextProvider>
-								<Component
-									{...pageProps}
-									key={router.route}
-								/>
+								<SideNavContextProvider>
+									<Component
+										{...pageProps}
+										key={router.route}
+									/>
+								</SideNavContextProvider>
 							</UserContextProvider>
 						</NotificationContextProvider>
 					</CookiesProvider>

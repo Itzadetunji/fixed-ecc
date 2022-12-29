@@ -73,7 +73,7 @@ const StatisticsPage: NextPage = (props) => {
 							hasWhiteText={true}
 						/>
 						<div className="relative mx-auto text-center bg-eccblue">
-							<div className="pt-9 lg:pt-48 pb-14 lg:pb-[233px]">
+							<div className="pt-20 lg:pt-48 pb-14 lg:pb-[233px]">
 								<p className="mx-auto text-2xl lg:text-5xl font-bold text-white">
 									Be informed, stay woke,
 									<br /> stay smart!

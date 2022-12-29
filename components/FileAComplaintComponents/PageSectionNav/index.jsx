@@ -44,7 +44,6 @@ const PageSectionNav = ({ currentPage, setPage }) => {
 					Message="Resolution"
 					isActive={3 <= currentPage ? true : false}
 				/>
-				<PageIndicator />
 			</div>
 		</div>
 	);

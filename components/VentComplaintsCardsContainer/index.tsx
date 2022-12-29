@@ -30,7 +30,7 @@ export const VentComplaintsCardsContainer: React.FC = (props) => {
 		},
 	]);
 	return (
-		<div className="flex flex-col gap-7 max-w-[472px] px-[20px]">
+		<div className="flex flex-col gap-3 mt-6 lg:gap-7 max-w-[472px] px-[20px]">
 			{VentComplaintsCardInfo.map((VentComplaintCard) => (
 				<VentComplaintsCard
 					title={VentComplaintCard.title}

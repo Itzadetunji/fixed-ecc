@@ -18,11 +18,11 @@ const Menu: NextPage<MenuProps> = ({ setExpand, expand }) => {
 		<>
 			<div className="h-screen w-screen fixed z-20 bg-clearblue">
 				<header className="h-1/6">
-					<div className="flex items-center">
+					<div className="flex items-center h-20">
 						<Link href="/">
 							<img
 								src="/Images/logo.svg"
-								className="h-32 w-32 -my-[10px]"
+								className="-ml-[10px] h-32 w-32"
 								alt="Adetunji's Adeyinka's Logo"
 							/>
 						</Link>

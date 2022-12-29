@@ -3,16 +3,18 @@ import PageSectionNav from "../../../components/FileAComplaintComponents/PageSec
 
 import type { NextPage } from "next";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import Page1 from "../../../components/FileAComplaintComponents/Page1";
 import Page2 from "../../../components/FileAComplaintComponents/Page2";
 import Page3 from "../../../components/FileAComplaintComponents/Page3";
+import { SideNavContext } from "components/Contexts/SideNavContext";
 
 import { motion } from "framer-motion";
 import DashboardSection from "components/FileAComplaintComponents/DashboardSection";
 
 const FileComplaint: NextPage = () => {
+	const { Open } = useContext(SideNavContext);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [productCategory, setProductCategory] = useState("");
 	const [titleOfComplaint, setTitleOfComplaint] = useState("");
@@ -38,7 +40,7 @@ const FileComplaint: NextPage = () => {
 	};
 	return (
 		<NavWrapper>
-			<div>
+			<div className={` ${Open && `h-screen overflow-hidden`}`}>
 				<PageSectionNav
 					setPage={setCurrentPage}
 					currentPage={currentPage}
