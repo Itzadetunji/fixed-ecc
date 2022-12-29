@@ -116,36 +116,38 @@ tbody tr:nth-of-type(odd) {
 	filter: drop-shadow(0px 4px 4px #404040);
 }
 
-.howItWorksContent1 .howItWorksCard:nth-child(1) {
-	background-color: #0b63c5;
-}
+@media (min-width: 1024px) {
+	.howItWorksContent1 .howItWorksCard:nth-child(1) {
+		background-color: #0b63c5;
+	}
 
-.howItWorksContent1 .howItWorksCard:nth-child(2) {
-	background-color: #020d1b;
-}
+	.howItWorksContent1 .howItWorksCard:nth-child(2) {
+		background-color: #020d1b;
+	}
 
-.howItWorksContent1 .howItWorksCard:nth-child(3) {
-	background-color: #f1f7fe;
-}
+	.howItWorksContent1 .howItWorksCard:nth-child(3) {
+		background-color: #f1f7fe;
+	}
 
-.howItWorksContent1 .howItWorksCard:nth-child(3) .howItWorksCardText {
-	color: #0b63c5;
-}
+	.howItWorksContent1 .howItWorksCard:nth-child(3) .howItWorksCardText {
+		color: #0b63c5;
+	}
 
-.howItWorksContent2 .howItWorksCard:nth-child(1) {
-	background-color: #f1f7fe;
-}
+	.howItWorksContent2 .howItWorksCard:nth-child(1) {
+		background-color: #f1f7fe;
+	}
 
-.howItWorksContent2 .howItWorksCard:nth-child(1) .howItWorksCardText {
-	color: #0b63c5;
-}
+	.howItWorksContent2 .howItWorksCard:nth-child(1) .howItWorksCardText {
+		color: #0b63c5;
+	}
 
-.howItWorksContent2 .howItWorksCard:nth-child(2) {
-	background-color: #0b63c5;
-}
+	.howItWorksContent2 .howItWorksCard:nth-child(2) {
+		background-color: #0b63c5;
+	}
 
-.howItWorksContent2 .howItWorksCard:nth-child(3) {
-	background-color: #020d1b;
+	.howItWorksContent2 .howItWorksCard:nth-child(3) {
+		background-color: #020d1b;
+	}
 }
 
 .howItWorksCard:last-of-type .pointerShadow {

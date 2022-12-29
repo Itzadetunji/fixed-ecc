@@ -124,7 +124,7 @@ const LatestScams: NextPage = () => {
 							>
 								<Image
 									src="/icons/filter_list_icon.svg"
-									alt="search icon"
+									alt="filter icon"
 									layout="fill"
 									objectFit="contain"
 								/>
@@ -261,7 +261,7 @@ const LatestScams: NextPage = () => {
 						</div>
 					</section>
 					<KonfamPayCallout />
-					{/* <Footer /> */}
+					<Footer />
 				</div>
 			)}
 		</div>
