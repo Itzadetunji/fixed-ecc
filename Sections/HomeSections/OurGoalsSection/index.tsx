@@ -23,11 +23,11 @@ const OurGoalsSection: React.FC = (props) => {
 		<div>
 			<h1
 				data-aos="fade-up"
-				className=" text-[22px] px-[30px] md:text-[32px] font-semibold lg:font-medium poppinsFont max-w-[800px] text-center mx-auto mt-[72px] mb-[90px]"
+				className="text-xl -tracking-[0.02em] px-[20px] lg:leading-[52.2px] lg:text-[32px] font-semibold lg:font-medium poppinsFont max-w-[800px] text-center mx-auto mt-8 md:mt-[72px] mb-4 md:mb-[60px] xl:mb-[90px] uppercase"
 			>
 				We are solely bent on redefining customer-buyer relationships in Nigeria.
 			</h1>
-			<div className="mt-[50px] flex flex-col lg:flex-row justify-center items-center px-[30px] lg:px-0 gap-[20px] mb-[114px]">
+			<div className="md:mt-[50px] flex flex-col lg:flex-row justify-center items-center px-5 md:px-[30px] lg:px-0 gap-[20px] mb-6 md:mb-12 lg:mb-[114px]">
 				{goalCardInfo.map((card, index) => (
 					<GoalCard
 						title={card.title}

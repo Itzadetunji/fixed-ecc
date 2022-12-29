@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import { IconContainer } from "../";
 
@@ -11,26 +12,30 @@ interface HowItWorksCardProps {
 export const HowItWorksCard: React.FC<HowItWorksCardProps> = ({ title, description, icon, bgIcon }) => {
 	return (
 		<>
-			<div className={`w-full max-w-[270px] md:w-[320px] md:max-w-[395px] xl:w-[395px] h-full md:h-[380px] lg:h-[380px] xl:h-[416px] flex flex-col items-center justify-center text-center px-[27px] rounded-xl pt-[77px] pb-[96px] relative howItWorksCard`}>
-				<div className="w-[77px] md:w-[100px] lg:w-[114px] h-[77px] md:h-[114px] lg:h-[114px] rounded-full flex items-center justify-center absolute -top-[14%] z-10">
-					<img
+			<div className={`w-full max-w-[270px] md:max-w-[300px] xl:w-[395px] h-full lg:h-[380px] xl:h-[416px] flex flex-col items-center justify-center text-center px-5 lg:px-8 rounded-xl lg:pt-[77px] pb-0 lg:pb-24 relative howItWorksCard`}>
+				<div className="w-[82px] md:w-[105px] lg:w-[120px] h-[82px] md:h-[105px] lg:h-[120px] relative lg:absolute lg:-top-[14%] z-10 border-white rounded-full border-[5px]">
+					<Image
 						src={`/icons/how-it-works-icons/${icon}.svg`}
-						className=""
-						alt=""
+						alt="how it works icon"
+						layout="fill"
+						objectFit="contain"
 					/>
 				</div>
-				<div className="w-[81px] md:w-[110px] lg:w-[120px] h-[80px] md:h-[113px] lg:h-[120px] absolute -top-[14.5%] bg-white rounded-full z-[1]" />
-				<div className="hidden lg:block w-[68px] h-[68px] pointerShadow bg-white rounded-full absolute right-[-33px] z-[10]">
+				<div className="hidden lg:block w-[64px] h-[64px] pointerShadow bg-white rounded-full absolute right-[-33px] z-[10]">
 					<div className="flex items-center justify-center w-full h-full">
-						<img
-							src="/icons/how-it-works-icons/pointer.svg"
-							alt=""
-						/>
+						<div className="relative w-[31px] h-[31px]">
+							<Image
+								src="/icons/how-it-works-icons/pointer.svg"
+								alt="play icon"
+								layout="fill"
+								objectFit="contain"
+							/>
+						</div>
 					</div>
 				</div>
-				<div className="text-white howItWorksCardText">
-					<p className="text-[16px] md:text-[24px] font-[600]">{title}</p>
-					<p className="text-[13px] md:text-[20px] mt-[40px] leading-[30px]">{description}</p>
+				<div className="text-[#000000DE] lg:text-white howItWorksCardText mt-9">
+					<p className="text-[20px] md:text-[24px] font-[600]">{title}</p>
+					<p className="text-base md:text-[20px] mt-3 lg:mt-10 leading-5 lg:leading-[30px]">{description}</p>
 				</div>
 			</div>
 		</>

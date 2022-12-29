@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import Menu from "components/MenuComp";
 import { motion } from "framer-motion";
 import Slider from "components/Slider";
+import Image from "next/image";
 
 const Home: NextPage = () => {
 	useEffect(() => {
@@ -63,8 +64,8 @@ const Home: NextPage = () => {
 						setExpand={setExpand}
 						searchIconIsPresent={true}
 					/>
-					<div className=" pt-44 mx-auto items-center justify-center text-center bg-clearblue">
-						<p className="mx-auto text-[40px] sm:text-[60px] font-bold">
+					<div className=" pt-[93px] mx-auto items-center justify-center text-center bg-clearblue">
+						<p className="mx-auto px-2 text-[40px] sm:text-[60px] font-bold -tracking-[0.02em]">
 							Make & <span className="text-eccblue">resolve</span>
 							<br />
 							complaints easily
@@ -73,17 +74,19 @@ const Home: NextPage = () => {
 						<div className="lg:w-[380px] lg:mx-auto  ">
 							<Slider />
 						</div>
-
-						<img
-							src="/Images/man-freaked-out.png"
-							alt=""
-							className="mx-auto"
-						/>
+						<div className="relative w-full lg:w-[713px] h-[223px] sm:h-[380px] lg:h-[423px] mx-auto">
+							<Image
+								src="/Images/man-freaked-out.png"
+								alt="man freaked out"
+								layout="fill"
+								objectFit="contain"
+							/>
+						</div>
 					</div>
 					<OurGoalsSection />
-					<Numbers />
 					<VentComplaintsSection />
 					<HowDoesItWork />
+					<Numbers />
 					<Testimonials />
 					<PartnersSection />
 					<PostaComplaint />
