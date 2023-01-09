@@ -9,8 +9,10 @@ import axios from "axios";
 import { validateVerifyInputs } from "../../components/Verification/FormValidation";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
-
+import { verifyAccount } from "api/users.js";
 import VerificationInputGroup from "../../components/Verification/VerificationInputGroup";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const VerificationPage: NextPage = () => {
 	const [phoneNumber, setPhoneNumber] = useState("");
@@ -38,6 +40,13 @@ const VerificationPage: NextPage = () => {
 	const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 	const router = useRouter();
 
+	//check if the user details are in the cookies. If not redirect the user to the login page
+	const user = router.query.id;
+	useEffect(() => {
+		if (!cookies.user.userId && !user) {
+			router.replace("/login");
+		}
+	}, []);
 	const onPhoneNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const valid_characters = "1234567890";
 		if (valid_characters.includes(e.target.value[e.target.value.length - 1]) || e.target.value == "") setPhoneNumber(e.target.value);
@@ -88,27 +97,28 @@ const VerificationPage: NextPage = () => {
 				middleName: "",
 			});
 			const payload = { dob, phoneNumber, address, NIN, state, firstName, lastName, middleName };
-			const url = `${process.env.NEXT_PUBLIC_BACKEND_HOST}users/verify/${cookies.user._id}`;
+
 			try {
-				const result = await axios.post(url, payload);
-				console.log(result);
-				const { token } = result.data;
-				const user = jwt_decode(token);
-				console.log(token, user);
-				setCookie("user", user);
-				router.push("/dashboard");
-			} catch (err: any) {
-				console.log(err);
-				if (err.response.data.message) {
-					alert(err.response.data.message);
-				} else {
-					alert("Something went wrong on the server");
+				const res = await verifyAccount(payload, user);
+				if (res.status >= 400 && res.message) {
+					toast.error(res.message);
+				} else if (res.status < 400) {
+					console.log(res.message);
+					setCookie("user", res.message);
+					if (!cookies.user.emailVerified) {
+						router.replace({ pathname: "/verify_email", query: { id: user } });
+					} else {
+						router.replace("/dashboard");
+					}
 				}
+			} catch (err: any) {
+				toast.error("Something went wrong on the server");
 			}
 		}
 	};
 	return (
 		<div className="overflow-hidden">
+			<ToastContainer />
 			<div className="w-screen h-screen poppinsFont hidden lg:grid grid-cols-[47%_53%]">
 				<div className="relative h-screen w-full bg-gradient-to-br from-eccblue to-[#073D79]">
 					<img

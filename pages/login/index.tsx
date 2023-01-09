@@ -7,8 +7,11 @@ import { motion } from "framer-motion";
 import { AsyncSubmitButton, GoogleLoginButton, LoginInputGroup } from "../../components/";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
-import jwt_decode from "jwt-decode";
+import "react-toastify/dist/ReactToastify.css";
 import client from "../api/Services/AxiosClient";
+
+import { authenticate } from "./../../api/users";
+import { ToastContainer, toast } from "react-toastify";
 
 const LoginPage: NextPage = () => {
 	const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -48,26 +51,33 @@ const LoginPage: NextPage = () => {
 			try {
 				setLoading(true);
 				const payload = { email, password };
-				const res = await client.post("/auth", payload);
 				setBackendError("");
-				const token = res.data.token;
-				const user = jwt_decode(token);
-				setCookie("user", user);
-				console.log(user);
-				if (cookies.user && !cookies.user.emailVerified) {
-					router.push("/verify_email");
-				} else if (cookies.user && !cookies.user.accountVerified) {
-					console.log(cookies.user.accountVerified);
-					router.push("/verify");
-				} else {
-					router.push("/dashboard");
+
+				const res = await authenticate(payload);
+				console.log(res);
+				if (res.status == 404 && res.message) {
+					toast.error(res.message);
+					setBackendError(res.message);
+				} else if (res.status == 400 && res.message) {
+					toast.error(res.message);
+					setBackendError(res.message);
+				} else if (res.status < 400) {
+					const user = res.message;
+					setCookie("user", user);
+					console.log(user);
+					if (!user.accountVerified) {
+						router.replace({ pathname: "/verify", query: { id: cookies.user.userId } });
+					} else if (!user.emailVerified) {
+						router.replace({ pathname: "/verify_email", query: { id: cookies.user.userId } });
+					} else {
+						router.push("/dashboard");
+					}
 				}
 			} catch (err: any) {
-				if (err.response.status == 404 && err.response.data.message) setBackendError(err.response.data.message);
-				else if (err.response.status == 400 && err.response.data.message) setBackendError(err.response.data.message);
-				else alert("Something went wrong🥲 Kindly check your internet connection🥲");
+				toast.error("Something went wrong🥲 Kindly check your internet connection🥲");
 			} finally {
 				setLoading(false);
+				console.log(backendError);
 			}
 		}
 	};
@@ -76,6 +86,7 @@ const LoginPage: NextPage = () => {
 	}, []);
 	return (
 		<>
+			<ToastContainer />
 			<div className="w-screen h-screen poppinsFont hidden lg:grid grid-cols-[47%_53%]">
 				<div className="relative h-screen w-full bg-gradient-to-br from-eccblue to-[#073D79]">
 					<img

@@ -11,6 +11,9 @@ import Popup, { ErrorPopUp, ResendCodeSuccessfulPopUp } from "../../components/L
 import client from "../api/Services/AxiosClient";
 import Joi from "joi";
 import jwtDecode from "jwt-decode";
+import { sendEmail, verifyEmail } from "api/users";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const validateCode = (payload: { code: string }) => {
 	const schema = Joi.object({
@@ -21,7 +24,6 @@ const validateCode = (payload: { code: string }) => {
 
 const RecoverPage: NextPage = () => {
 	const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-
 	const [loading, setLoading] = useState(false);
 	const [email, setEmail] = useState("");
 	const [backendError, setBackendError] = useState("");
@@ -32,6 +34,13 @@ const RecoverPage: NextPage = () => {
 	const [resendButtonDisabled, setResendButtonDisabled] = useState(false);
 
 	const router = useRouter();
+	//check if the user details are in the cookies. If not redirect the user to the login page
+	const user = router.query.id;
+	useEffect(() => {
+		if (!cookies.user.userId && !user) {
+			router.replace("/login");
+		}
+	}, []);
 
 	const changeValue = ({ currentTarget: input }: { currentTarget: any }) => {
 		if ("0123456789".includes(input.value[input.value.length - 1]) || input.value == "") setCode(input.value);
@@ -40,12 +49,17 @@ const RecoverPage: NextPage = () => {
 	const resendCode = async () => {
 		try {
 			setResendButtonDisabled(true);
-			const response = await client.post(`/users/verify_email/${cookies.user._id}/resend_code`);
-			setResendText(response.data?.message);
+			const res = await sendEmail(user);
+			if (res.status > 400) {
+				toast.error(res.message);
+				setResendText(res.message);
+			}
+			if (res.status < 400) {
+				toast.success(res.message);
+				setResendText(res.message);
+			}
 		} catch (err: any) {
-			console.log(err.response);
-			if (err.response.data) alert(err.response.data?.message);
-			else alert("Something went wrong🥲 Could not send code");
+			toast.error("Something went wrong. Could not send code");
 		} finally {
 			setResendButtonDisabled(false);
 		}
@@ -62,23 +76,35 @@ const RecoverPage: NextPage = () => {
 				setError(error.details[0].message);
 			} else {
 				setError("");
-				const response = await client.post(`/users/verify_email/${cookies.user._id}`, payload);
-				if (response.data.token) {
-					const user: any = jwtDecode(response.data.token);
-					console.log(user);
-					if (user.emailVerified) {
-						setCookie("user", user, {
-							path: "/",
-							expires: new Date(Date.now() + 2 * 86400000),
-						});
-						router.replace("/verify");
+				const res = await verifyEmail();
+				if (res.status >= 400) {
+					setBackendError(res.message);
+					toast.error(res.message);
+				}
+				if (res.status < 400) {
+					toast.success(res.message);
+					if (!cookies.user.acountVerified) {
+						router.replace({ pathname: "/verify", query: { id: user } });
+					} else {
+						router.replace("/dashboard");
 					}
 				}
+				// const response = await client.post(`/users/verify_email/${cookies.user._id}`, payload);
+				// if (response.data.token) {
+				// 	const user: any = jwtDecode(response.data.token);
+				// 	console.log(user);
+				// 	if (user.emailVerified) {
+				// 		setCookie("user", user, {
+				// 			path: "/",
+				// 			expires: new Date(Date.now() + 2 * 86400000),
+				// 		});
+				// 		router.replace("/verify");
+				// 	}
+				// }
 				setBackendError("");
 			}
 		} catch (err: any) {
-			if (err.response.status == 400) alert(err.response.data.message);
-			else if (err.response.data?.message) setBackendError(err.response.data?.message);
+			toast.error("An error occured when verifying the OTP. Kindly try again later");
 		} finally {
 			setLoading(false);
 		}
@@ -86,12 +112,13 @@ const RecoverPage: NextPage = () => {
 	useEffect(() => {
 		if (!cookies.user) router.push("/login");
 		else if (cookies.user && !cookies.user.emailVerified) setEmail(cookies.user.email);
-		else {
+		else if (cookies.user && !cookies.user.accountVerified) {
 			router.push("/verify");
 		}
 	}, []);
 	return (
 		<>
+			<ToastContainer />
 			<div className="w-screen h-screen poppinsFont hidden lg:grid grid-cols-[47%_53%] overflow-hidden">
 				<div className="relative h-screen w-full bg-gradient-to-br from-eccblue to-[#073D79]">
 					<img
@@ -230,7 +257,7 @@ const RecoverPage: NextPage = () => {
 					<div className="w-full px-[14px] flex flex-col overflow-y-auto pt-[40px] pb-[45px] bg-white rounded-[20px]">
 						<div>
 							<p className="text-[18px] text-center font-semibold">Verify your email</p>
-							<p className="text-eccblue text-center mt-[10px] text-[14px]">Vokeonoriode@gmail.com</p>
+							<p className="text-eccblue text-center mt-[10px] text-[14px]">{email}</p>
 							<form className="mt-[15px]">
 								<div className="flex flex-col gap-y-[10px] mb-[40px]">
 									<p className="text-[14px] md:text-[16px] lg:text-[20px]">verification code</p>
