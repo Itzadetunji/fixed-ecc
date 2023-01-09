@@ -37,7 +37,7 @@ const RecoverPage: NextPage = () => {
 	//check if the user details are in the cookies. If not redirect the user to the login page
 	const user = router.query.id;
 	useEffect(() => {
-		if (!cookies.user.id && router.query.id) {
+		if (!cookies.user.userId && !user) {
 			router.replace("/login");
 		}
 	}, []);

@@ -52,7 +52,7 @@ const LoginPage: NextPage = () => {
 				setLoading(true);
 				const payload = { email, password };
 				setBackendError("");
-				let user = {};
+
 				const res = await authenticate(payload);
 				console.log(res);
 				if (res.status == 404 && res.message) {
@@ -62,14 +62,13 @@ const LoginPage: NextPage = () => {
 					toast.error(res.message);
 					setBackendError(res.message);
 				} else if (res.status < 400) {
-					user = res.message;
-					console.log(user);
+					const user = res.message;
 					setCookie("user", user);
-					if (cookies.user && !cookies.user.accountVerified) {
-						console.log(cookies.user.accountVerified);
-						router.push("/verify");
-					} else if (cookies.user && cookies.user.emailVerified) {
-						router.push("/verify_email");
+					console.log(user);
+					if (!user.accountVerified) {
+						router.replace({ pathname: "/verify", query: { id: cookies.user.userId } });
+					} else if (!user.emailVerified) {
+						router.replace({ pathname: "/verify_email", query: { id: cookies.user.userId } });
 					} else {
 						router.push("/dashboard");
 					}

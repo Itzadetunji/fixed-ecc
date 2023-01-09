@@ -43,7 +43,7 @@ const VerificationPage: NextPage = () => {
 	//check if the user details are in the cookies. If not redirect the user to the login page
 	const user = router.query.id;
 	useEffect(() => {
-		if (!cookies.user.id) {
+		if (!cookies.user.userId && !user) {
 			router.replace("/login");
 		}
 	}, []);
@@ -103,6 +103,7 @@ const VerificationPage: NextPage = () => {
 				if (res.status >= 400 && res.message) {
 					toast.error(res.message);
 				} else if (res.status < 400) {
+					console.log(res.message);
 					setCookie("user", res.message);
 					if (!cookies.user.emailVerified) {
 						router.replace({ pathname: "/verify_email", query: { id: user } });

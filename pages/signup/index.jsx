@@ -65,14 +65,14 @@ const SignupPage = () => {
 					toast.error(res.message);
 				} else if (res.status < 400) {
 					const user = {
-						id: res.message.user._id,
+						userId: res.message.user._id,
 						email: res.message.user.email,
 						accountVerified: res.message.user.accountVerified,
 						emailVerified: res.message.user.emailVerified,
 					};
 					setCookie("user", user);
 					console.log(user);
-					router.push("/verify_email");
+					router.replace({ pathname: "/verify_email", query: { id: user.userId } });
 				}
 			} catch (err) {
 				toast.error("Something went wrong. Please check your internet connection");
