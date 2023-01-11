@@ -10,6 +10,10 @@ import { useRouter } from "next/router";
 import client from "../api/Services/AxiosClient";
 import { useQuery } from "react-query";
 import jwtDecode from "jwt-decode";
+import { createUser } from "../../api/users";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { sendEmail } from "./../../api/users";
 
 const SignupPage = () => {
 	const [cookies, setCookie] = useCookies(["user"]);
@@ -27,7 +31,7 @@ const SignupPage = () => {
 	const passwordsMatch = (password, confirmPassword) => {
 		return password == confirmPassword;
 	};
-	const [token, setToken] = useState("");
+
 	const schema = Joi.object({
 		email: Joi.string()
 			.min(3)
@@ -56,19 +60,22 @@ const SignupPage = () => {
 			try {
 				setLoading(true);
 				const payload = { email, password };
-				const response = await client.post("/users", payload);
-				console.log(token);
-				if (response.data.token) {
-					const user = jwtDecode(response.data.token);
+				const res = await createUser(payload);
+				if (res.status >= 400) {
+					toast.error(res.message);
+				} else if (res.status < 400) {
+					const user = {
+						userId: res.message.user._id,
+						email: res.message.user.email,
+						accountVerified: res.message.user.accountVerified,
+						emailVerified: res.message.user.emailVerified,
+					};
 					setCookie("user", user);
-					router.push("/verify_email");
+					console.log(user);
+					router.replace({ pathname: "/verify_email", query: { id: user.userId } });
 				}
 			} catch (err) {
-				if (err.response.status == 500) alert("Something went wrong. Please check your internet connection");
-				else {
-					if (!err.response.data) alert("Something went wrong. Please check your internet connection");
-					else setBackendError(err.response.data.message);
-				}
+				toast.error("Something went wrong. Please check your internet connection");
 			} finally {
 				setLoading(false);
 			}
@@ -76,6 +83,7 @@ const SignupPage = () => {
 	};
 	return (
 		<>
+			<ToastContainer />
 			<div className="w-screen h-screen poppinsFont lg:grid grid-cols-[47%_53%] overflow-hidden hidden ">
 				<div className="relative h-screen w-full bg-gradient-to-br from-eccblue to-[#073D79]">
 					<img
@@ -207,6 +215,7 @@ const SignupPage = () => {
 										value={email}
 										setValue={setEmail}
 										type="email"
+										errorMessage={errors.email}
 									/>
 									<LoginInputGroup
 										label="Password"
@@ -214,10 +223,19 @@ const SignupPage = () => {
 										value={password}
 										setValue={setPassword}
 										type="password"
+										errorMessage={errors.password}
+									/>
+									<LoginInputGroup
+										label="Confirm Password"
+										placeholder="Enter Password"
+										value={confirmPassword}
+										setValue={setConfirmPassword}
+										type="password"
+										errorMessage={errors.confirmPassword}
 									/>
 								</div>
 								<button
-									onClick={(e) => e.preventDefault()}
+									onClick={onSubmit}
 									className="w-full text-[14px] md:text-[20px] text-white py-[14px] md:py-[18px] xl:py-[22px] rounded-xl bg-eccblue mt-[30px]"
 								>
 									Continue

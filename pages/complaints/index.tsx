@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { Key, useState } from "react";
+import { Key, useState, useEffect } from "react";
 import { Complaint, Footer, NavBar, PaginationButton } from "../../components";
 import PaginationSection from "../../components/LatestScams/PaginationSection";
 // import ComplaintData from "../../Components/Complaint/ComplaintData";
@@ -7,20 +7,28 @@ import PostaComplaint from "../../Sections/HomeSections/PostaComplaint";
 import SearchResultIndicator from "../../components/LatestScams/SearchResultIndicator";
 import { useQuery } from "react-query";
 import Menu from "components/MenuComp";
+import { _getComplaints } from "../../api/complaints";
+import { bool } from "joi";
+import { useCookies } from "react-cookie";
 
 const Index: NextPage = (props) => {
 	const [expand, setExpand] = useState(false);
 	const [page, setPage] = useState(1);
-	const { data: complaints, status } = useQuery(["complaints", page], ({ queryKey }) => fetchComplaints(queryKey, page));
+	const [cookie, setCookie, removeCookie] = useCookies();
+	console.log(cookie);
 	const [complaintData, setComplaintData] = useState([]);
 	const [searchResults, setSearchResults] = useState([]);
-	const fetchComplaints = async (queryKey: (string | number)[], page: number) => {
-		const res = await fetch(`http://127.0.0.1:4000/api/complaints`).then((response) => response.json());
-
-		setComplaintData(res);
-		setSearchResults(res);
-		return res;
-	};
+	const [loading, setLoading] = useState<boolean>(true);
+	const [error, setError] = useState<boolean>(false);
+	const { isLoading, data: complaints, isError } = useQuery("complaints", _getComplaints);
+	useEffect(() => {
+		if (complaints && complaints.data && complaints.data.data) {
+			setComplaintData(complaints.data.data);
+		}
+		setLoading(isLoading);
+		setError(isError);
+	}, [complaints]);
+	console.log(complaintData, loading, error);
 	const [searchText, setSearchText] = useState("");
 	const [areSearchResults, setAreSearchResults] = useState(false);
 	const [resultIndicatorShowing, setResultIndicatorShowing] = useState(false);
@@ -95,9 +103,14 @@ const Index: NextPage = (props) => {
 							)}
 						</div>
 
-						{status === "loading" && <div>Loading data...</div>}
-						{status === "error" && <div>Error fetching data</div>}
-						{status === "success" && searchResults.length !== 0 && (
+						{loading && (
+							<div className="w-full flex justify-center items-center">
+								{" "}
+								<div className="spinner-1"></div>
+							</div>
+						)}
+						{error && <div>Error fetching data</div>}
+						{complaintData && searchResults.length !== 0 && (
 							<>
 								<div className="mt-36 ml-16 mr-40">
 									<div className="space-y-10 mb-8">
