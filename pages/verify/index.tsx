@@ -9,7 +9,7 @@ import axios from "axios";
 import { validateVerifyInputs } from "../../components/Verification/FormValidation";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
-import { verifyAccount } from "api/users.js";
+import { verifyAccount, sendEmail, checkVerified } from "api/users.js";
 import VerificationInputGroup from "../../components/Verification/VerificationInputGroup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -103,9 +103,10 @@ const VerificationPage: NextPage = () => {
 				if (res.status >= 400 && res.message) {
 					toast.error(res.message);
 				} else if (res.status < 400) {
-					console.log(res.message);
 					setCookie("user", res.message);
-					if (!cookies.user.emailVerified) {
+					const verificationStatus = await checkVerified(user);
+					console.log(!verificationStatus.message.emailVerified);
+					if (!verificationStatus.message.emailVerified) {
 						router.replace({ pathname: "/verify_email", query: { id: user } });
 					} else {
 						router.replace("/dashboard");
