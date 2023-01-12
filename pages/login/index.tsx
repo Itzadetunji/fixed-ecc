@@ -10,8 +10,9 @@ import { useRouter } from "next/router";
 import "react-toastify/dist/ReactToastify.css";
 import client from "../api/Services/AxiosClient";
 
-import { authenticate } from "./../../api/users";
+import { authenticate, sendEmail } from "./../../api/users";
 import { ToastContainer, toast } from "react-toastify";
+import { checkVerified } from "api/users";
 
 const LoginPage: NextPage = () => {
 	const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -54,7 +55,7 @@ const LoginPage: NextPage = () => {
 				setBackendError("");
 
 				const res = await authenticate(payload);
-				console.log(res);
+
 				if (res.status == 404 && res.message) {
 					toast.error(res.message);
 					setBackendError(res.message);
@@ -64,11 +65,12 @@ const LoginPage: NextPage = () => {
 				} else if (res.status < 400) {
 					const user = res.message;
 					setCookie("user", user);
-					console.log(user);
-					if (!user.accountVerified) {
-						router.replace({ pathname: "/verify", query: { id: cookies.user.userId } });
-					} else if (!user.emailVerified) {
-						router.replace({ pathname: "/verify_email", query: { id: cookies.user.userId } });
+					const verificationStatus = await checkVerified(user.userId);
+					if (!verificationStatus.message.accountVerified) {
+						router.replace({ pathname: "/verify", query: { id: user.userId } });
+					} else if (!verificationStatus.message.emailVerified) {
+						sendEmail(cookies.user.userId);
+						router.replace({ pathname: "/verify_email", query: { id: user.userId } });
 					} else {
 						router.push("/dashboard");
 					}

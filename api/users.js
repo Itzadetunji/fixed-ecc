@@ -3,8 +3,13 @@ import jwt_decode from "jwt-decode";
 export const authenticate = async (payload) => {
 	try {
 		const res = await post("auth", {}, payload);
-		console.log(res);
-		return { status: res.status, message: res.data };
+		console.log(Object.keys(res.data));
+		if (Object.keys(res.data).includes("data")) {
+			res.data.data.userId = res.data.data.id;
+			return { status: res.status, message: res.data.data };
+		} else {
+			return { status: res.status, message: res.data };
+		}
 	} catch (error) {
 		console.log(error);
 		return { status: error.response.status, message: error.response.data.message };
@@ -19,9 +24,19 @@ export const createUser = async (payload) => {
 		return { status: error.response.status, message: error.response.data.message };
 	}
 };
-export const verifyEmail = async (payload) => {
+
+export const verifyEmail = async (user, payload) => {
 	try {
-		const res = post(`users/verify_email/${user}`, payload);
+		const res = await post(`users/verify_email/${user}`, {}, payload);
+		console.log(res);
+		return { status: res.status, message: jwt_decode(res.data.token) };
+	} catch (error) {
+		return { status: error.response.status, message: error.response.data.message };
+	}
+};
+export const checkVerified = async (user) => {
+	try {
+		const res = await post(`auth/is_verified/${user}`);
 		return { status: res.status, message: res.data };
 	} catch (error) {
 		return { status: error.response.status, message: error.response.data.message };
@@ -30,8 +45,10 @@ export const verifyEmail = async (payload) => {
 export const sendEmail = async (user) => {
 	try {
 		const res = await post(`users/verify_email/${user}/resend_code`);
-		return { status: res.status, message: res.data };
+		console.log(res);
+		return { status: res.status, message: res.data.message };
 	} catch (error) {
+		console.log(error);
 		return { status: error.response.status, message: error.response.data.message };
 	}
 };
