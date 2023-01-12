@@ -13,6 +13,8 @@ import { verifyAccount, sendEmail, checkVerified } from "api/users.js";
 import VerificationInputGroup from "../../components/Verification/VerificationInputGroup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { LoginInputGroup } from "../../components/Login/LoginInputGroup";
+import { AsyncSubmitButton } from "../../components";
 
 const VerificationPage: NextPage = () => {
 	const [phoneNumber, setPhoneNumber] = useState("");
@@ -23,6 +25,7 @@ const VerificationPage: NextPage = () => {
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [middleName, setMiddleName] = useState("");
+	const [loading, setLoading] = useState(false);
 
 	const inputContainerRef = useRef<null | HTMLInputElement>(null);
 
@@ -52,7 +55,8 @@ const VerificationPage: NextPage = () => {
 		if (valid_characters.includes(e.target.value[e.target.value.length - 1]) || e.target.value == "") setPhoneNumber(e.target.value);
 	};
 
-	const onSubmit = async () => {
+	const onSubmit = async (e) => {
+		e.preventDefault();
 		const { error } = validateVerifyInputs({
 			phoneNumber,
 			dob,
@@ -99,6 +103,7 @@ const VerificationPage: NextPage = () => {
 			const payload = { dob, phoneNumber, address, NIN, state, firstName, lastName, middleName };
 
 			try {
+				setLoading(true);
 				const res = await verifyAccount(payload, user);
 				if (res.status >= 400 && res.message) {
 					toast.error(res.message);
@@ -114,6 +119,8 @@ const VerificationPage: NextPage = () => {
 				}
 			} catch (err: any) {
 				toast.error("Something went wrong on the server");
+			} finally {
+				setLoading(false);
 			}
 		}
 	};
@@ -229,7 +236,7 @@ const VerificationPage: NextPage = () => {
 						</div>
 
 						<VerificationInputGroup
-							label="Adress"
+							label="Address"
 							placeholder="Enter Valid Address"
 							value={address}
 							setValue={setAddress}
@@ -247,13 +254,161 @@ const VerificationPage: NextPage = () => {
 							errorMessage={errors.NIN}
 						/>
 					</div>
-					<div
+					<AsyncSubmitButton
+						onSubmit={onSubmit}
+						text="Continue"
+						loading={loading}
+					/>
+					{/* <div
 						onClick={onSubmit}
 						className="my-[63px] mx-[12.5px] lg:mx-auto rounded-[12px] bg-[#0B63C5] lg:w-full transition-[150ms] active:scale-95 "
 					>
 						<p className="text-center text-white text-[20px] font-[600] flex items-center justify-center py-[14.5px] cursor-pointer">Continue</p>
-					</div>
+					</div> */}
 				</motion.div>
+			</div>
+			{/*Start of mobile design*/}
+			<div className="lg:hidden bg-eccblue w-full h-full min-h-screen poppinsFont pb-[70px] relative flex flex-col ">
+				<Link href={"/"}>
+					<img
+						className="absolute w-[50px] left-[15px] top-[30px]"
+						src="/Images/whiteEccLogo.svg"
+					/>
+				</Link>
+				<div className="pl-[17px] w-full py-[30px]">
+					<div className="w-full text-white max-w-[467px] mx-auto">
+						<p className="text-[24px] font-bold mt-[60px] max-w-[500px] mx-auto">Verify your email</p>
+						<p className="text-[14px] pr-[35px] xl:text-[17px] font-medium max-w-[460px] mt-[8px]">Verify yourself using the kyc jgkfdgjrggjfg iufejf</p>
+					</div>
+				</div>
+
+				<div className="px-[9px] mt-[30px] max-w-[500px] mx-auto w-full">
+					<div className="w-full px-[14px] flex flex-col overflow-y-auto pt-[40px] pb-[45px] bg-white rounded-[20px]">
+						<div>
+							<p className="text-[18px] text-center font-semibold">Verify Yourself</p>
+
+							<form className="mt-[15px]">
+								<div className="flex flex-col gap-y-[35px]">
+									<LoginInputGroup
+										label="First Name"
+										placeholder="Enter Password"
+										value={firstName}
+										setValue={setFirstName}
+										type="text"
+										errorMessage={errors.firstName}
+									/>
+									<LoginInputGroup
+										label="Last Name"
+										placeholder="Enter Last Name"
+										value={lastName}
+										setValue={setLastName}
+										type="text"
+										errorMessage={errors.lastName}
+									/>
+									<LoginInputGroup
+										label="Middle Name"
+										placeholder="Enter Middle Name"
+										value={middleName}
+										setValue={setMiddleName}
+										type="text"
+										errorMessage={errors.middleName}
+									/>
+									<LoginInputGroup
+										label="Phone Number"
+										placeholder="Enter Phone Number"
+										value={phoneNumber}
+										setValue={setPhoneNumber}
+										type="text"
+										errorMessage={errors.phoneNumber}
+									/>
+									<LoginInputGroup
+										label="Middle Name"
+										placeholder="Enter Middle Name"
+										value={middleName}
+										setValue={setMiddleName}
+										type="text"
+										errorMessage={errors.middleName}
+									/>
+									<div className="flex lg:flex-row flex-row gap-x-4 w-full">
+										<div className="w-1/2 ">
+											<VerificationInputGroup
+												label="Date Of Birth"
+												placeholder="DD/MM/YYYY"
+												value={dob}
+												setValue={setDob}
+												type="date"
+												max={`${new Date().getMonth() + 1}-${new Date().getDate()}-${new Date().getFullYear()}`}
+												errorMessage={errors.dob}
+											/>
+										</div>
+										<div className="flex flex-col w-1/2">
+											<p className="text-[14px] lg:text-[20px]">State</p>
+											<select
+												value={state}
+												onChange={(e) => setState(e.target.value)}
+												style={{ color: state ? "black" : "#9ca3af" }}
+												className="transition-[150ms] py-[12.5px] lg:py-[20px] xl:py-[23px] px-[20px] h-full max-h-[73px] focus:outline-none rounded-[10px] border-2 border-[#C5C5C5] mt-[18.5px] w-full focus:border-[#0B63C5] text-[14px] lg:text-[16px] placeholder:text-[14px] lg:placeholder:text-[16px]"
+											>
+												<option
+													value=""
+													selected
+												>
+													Choose State
+												</option>
+												{states.map((state, index) => (
+													<option
+														key={index}
+														className="text-black"
+														value={state.name}
+													>
+														{state.name}
+													</option>
+												))}
+											</select>
+											{errors.state && (
+												<motion.p
+													initial={{ opacity: 0 }}
+													animate={{ opacity: 1 }}
+													className="text-[13px] md:text-[15px] lg:text-[18px] mt-[5px] text-red-500 font-medium"
+												>
+													{errors.state}
+												</motion.p>
+											)}
+										</div>
+									</div>
+									<LoginInputGroup
+										label="Address"
+										placeholder="Enter Address"
+										value={address}
+										setValue={setAddress}
+										type="text"
+										errorMessage={errors.address}
+									/>
+									<LoginInputGroup
+										label="National Identity Number(NIN)"
+										placeholder="Enter NIN"
+										value={NIN}
+										setValue={setNIN}
+										type="text"
+										errorMessage={errors.NIN}
+									/>
+
+									<div className="mt-[30px]">
+										<AsyncSubmitButton
+											onSubmit={onSubmit}
+											text="Continue"
+											loading={loading}
+										/>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<img
+					className="absolute bottom-0"
+					src="/Images/polygons.svg"
+				/>
 			</div>
 		</div>
 	);
