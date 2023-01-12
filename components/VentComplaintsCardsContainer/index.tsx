@@ -41,7 +41,7 @@ export const VentComplaintsCardsContainer: React.FC = (props) => {
 					icon={VentComplaintCard.icon}
 					title={VentComplaintCard.title}
 					description={VentComplaintCard.description}
-					opacity={(100 - VentComplaintsCardInfo.indexOf(VentComplaintCard) * 19) / 100}
+					opacity={1}
 					key={VentComplaintCard.id}
 				/>
 			))}
