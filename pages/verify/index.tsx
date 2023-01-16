@@ -277,7 +277,7 @@ const VerificationPage: NextPage = () => {
 				</Link>
 				<div className="pl-[17px] w-full py-[30px]">
 					<div className="w-full text-white max-w-[467px] mx-auto">
-						<p className="text-[24px] font-bold mt-[60px] max-w-[500px] mx-auto">Verify your email</p>
+						<p className="text-[24px] font-bold mt-[60px] max-w-[500px] mx-auto">Verify Yourself</p>
 						<p className="text-[14px] pr-[35px] xl:text-[17px] font-medium max-w-[460px] mt-[8px]">Verify yourself using the kyc jgkfdgjrggjfg iufejf</p>
 					</div>
 				</div>
@@ -321,14 +321,7 @@ const VerificationPage: NextPage = () => {
 										type="text"
 										errorMessage={errors.phoneNumber}
 									/>
-									<LoginInputGroup
-										label="Middle Name"
-										placeholder="Enter Middle Name"
-										value={middleName}
-										setValue={setMiddleName}
-										type="text"
-										errorMessage={errors.middleName}
-									/>
+
 									<div className="flex lg:flex-row flex-row gap-x-4 w-full">
 										<div className="w-1/2 ">
 											<VerificationInputGroup
