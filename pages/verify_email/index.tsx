@@ -50,7 +50,6 @@ const RecoverPage: NextPage = () => {
 		try {
 			setResendButtonDisabled(true);
 			const res = await sendEmail(user);
-			console.log(res);
 			if (res.status < 400) {
 				toast.success(res.message);
 				setResendText(res.message);
@@ -87,7 +86,6 @@ const RecoverPage: NextPage = () => {
 					toast.success(res.message);
 					try {
 						const verificationStatus = await checkVerified(user);
-						console.log(verificationStatus);
 						if (!verificationStatus.message.acountVerified) {
 							router.replace({ pathname: "/verify", query: { id: user } });
 						} else {
@@ -97,18 +95,7 @@ const RecoverPage: NextPage = () => {
 						toast.error("an error occured checking your verification status");
 					}
 				}
-				// const response = await client.post(`/users/verify_email/${cookies.user._id}`, payload);
-				// if (response.data.token) {
-				// 	const user: any = jwtDecode(response.data.token);
-				// 	console.log(user);
-				// 	if (user.emailVerified) {
-				// 		setCookie("user", user, {
-				// 			path: "/",
-				// 			expires: new Date(Date.now() + 2 * 86400000),
-				// 		});
-				// 		router.replace("/verify");
-				// 	}
-				// }
+
 				setBackendError("");
 			}
 		} catch (err: any) {
