@@ -2,13 +2,10 @@ import SideNav from "./SideNav";
 import TopNav from "./TopNav";
 import { useState, useContext } from "react";
 import test from "node:test";
-
 import { SideNavContext } from "./../Contexts/SideNavContext";
-
 interface NavWrapperProps {
 	children: JSX.Element;
 }
-
 const NavWrapper: React.FC<NavWrapperProps> = ({ children }) => {
 	const { Open, setIsOpen } = useContext(SideNavContext);
 

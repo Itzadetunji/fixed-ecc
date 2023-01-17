@@ -25,7 +25,7 @@ const LandingPageCard: NextPage = () => {
 		},
 		{
 			iconpath: "/../../../icons/dashboard-icons/profile.svg",
-			title: "My Portfolio",
+			title: "My Profile",
 			description: "Lorem ipsum dolor sit amet, cctetur adipiscing elit ut ",
 			bgcolor: "#FF88B3",
 			alt: "complaints",

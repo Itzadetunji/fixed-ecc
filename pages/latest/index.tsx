@@ -10,6 +10,8 @@ import PaginationSection from "../../components/LatestScams/PaginationSection";
 import ScamCard from "../../components/LatestScams/ScamCard";
 import Menu from "components/MenuComp";
 
+import { getScams } from "./../../api/scams";
+
 const LatestScams: NextPage = () => {
 	const [scamData, setScamData] = useState(ScamData);
 	const [searchResults, setSearchResults] = useState(scamData);
@@ -21,6 +23,7 @@ const LatestScams: NextPage = () => {
 	const [expand, setExpand] = useState(false);
 	const maxResultsPerPage = 20;
 	const maxResultsPerSmallPage = 6;
+
 	const getMatches = (obj) => {
 		const arrayOfItems: string[] = Object.values(obj);
 

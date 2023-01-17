@@ -69,7 +69,7 @@ const Page1: React.FC<Page1Props> = ({
 	};
 	const [showing, setShowing] = useState(false);
 	return (
-		<div className={`mt-[20px] lg:mt-[90px] ${place === "dashboard" && "bg-white mt-0 lg:mt-0 px-3 lg:px-5 py-[30px]"}`}>
+		<div className={`mt-[20px] lg:mt-[90px] ${place === "dashboard" && "bg-white mt-0 lg:mt-0 px-3 lg:px-5 pt-[30px] pb-[15px]"}`}>
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-x-[32px] gap-y-8">
 				<FileAComplaintInput
 					label={"Product Category"}
@@ -141,7 +141,7 @@ const Page1: React.FC<Page1Props> = ({
 					value={complaintDetails}
 					onChange={(e) => setComplaintDetails(e.target.value)}
 					id=""
-					className="transition-[150ms] pt-[14.74px] lg:pt-[25px] pb-[135px] xl:pt-[25px] xl:pb-[146px] focus:outline-none rounded-[10px] border-2 border-[#C5C5C5] w-full focus:border-eccblue text-[12px] sm:text-[14px] lg:text-[16px] placeholder:text-[#C5C5C5] placeholder:text-[12px] sm:placeholder:text-[14px] lg:placeholder:text-[16px] px-[20px] resize-none"
+					className="transition-[150ms] pt-[14.7px] placeholder:pt-[14.74px] lg:pt-[25px] pb-[135px] xl:pt-[25px] xl:pb-[146px] focus:outline-none rounded-[10px] border-2 border-[#C5C5C5] w-full focus:border-eccblue text-[12px] sm:text-[14px] lg:text-[16px] placeholder:text-[#C5C5C5] placeholder:text-[12px] sm:placeholder:text-[14px] lg:placeholder:text-[16px] px-[20px] resize-none"
 					placeholder="Explain in details your grievances, include Date, Location, Name of Item and any other vital information you think might help us resolve this complaint"
 				/>
 			</div>
@@ -200,7 +200,7 @@ const Page1: React.FC<Page1Props> = ({
 					</div>
 				)}
 			</div>
-			<div className="flex justify-end">
+			<div className="flex justify-end mt-4">
 				<button
 					onClick={onSubmit}
 					className="text-xs sm:text-sm bg-eccblue rounded-lg font-regular sm:font-semibold text-white h-[35px] sm:h-[45px] w-[100px] sm:w-[131px] hover:scale-[0.95] hover:duration-100 hover:ease-in-out"
