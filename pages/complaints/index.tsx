@@ -28,7 +28,7 @@ const Index: NextPage = (props) => {
 		setLoading(isLoading);
 		setError(isError);
 	}, [complaints]);
-	console.log(complaintData, loading, error);
+	console.log(complaintData);
 	const [searchText, setSearchText] = useState("");
 	const [areSearchResults, setAreSearchResults] = useState(false);
 	const [resultIndicatorShowing, setResultIndicatorShowing] = useState(false);

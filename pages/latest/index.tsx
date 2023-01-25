@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LatestScamStep from "../../components/LatestScams/LatestScamsStep";
 import { Footer, KonfamPayCallout, NavBar } from "../../components/";
 import WayIdentified from "../../components/LatestScams/WayIdentified";
@@ -9,11 +9,16 @@ import SearchResultIndicator from "../../components/LatestScams/SearchResultIndi
 import PaginationSection from "../../components/LatestScams/PaginationSection";
 import ScamCard from "../../components/LatestScams/ScamCard";
 import Menu from "components/MenuComp";
-
-import { getScams } from "./../../api/scams";
+import { useQuery } from "react-query";
+import axios from "axios";
 
 const LatestScams: NextPage = () => {
-	const [scamData, setScamData] = useState(ScamData);
+	const { data, isLoading, isError } = useQuery("scammer", async () => {
+		const response = await axios.get("https://api-ecc.onrender.com/api/scammer");
+		const data = await response.data.data;
+		return data;
+	});
+	const [scamData, setScamData] = useState([]);
 	const [searchResults, setSearchResults] = useState(scamData);
 	const [searchText, setSearchText] = useState("");
 	const [areSearchResults, setAreSearchResults] = useState(false);
@@ -23,6 +28,13 @@ const LatestScams: NextPage = () => {
 	const [expand, setExpand] = useState(false);
 	const maxResultsPerPage = 20;
 	const maxResultsPerSmallPage = 6;
+
+	useEffect(() => {
+		if (data) {
+			setScamData(data);
+		}
+	}, [data]);
+	console.log(scamData);
 
 	const getMatches = (obj) => {
 		const arrayOfItems: string[] = Object.values(obj);
@@ -41,9 +53,9 @@ const LatestScams: NextPage = () => {
 			setAreSearchResults(false);
 			setSearchResults(scamData);
 		}
-
 		// scamData.forEach(item => )
 	};
+
 	return (
 		<div>
 			{expand && (
@@ -154,10 +166,10 @@ const LatestScams: NextPage = () => {
 													key={index}
 												>
 													<td className="py-[16px]">{searchResults.indexOf(item) + 1}</td>
-													<td className="border-b-[#E6E7E9]">{item.socialMediaHandle.input1}</td>
-													<td>{item.bankAccountDetails.input1}</td>
-													<td>{item.website.input1}</td>
-													<td>{item.phoneNumber.input1}</td>
+													<td className="border-b-[#E6E7E9]">{item.socialMediaHandle}</td>
+													<td>{item.bankDetails}</td>
+													<td>{item.website}</td>
+													<td>{item.phoneNumber}</td>
 												</tr>
 											))}
 										</tbody>
