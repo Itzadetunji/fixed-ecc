@@ -1,13 +1,11 @@
-import { get, post, put, _delete } from "./config";
-import { useQuery, useMutation, useQueryClient } from "react-query";
-import { Data } from "victory";
+import { get, _delete } from "./config";
+import { useQuery } from "react-query";
 
 export const getScams = () => {
 	const _getScams = async () => {
 		try {
 			const res = await get("scam", {});
 			return res;
-			console.log(res);
 		} catch (error) {
 			console.log(error);
 		}
