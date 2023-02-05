@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import FileAComplaintInput from "../FileAComplaintInput";
+import joi from "joi";
 interface Page1Props {
 	place: string;
 	accountNumber: string;
@@ -26,9 +27,13 @@ interface Page1Props {
 	setBrandHandle: Dispatch<SetStateAction<string>>;
 	setCurrentPage: Dispatch<SetStateAction<number>>;
 	setIsOpaque: Dispatch<SetStateAction<boolean>>;
+	setIsScam: Dispatch<SetStateAction<boolean>>;
+	isScam: boolean;
 }
 
 const Page1: React.FC<Page1Props> = ({
+	isScam,
+	setIsScam,
 	place,
 	accountNumber,
 	accountName,
@@ -55,19 +60,82 @@ const Page1: React.FC<Page1Props> = ({
 	setCurrentPage,
 	setIsOpaque,
 }) => {
+	const schema = isScam
+		? joi.object({
+				bankName: joi.string().required().label("Company's/Brand's Bank Name"),
+				accountName: joi.string().required().label("Company's/Brand's Account Name"),
+				accountNumber: joi.string().required().label("Company's/Brand's Account Number"),
+
+				companyName: joi.string().required().label("Company's/Brand's Name"),
+				productCategory: joi.string().required().label("Product Category"),
+				titleOfComplaint: joi.string().required().label("Title of your complaint"),
+				placeOfTransaction: joi.string().required().label("Where did the transaction happen"),
+				amountLost: joi.string().required().label("Total Amount Lost"),
+				//brandContact: joi.string().required(),
+				complaintDetails: joi.string().required().label("Complaint Details"),
+				brandHandle: joi.string().required().label("Company's/Brand's Social Media"),
+		  })
+		: joi.object({
+				companyName: joi.string().required().label("Company's/Brand's Name"),
+				productCategory: joi.string().required().label("Product Category"),
+				titleOfComplaint: joi.string().required().label("Title of your complaint"),
+				placeOfTransaction: joi.string().required().label("Where did the transaction happen"),
+				amountLost: joi.string().required().label("Total Amount Lost"),
+				//brandContact: joi.string().required(),
+				complaintDetails: joi.string().required().label("Complaint Details"),
+				brandHandle: joi.string().required().label("Company's/Brand's Social Media"),
+		  });
+	const [errors, setErrors] = useState({
+		accountNumber: "",
+		accountName: "",
+		bankName: "",
+		productCategory: "",
+		titleOfComplaint: "",
+		placeOfTransaction: "",
+		companyName: "",
+		amountLost: "",
+		brandContact: "",
+		complaintDetails: "",
+		brandHandle: "",
+	});
 	const onSubmit = () => {
-		setIsOpaque(false);
-		setTimeout(() => {
-			setIsOpaque(true);
-			setCurrentPage(2);
-		}, 300);
-		window.scrollTo({
-			top: 0,
-			left: 0,
-			behavior: "smooth",
-		});
+		const { error } = isScam ? schema.validate({ accountName, accountNumber, titleOfComplaint, bankName, productCategory, placeOfTransaction, companyName, amountLost, brandHandle, complaintDetails }, { abortEarly: false }) : schema.validate({ titleOfComplaint, productCategory, placeOfTransaction, companyName, amountLost, brandHandle, complaintDetails }, { abortEarly: false });
+		if (error) {
+			console.log(error);
+			const _errors = {
+				accountNumber: "",
+				accountName: "",
+				bankName: "",
+				productCategory: "",
+				titleOfComplaint: "",
+				placeOfTransaction: "",
+				companyName: "",
+				amountLost: "",
+				brandContact: "",
+				complaintDetails: "",
+				brandHandle: "",
+			};
+			error.details.forEach((err) => (Object.keys(errors).includes(err.path[0].toString()) ? (_errors[err.path[0]] = err.message) : console.log("")));
+			const array = [];
+			error.details.forEach((err) => array.push(err.path[0]));
+			Object.keys(_errors)
+				.filter((err) => !array.includes(err))
+				.forEach((err) => (_errors[err] = ""));
+			setErrors(_errors);
+		} else {
+			setIsOpaque(false);
+			setTimeout(() => {
+				setIsOpaque(true);
+				setCurrentPage(2);
+			}, 300);
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: "smooth",
+			});
+		}
 	};
-	const [showing, setShowing] = useState(false);
+
 	return (
 		<div className={`mt-[20px] lg:mt-[90px] ${place === "dashboard" && "bg-white mt-0 lg:mt-0 px-3 lg:px-5 pt-[30px] pb-[15px]"}`}>
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-x-[32px] gap-y-8">
@@ -79,6 +147,7 @@ const Page1: React.FC<Page1Props> = ({
 					type="text"
 					nairaSymbol={false}
 					isRequired={true}
+					error={errors.productCategory}
 				/>
 				<FileAComplaintInput
 					label={"Where did this transaction happen?"}
@@ -88,6 +157,7 @@ const Page1: React.FC<Page1Props> = ({
 					type="text"
 					nairaSymbol={false}
 					isRequired={true}
+					error={errors.placeOfTransaction}
 				/>
 				<FileAComplaintInput
 					label={"Title of your complaint"}
@@ -97,6 +167,7 @@ const Page1: React.FC<Page1Props> = ({
 					type="text"
 					nairaSymbol={false}
 					isRequired={true}
+					error={errors.titleOfComplaint}
 				/>
 				<FileAComplaintInput
 					label={"Total amount lost from this incident"}
@@ -106,6 +177,7 @@ const Page1: React.FC<Page1Props> = ({
 					type="number"
 					nairaSymbol={true}
 					isRequired={true}
+					error={errors.amountLost}
 				/>
 				<FileAComplaintInput
 					label={"Company’s/Brand’s name"}
@@ -115,6 +187,7 @@ const Page1: React.FC<Page1Props> = ({
 					type="text"
 					nairaSymbol={false}
 					isRequired={true}
+					error={errors.companyName}
 				/>
 				<FileAComplaintInput
 					label={"Company’s/Brand’s Social media handle"}
@@ -124,6 +197,7 @@ const Page1: React.FC<Page1Props> = ({
 					type="text"
 					nairaSymbol={false}
 					isRequired={true}
+					error={errors.brandHandle}
 				/>
 			</div>
 			<div className="w-full mt-8">
@@ -141,9 +215,11 @@ const Page1: React.FC<Page1Props> = ({
 					value={complaintDetails}
 					onChange={(e) => setComplaintDetails(e.target.value)}
 					id=""
+					maxLength={2500}
 					className="transition-[150ms] pt-[14.7px] placeholder:pt-[14.74px] lg:pt-[25px] pb-[135px] xl:pt-[25px] xl:pb-[146px] focus:outline-none rounded-[10px] border-2 border-[#C5C5C5] w-full focus:border-eccblue text-[12px] sm:text-[14px] lg:text-[16px] placeholder:text-[#C5C5C5] placeholder:text-[12px] sm:placeholder:text-[14px] lg:placeholder:text-[16px] px-[20px] resize-none"
 					placeholder="Explain in details your grievances, include Date, Location, Name of Item and any other vital information you think might help us resolve this complaint"
 				/>
+				<div className="text-sm text-danger">{errors.complaintDetails}</div>
 			</div>
 			<div className="mt-6 flex flex-col justify-center">
 				<div className="flex flex-row items-center text-sm lg:text-xl">
@@ -153,19 +229,19 @@ const Page1: React.FC<Page1Props> = ({
 						<div
 							className="inline-flex items-center ml-[4px] lg:ml-2 cursor-pointer"
 							onClick={() => {
-								setShowing(!showing);
+								setIsScam(!isScam);
 							}}
 						>
 							<p className="text-eccblue inline">here</p>
 							<img
 								src="/icons/chevron-down.svg"
-								className={`w-[22px] h-[22px] lg:w-[30px] lg:h-[30px] ${showing && "rotate-180"}`}
+								className={`w-[22px] h-[22px] lg:w-[30px] lg:h-[30px] ${isScam && "rotate-180"}`}
 								alt=""
 							/>
 						</div>
 					</div>
 				</div>
-				{showing && (
+				{isScam && (
 					<div className="mt-[20px] lg:mt-[51.46px]">
 						<h1 className="font-semibold text-[14px] lg:text-[20px] xl:text-[24px] mb-[20px] opacity-80">Kindly fill in these additional fields</h1>
 						<div className="flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:gap-x-[32px] gap-y-[32px] ">
@@ -176,7 +252,8 @@ const Page1: React.FC<Page1Props> = ({
 								setValue={setAccountNumber}
 								type="text"
 								nairaSymbol={false}
-								isRequired={showing ? true : false}
+								isRequired={isScam ? true : false}
+								error={errors.accountNumber}
 							/>
 							<FileAComplaintInput
 								label={"Company's/Brand's Account Name"}
@@ -185,7 +262,8 @@ const Page1: React.FC<Page1Props> = ({
 								setValue={setAccountName}
 								type="text"
 								nairaSymbol={false}
-								isRequired={showing ? true : false}
+								isRequired={isScam ? true : false}
+								error={errors.accountName}
 							/>
 							<FileAComplaintInput
 								label={"Company's/Brand's Bank Name"}
@@ -194,7 +272,8 @@ const Page1: React.FC<Page1Props> = ({
 								setValue={setBankName}
 								type="text"
 								nairaSymbol={false}
-								isRequired={showing ? true : false}
+								isRequired={isScam ? true : false}
+								error={errors.bankName}
 							/>
 						</div>
 					</div>

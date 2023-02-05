@@ -2,22 +2,34 @@ import { createContext, useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import client from "../../pages/api/Services/AxiosClient";
 
+import { fetchNotifications, markAllRead } from "./../../api/notifications";
+
 export const NotificationContext = createContext();
 
 const NotificationContextProvider = ({ children }) => {
 	const [notificationData, setNotificationData] = useState([]);
 	const [cookies, setCookies] = useCookies(["user"]);
 	const [newNotifications, setNewNotifications] = useState(false);
+	const user = cookies.user ? cookies.user.userId : "";
 
 	const fetchNotificationData = async () => {
-		const { data } = await client.get(`/notifications/${cookies.user._id}`);
-		setNotificationData(data.notifications);
+		try {
+			const res = await fetchNotifications(user);
+
+			setNotificationData(res.message.notifications);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const markAllNotificationsAsRead = async () => {
-		const { data } = await client.post(`/notifications/${cookies.user._id}/markAllAsRead`);
-		console.log(data);
-		setNotificationData(data.notifications);
+		try {
+			const res = await markAllRead(user);
+
+			setNotificationData(res.message.notifications);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	useEffect(() => {
