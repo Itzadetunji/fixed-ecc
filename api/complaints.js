@@ -11,4 +11,19 @@ export const _getComplaints = async () => {
 	}
 };
 
+export const getComplaintsUser = async (user, token) => {
+	try {
+		const data = await get(`complaints/${user}`, {
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: token,
+			},
+		});
+		console.log(data);
+		return { status: data.status, message: data.data.complaints };
+	} catch (error) {
+		console.log(error);
+	}
+};
+
 const createComplaint = async (auth) => {};

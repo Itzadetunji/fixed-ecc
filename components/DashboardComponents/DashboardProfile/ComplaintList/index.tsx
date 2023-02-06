@@ -1,9 +1,10 @@
-import ComplaintData from "../../../Complaint/ComplaintData";
 import { useState } from "react";
 import { useRouter } from "next/router";
-// import PreviousNextButton from "../PreviousNextButton";
+import { useContext } from "react";
+
 import { Dispatch, SetStateAction } from "react";
 import PreviousNextButton from "../PreviousNextButton";
+import { ComplaintContext } from "./../../../Contexts/ComplaintContext";
 
 interface ComplaintProps {
 	page: string;
@@ -12,11 +13,13 @@ interface ComplaintProps {
 }
 
 const ComplaintList: React.FC<ComplaintProps> = ({ page, pageNumber, setPageNumber }) => {
+	const { userComplaints } = useContext(ComplaintContext);
+
 	const [maxNumber, setMaxNumber] = useState(3);
 
-	const filteredList = ComplaintData.filter((complaint) => complaint.status == page);
+	const filteredList = userComplaints.filter((complaint) => complaint.status == page);
 
-	const list = filteredList.length === 0 ? ComplaintData : filteredList;
+	const list = filteredList.length === 0 ? userComplaints : filteredList;
 	const router = useRouter();
 
 	return (

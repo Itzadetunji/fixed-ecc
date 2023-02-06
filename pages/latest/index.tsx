@@ -12,12 +12,12 @@ import Menu from "components/MenuComp";
 import { useQuery } from "react-query";
 import axios from "axios";
 
+import { getScams } from "./../../api/scams";
+
 const LatestScams: NextPage = () => {
-	const { data, isLoading, isError } = useQuery("scammer", async () => {
-		const response = await axios.get("https://api-ecc.onrender.com/api/scammer");
-		const data = await response.data.data;
-		return data;
-	});
+	const { data, isLoading, isError } = useQuery("scammer", getScams);
+	console.log(data);
+
 	const [scamData, setScamData] = useState([]);
 	const [searchResults, setSearchResults] = useState(scamData);
 	const [searchText, setSearchText] = useState("");
@@ -32,6 +32,7 @@ const LatestScams: NextPage = () => {
 	useEffect(() => {
 		if (data) {
 			setScamData(data);
+			setSearchResults(scamData);
 		}
 	}, [data]);
 	console.log(scamData);

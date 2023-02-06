@@ -3,7 +3,7 @@ import PageSectionNav from "../../../components/FileAComplaintComponents/PageSec
 
 import type { NextPage } from "next";
 
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 import Page1 from "../../../components/FileAComplaintComponents/Page1";
 import Page2 from "../../../components/FileAComplaintComponents/Page2";
@@ -34,6 +34,23 @@ const FileComplaint: NextPage = () => {
 	const [accountName, setAccountName] = useState("");
 	const [accountNumber, setAccountNumber] = useState("");
 	const [bankName, setBankName] = useState("");
+	const [isScam, setIsScam] = useState(false);
+	const [successModalShowing, setSuccessModalShowing] = useState(false);
+
+	useEffect(() => {
+		if (successModalShowing == true) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "auto";
+		}
+	}, [successModalShowing]);
+
+	const handleCreate = () => {
+		const payload = { title: titleOfComplaint, complaintLocation: placeOfTransaction, brandName: companyName, brandContact: "lorem", productCategory: productCategory, brandBankAccountNumber: accountNumber, brandBankAccountName: accountName, brandBank: bankName, brandSocialMediaHandle: brandHandle, complaintAmount: parseInt(amountLost), resolution: "apology", details: complaintDetails };
+		console.log(payload);
+		setSuccessModalShowing(true);
+	};
+
 	const handleSubmit = (event) => {
 		console.log(1);
 		event.preventDefault();
@@ -78,6 +95,8 @@ const FileComplaint: NextPage = () => {
 								brandHandle={brandHandle}
 								setBrandHandle={setBrandHandle}
 								setIsOpaque={setIsOpaque}
+								isScam={isScam}
+								setIsScam={setIsScam}
 							/>
 						)}
 						{currentPage == 2 && (
@@ -91,6 +110,9 @@ const FileComplaint: NextPage = () => {
 						)}
 						{currentPage == 3 && (
 							<Page3
+								handleCreate={handleCreate}
+								successModalShowing={successModalShowing}
+								setSuccessModalShowing={setSuccessModalShowing}
 								setCurrentPage={setCurrentPage}
 								setIsOpaque={setIsOpaque}
 								place="dashboard"

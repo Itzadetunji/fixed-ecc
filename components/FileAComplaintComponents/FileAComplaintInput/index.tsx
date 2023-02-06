@@ -6,9 +6,10 @@ interface FileAComplaintInputProps {
 	type: string;
 	nairaSymbol: boolean | null;
 	isRequired: boolean;
+	error: string;
 }
 
-const FileAComplaintInput: React.FC<FileAComplaintInputProps> = ({ label, placeholder, value, setValue, type, nairaSymbol, isRequired }) => {
+const FileAComplaintInput: React.FC<FileAComplaintInputProps> = ({ label, placeholder, value, setValue, type, nairaSymbol, isRequired, error }) => {
 	return (
 		<div>
 			<div className="flex flex-row items-center">
@@ -40,6 +41,7 @@ const FileAComplaintInput: React.FC<FileAComplaintInputProps> = ({ label, placeh
 					/>
 				)}
 			</div>
+			<div className="text-sm text-danger ">{error}</div>
 		</div>
 	);
 };

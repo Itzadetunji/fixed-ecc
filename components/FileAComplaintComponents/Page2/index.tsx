@@ -19,6 +19,7 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 		setSelectedFiles(selectedFiles.filter((item) => item != currentItem));
 	};
 	const onSubmit = () => {
+		console.log(selectedFiles);
 		setIsOpaque(false);
 		setTimeout(() => {
 			setIsOpaque(true);
@@ -121,7 +122,9 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 					Previous
 				</button>
 				<button
+					style={{ opacity: selectedFiles.length > 0 ? 1 : 0.6 }}
 					onClick={onSubmit}
+					disabled={selectedFiles.length === 0}
 					className="text-xs sm:text-sm bg-eccblue rounded-lg font-regular sm:font-semibold text-white h-[35px] sm:h-[45px] w-[100px] sm:w-[131px] hover:scale-[0.95] hover:duration-100 hover:ease-in-out"
 				>
 					Continue

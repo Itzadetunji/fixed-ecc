@@ -3,13 +3,14 @@ import jwt_decode from "jwt-decode";
 export const authenticate = async (payload) => {
 	try {
 		const res = await post("auth", {}, payload);
-		console.log(Object.keys(res.data));
-		if (Object.keys(res.data).includes("data")) {
-			res.data.data.userId = res.data.data.id;
-			return { status: res.status, message: res.data.data };
-		} else {
-			return { status: res.status, message: res.data };
-		}
+		console.log(res.test.cookie);
+
+		let data = {};
+		if (res.data.token) {
+			data = jwt_decode(res.data.token);
+		} else data = res.data;
+
+		return { status: res.status, message: data, token: res.data.token };
 	} catch (error) {
 		console.log(error);
 		return { status: error.response.status, message: error.response.data.message };
@@ -55,7 +56,33 @@ export const sendEmail = async (user) => {
 export const verifyAccount = async (payload, user) => {
 	try {
 		const res = await post(`users/verify/${user}`, {}, payload);
+		console.log(res);
 		return { status: res.status, message: jwt_decode(res.data.token) };
+	} catch (error) {
+		console.log(error);
+		return { status: error.response.status, message: error.response.data.message };
+	}
+};
+
+export const getUserInfo = async (user, token) => {
+	try {
+		const res = await get(`users/${user}`, {
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: token,
+			},
+		});
+		return {
+			status: res.status,
+			message: res.data.data,
+			getNeededInfo: function () {
+				if (res.data.data) {
+					const data = res.data.data;
+					const DataObject = { firstName: data.firstName, lastName: data.lastName, email: data.email, phoneNumber: data.phoneNumber, createdAt: data.createdAt, address: data.address, state: data.state };
+					return DataObject;
+				} else return {};
+			},
+		};
 	} catch (error) {
 		return { status: error.response.status, message: error.response.data.message };
 	}
