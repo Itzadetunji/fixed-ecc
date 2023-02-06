@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import NotificationContextProvider from "../components/Contexts/NotificationContext";
 import UserContextProvider from "../components/Contexts/UserContext";
 import SideNavContextProvider from "components/Contexts/SideNavContext";
+import ComplaintContextProvider from "./../components/Contexts/ComplaintContext";
 
 const queryClient = new QueryClient();
 function MyApp({ Component, pageProps, router }: AppProps) {
@@ -20,12 +21,14 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 					<CookiesProvider>
 						<NotificationContextProvider>
 							<UserContextProvider>
-								<SideNavContextProvider>
-									<Component
-										{...pageProps}
-										key={router.route}
-									/>
-								</SideNavContextProvider>
+								<ComplaintContextProvider>
+									<SideNavContextProvider>
+										<Component
+											{...pageProps}
+											key={router.route}
+										/>
+									</SideNavContextProvider>
+								</ComplaintContextProvider>
 							</UserContextProvider>
 						</NotificationContextProvider>
 					</CookiesProvider>

@@ -68,7 +68,10 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ setSuccessModalShowing, gri
 				</p>
 				<div className="flex justify-center px-[30px]">
 					<button
-						onClick={() => router.push("/dashboard")}
+						onClick={() => {
+							router.push("/dashboard");
+							document.body.style.overflow = "auto";
+						}}
 						className="py-[11px] bg-eccblue w-full max-w-[367px] mt-[18px] text-[12px] lg:text-[16px] rounded-[8px] font-semibold text-white"
 					>
 						Visit your Dashboard

@@ -1,17 +1,37 @@
 import SideNav from "./SideNav";
 import TopNav from "./TopNav";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import test from "node:test";
 import { SideNavContext } from "./../Contexts/SideNavContext";
+import { useCookies } from "react-cookie";
+import { getUserInfo } from "./../../api/users";
+import { UserContext } from "components/Contexts/UserContext";
 interface NavWrapperProps {
 	children: JSX.Element;
 }
 const NavWrapper: React.FC<NavWrapperProps> = ({ children }) => {
 	const { Open, setIsOpen } = useContext(SideNavContext);
-
+	const { user, setUser } = useContext(UserContext);
+	const [cookie, setCookie] = useCookies();
 	const openSide = () => {
 		setIsOpen(!Open);
 	};
+
+	useEffect(() => {
+		const getUserDetails = async () => {
+			console.log(cookie.token);
+			const user = cookie.user ? cookie.user.userId : "";
+			const res = await getUserInfo(user, cookie.token);
+			const data = res.getNeededInfo();
+			setUser(data);
+		};
+		try {
+			getUserDetails();
+			console.log(user);
+		} catch (error) {
+			console.log(error);
+		}
+	}, []);
 
 	return (
 		<div className="flex flex-row">

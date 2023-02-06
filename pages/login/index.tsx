@@ -15,7 +15,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { checkVerified } from "api/users";
 
 const LoginPage: NextPage = () => {
-	const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+	const [cookies, setCookie, removeCookie] = useCookies(["user" || "token"]);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState(false);
@@ -55,7 +55,7 @@ const LoginPage: NextPage = () => {
 				setBackendError("");
 
 				const res = await authenticate(payload);
-
+				console.log(res);
 				if (res.status == 404 && res.message) {
 					toast.error(res.message);
 					setBackendError(res.message);
@@ -64,7 +64,10 @@ const LoginPage: NextPage = () => {
 					setBackendError(res.message);
 				} else if (res.status < 400) {
 					const user = res.message;
+					const token = res.token;
+					console.log(user);
 					setCookie("user", user);
+					setCookie("token", token);
 					const verificationStatus = await checkVerified(user.userId);
 					if (!verificationStatus.message.accountVerified) {
 						router.replace({ pathname: "/verify", query: { id: user.userId } });
@@ -75,7 +78,8 @@ const LoginPage: NextPage = () => {
 						router.push("/dashboard");
 					}
 				}
-			} catch (err: any) {
+			} catch (err) {
+				console.log(err);
 				toast.error("Something went wrong🥲 Kindly check your internet connection🥲");
 			} finally {
 				setLoading(false);

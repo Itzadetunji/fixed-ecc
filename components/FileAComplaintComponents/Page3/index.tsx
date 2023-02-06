@@ -4,6 +4,8 @@ import SuccessModal from "../SuccessModal";
 
 interface Page3Props {
 	place: string;
+	successModalShowing: boolean;
+	setSuccessModalShowing: Dispatch<SetStateAction<boolean>>;
 	setCurrentPage: Dispatch<SetStateAction<number>>;
 	setIsOpaque: Dispatch<SetStateAction<boolean>>;
 	wantsRefund: boolean;
@@ -16,21 +18,15 @@ interface Page3Props {
 	setWantsReplacement: Dispatch<SetStateAction<boolean>>;
 	setWantsRefund: Dispatch<SetStateAction<boolean>>;
 	setTermsAndConditions: Dispatch<SetStateAction<boolean>>;
+	handleCreate: () => void;
 }
 
-const Page3: React.FC<Page3Props> = ({ place, setCurrentPage, setIsOpaque, wantsRefund, wantsApology, wantsCompensation, wantsReplacement, setWantsRefund, setWantsApology, setWantsCompensation, setWantsReplacement, termsAndConditions, setTermsAndConditions }) => {
-	const [successModalShowing, setSuccessModalShowing] = useState(false);
+const Page3: React.FC<Page3Props> = ({ place, setCurrentPage, handleCreate, successModalShowing, setSuccessModalShowing, setIsOpaque, wantsRefund, wantsApology, wantsCompensation, wantsReplacement, setWantsRefund, setWantsApology, setWantsCompensation, setWantsReplacement, termsAndConditions, setTermsAndConditions }) => {
 	const onSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
-		setSuccessModalShowing(true);
+		handleCreate();
 	};
-	useEffect(() => {
-		if (successModalShowing == true) {
-			document.body.style.overflow = "hidden";
-		} else {
-			document.body.style.overflow = "auto";
-		}
-	}, [successModalShowing]);
+
 	const onPrevious = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		setIsOpaque(false);
@@ -119,9 +115,9 @@ const Page3: React.FC<Page3Props> = ({ place, setCurrentPage, setIsOpaque, wants
 						Previous
 					</button>
 					<button
-						style={{ opacity: termsAndConditions ? 1 : 0.6 }}
+						style={{ opacity: termsAndConditions && (wantsApology || wantsCompensation || wantsRefund || wantsReplacement) ? 1 : 0.6 }}
 						onClick={onSubmit}
-						disabled={!termsAndConditions}
+						disabled={!(termsAndConditions && (wantsApology || wantsCompensation || wantsRefund || wantsReplacement))}
 						className="text-xs sm:text-sm bg-eccblue rounded-lg font-regular sm:font-semibold text-white h-[35px] sm:h-[45px] w-[100px] sm:w-[131px] hover:scale-[0.95] duration-200 hover:duration-100 ease-in-out"
 					>
 						Continue

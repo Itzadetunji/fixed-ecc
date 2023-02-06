@@ -45,7 +45,7 @@ const SideNav = ({ open, openSide }) => {
 	const [currentPage, setCurrentPage] = useState("dashboard");
 	const router = useRouter();
 	const onLogout = () => {
-		removeCookie(["user"]);
+		removeCookie("user");
 		router.replace("/login");
 	};
 	return (
@@ -100,7 +100,7 @@ const SideNav = ({ open, openSide }) => {
 						onClick={() => setCurrentPage("help")}
 					/>
 					<button
-						onClick={onLogout}
+						onClick={() => onLogout()}
 						className="transition-[100ms] text-[#FA4343] inline-flex min-w-[198px] py-[15px] bg-white font-medium poppinsFont text-[16px] rounded-xl   px-[16px] items-center gap-x-[16px]"
 					>
 						<img src="/Images/logoutIcon.svg" />
@@ -183,7 +183,7 @@ const SideNav = ({ open, openSide }) => {
 								onClick={() => setCurrentPage("help")}
 							/>
 							<button
-								onClick={onLogout}
+								onClick={() => onLogout}
 								className="transition-[100ms] text-[#FA4343] inline-flex min-w-[198px] py-[15px] bg-white font-medium poppinsFont text-[16px] rounded-xl  px-[16px] items-center gap-x-[16px]"
 							>
 								<img src="/Images/logoutIcon.svg" />
