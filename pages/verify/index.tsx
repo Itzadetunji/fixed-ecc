@@ -114,7 +114,7 @@ const VerificationPage: NextPage = () => {
 					if (!verificationStatus.message.emailVerified) {
 						router.replace({ pathname: "/verify_email", query: { id: user } });
 					} else {
-						router.replace("/dashboard");
+						router.replace("/login");
 					}
 				}
 			} catch (err: any) {

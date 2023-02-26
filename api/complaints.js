@@ -26,4 +26,22 @@ export const getComplaintsUser = async (user, token) => {
 	}
 };
 
-const createComplaint = async (auth) => {};
+export const createComplaint = async (payload, token) => {
+	try {
+		const res = await post(
+			"complaints/",
+			{
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: token,
+				},
+			},
+			payload
+		);
+		console.log(res);
+		return { status: data.status, message: "success" };
+	} catch (error) {
+		console.log(error);
+		throw new Error("an error occured");
+	}
+};

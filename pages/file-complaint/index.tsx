@@ -42,7 +42,21 @@ const Index: NextPage = () => {
 	}, [successModalShowing]);
 
 	const handleCreate = () => {
-		const payload = { title: titleOfComplaint, complaintLocation: placeOfTransaction, brandName: companyName, brandContact: "lorem", productCategory: productCategory, brandBankAccountNumber: accountNumber, brandBankAccountName: accountName, brandBank: bankName, brandSocialMediaHandle: brandHandle, complaintAmount: parseInt(amountLost), resolution: "apology", details: complaintDetails };
+		const payload = {
+			title: titleOfComplaint,
+			transactionLocation: placeOfTransaction,
+			companyName: companyName,
+			productCategory: productCategory,
+			brandBankAccountNumber: accountNumber,
+			brandBankAccountName: accountName,
+			brandBank: bankName,
+			socialMediaHandle: brandHandle,
+			amountLost: amountLost,
+			resolution: { refund: wantsRefund, compensation: wantsCompensation, apology: wantsApology, replacement: wantsReplacement },
+			description: complaintDetails,
+			isScam: isScam,
+			selectedFiles: selectedFiles,
+		};
 		console.log(payload);
 		setSuccessModalShowing(true);
 	};

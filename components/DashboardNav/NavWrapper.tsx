@@ -6,30 +6,41 @@ import { SideNavContext } from "./../Contexts/SideNavContext";
 import { useCookies } from "react-cookie";
 import { getUserInfo } from "./../../api/users";
 import { UserContext } from "components/Contexts/UserContext";
+import { useRouter } from "next/router";
+import { Data } from "victory";
 interface NavWrapperProps {
 	children: JSX.Element;
 }
 const NavWrapper: React.FC<NavWrapperProps> = ({ children }) => {
 	const { Open, setIsOpen } = useContext(SideNavContext);
 	const { user, setUser } = useContext(UserContext);
-	const [cookie, setCookie] = useCookies();
+	const [cookie, setCookie, deleteCookie] = useCookies();
+	const router = useRouter();
 	const openSide = () => {
 		setIsOpen(!Open);
 	};
 
 	useEffect(() => {
-		const getUserDetails = async () => {
-			console.log(cookie.token);
-			const user = cookie.user ? cookie.user.userId : "";
-			const res = await getUserInfo(user, cookie.token);
-			const data = res.getNeededInfo();
-			setUser(data);
-		};
-		try {
-			getUserDetails();
-			console.log(user);
-		} catch (error) {
-			console.log(error);
+		document.body.style.overflow = "auto";
+		if (cookie.expiry && cookie.expiry.time < Date.now()) {
+			router.replace("/login");
+			deleteCookie("expiry");
+		}
+		if (cookie.user && cookie.token && cookie.expiry && cookie.expiry > Date.now()) {
+			const getUserDetails = async () => {
+				const user = cookie.user ? cookie.user.userId : "";
+				console.log(user, cookie.token);
+				const res = await getUserInfo(user, cookie.token);
+				const data = res.getNeededInfo();
+				setUser(data);
+			};
+			try {
+				getUserDetails();
+			} catch (error) {
+				console.log(error);
+			}
+		} else {
+			router.replace("/login");
 		}
 	}, []);
 

@@ -43,12 +43,12 @@ const ComplaintDetails: React.FC<ComplaintProps> = ({ user, complaint }) => {
 				<div className="flex flex-col">
 					<div className="flex flex-row gap-x-2">
 						<p>Grievance ID</p>
-						<p className="text-eccblue">{complaint.grievanceId}</p>
+						<p className="text-eccblue">{complaint._id}</p>
 						<img
 							className="cursor-pointer"
 							onClick={() => {
 								alert("id has been copied to clipboard");
-								navigator.clipboard.writeText(complaint.grievanceId);
+								navigator.clipboard.writeText(complaint._id);
 							}}
 							src="/icons/admin-icons/copy.svg"
 							alt=""
