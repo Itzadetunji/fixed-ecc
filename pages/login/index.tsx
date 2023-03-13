@@ -15,7 +15,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { checkVerified } from "api/users";
 
 const LoginPage: NextPage = () => {
-	const [cookies, setCookie, removeCookie] = useCookies(["user" || "token"]);
+	const [cookies, setCookie, removeCookie] = useCookies(["user" || "token" || "expiry"]);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState(false);
@@ -67,7 +67,8 @@ const LoginPage: NextPage = () => {
 					const token = res.token;
 					console.log(user);
 					setCookie("user", user);
-					setCookie("token", token);
+					setCookie("token", token, { expires: new Date(Date.now() * 60 * 60 * 60 * 24) });
+					setCookie("expiry", { time: Date.now() + 1000 * 60 * 60 * 24 });
 					const verificationStatus = await checkVerified(user.userId);
 					if (!verificationStatus.message.accountVerified) {
 						router.replace({ pathname: "/verify", query: { id: user.userId } });

@@ -24,6 +24,7 @@ const Index: NextPage = (props) => {
 	useEffect(() => {
 		if (complaints && complaints.data && complaints.data.data) {
 			setComplaintData(complaints.data.data);
+			setSearchResults(complaints.data.data);
 		}
 		setLoading(isLoading);
 		setError(isError);
