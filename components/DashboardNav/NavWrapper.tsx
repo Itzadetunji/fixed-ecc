@@ -26,13 +26,18 @@ const NavWrapper: React.FC<NavWrapperProps> = ({ children }) => {
 			router.replace("/login");
 			deleteCookie("expiry");
 		}
-		if (cookie.user && cookie.token && cookie.expiry && cookie.expiry > Date.now()) {
+
+		if (cookie.user && cookie.token && cookie.expiry && cookie.expiry.time > Date.now()) {
 			const getUserDetails = async () => {
 				const user = cookie.user ? cookie.user.userId : "";
 				console.log(user, cookie.token);
-				const res = await getUserInfo(user, cookie.token);
-				const data = res.getNeededInfo();
-				setUser(data);
+				try {
+					const res = await getUserInfo(user, cookie.token);
+					const data = res.getNeededInfo();
+					setUser(data);
+				} catch (error) {
+					console.log(error);
+				}
 			};
 			try {
 				getUserDetails();
