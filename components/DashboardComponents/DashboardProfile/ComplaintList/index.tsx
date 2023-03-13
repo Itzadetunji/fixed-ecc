@@ -38,8 +38,6 @@ const ComplaintList: React.FC<ComplaintProps> = ({ page, pageNumber, setPageNumb
 		}
 	}, [userComplaints]);
 
-	useEffect(() => {});
-
 	const router = useRouter();
 
 	return (

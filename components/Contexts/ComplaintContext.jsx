@@ -1,17 +1,12 @@
 import { createContext, useState, useEffect } from "react";
 import { useQuery, useQueryClient, useMutation } from "react-query";
 import { useCookies } from "react-cookie";
-
 export const ComplaintContext = createContext();
 import { getComplaintsUser, createComplaint } from "api/complaints";
-import { getUserInfo } from "./../../api/users";
-import { ToastContainer, toast } from "react-toastify";
-import { totalmem } from "os";
 
 const ComplaintContextProvider = ({ children }) => {
 	const queryClient = useQueryClient();
 	const [createResult, setCreateResult] = useState("");
-
 	const [userComplaints, setUserComplaints] = useState([]);
 	const [cookie, setCookie] = useCookies();
 	const user = cookie.user ? cookie.user.userId : "";
@@ -29,9 +24,12 @@ const ComplaintContextProvider = ({ children }) => {
 		},
 	});
 	const getUserComplaints = async () => {
-		const data = await getComplaintsUser(user, token);
-
-		return data.message;
+		try {
+			const data = await getComplaintsUser(user, token);
+			return data.message;
+		} catch (error) {
+			console.log(error);
+		}
 	};
 	const { isLoading, data, status } = useQuery("complaints", getUserComplaints);
 

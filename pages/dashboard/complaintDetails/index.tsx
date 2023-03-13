@@ -13,16 +13,18 @@ const Mycomplaints: NextPage = () => {
 	const [data, setData] = useState("");
 	const router = useRouter();
 	const complaintId = router.query.id;
-	const [complaint,setComplaint]= useState()
-	useEffect(()=>{
-     if(userComplaints&& userComplaints.length>0){
-       setComplaint(userComplaints.filter((complaint) => complaint._id == complaintId)[0])
-	 }
-	 else {
-		
-	 }
-	},[userComplaints])
-	
+	const [complaint, setComplaint] = useState({
+		resolution: "",
+		_id: "",
+		createdAt: "",
+		description: "",
+		status: "",
+	});
+	useEffect(() => {
+		if (userComplaints && userComplaints.length > 0) {
+			setComplaint(userComplaints.filter((complaint) => complaint._id == complaintId)[0]);
+		}
+	}, [userComplaints]);
 
 	const documents = [
 		{ src: "/Images/Frame-814.png", alt: "document" },

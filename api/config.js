@@ -2,7 +2,7 @@ import axios from "axios";
 import { useQuery } from "react-query";
 
 const apiConfig = axios.create({
-	baseURL: "http://127.0.0.1:3001/api/",
+	baseURL: "http://127.0.0.1:3002/api/",
 });
 
 axios.defaults.withCredentials = true;

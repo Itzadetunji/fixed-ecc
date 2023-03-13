@@ -41,7 +41,6 @@ export const createComplaint = async (payload, token) => {
 		console.log(res);
 		return { status: data.status, message: "success" };
 	} catch (error) {
-		console.log(error);
 		throw new Error("an error occured");
 	}
 };
