@@ -2,18 +2,22 @@ import NavWrapper from "./../../../components/DashboardNav/NavWrapper";
 import PageSectionNav from "../../../components/FileAComplaintComponents/PageSectionNav";
 
 import type { NextPage } from "next";
-
-import { useState, useContext } from "react";
-
+import "react-toastify/dist/ReactToastify.css";
+import { useState, useContext, useEffect } from "react";
+import { createComplaint } from "api/complaints";
 import Page1 from "../../../components/FileAComplaintComponents/Page1";
 import Page2 from "../../../components/FileAComplaintComponents/Page2";
 import Page3 from "../../../components/FileAComplaintComponents/Page3";
 import { SideNavContext } from "components/Contexts/SideNavContext";
-
+import { ComplaintContext } from "components/Contexts/ComplaintContext";
 import { motion } from "framer-motion";
 import DashboardSection from "components/FileAComplaintComponents/DashboardSection";
+import { useCookies } from "react-cookie";
+import { ToastContainer, toast } from "react-toastify";
 
 const FileComplaint: NextPage = () => {
+	const { userComplaints, postUserComplaints, createResult } = useContext(ComplaintContext);
+	const [cookie, setCookie] = useCookies();
 	const { Open } = useContext(SideNavContext);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [productCategory, setProductCategory] = useState("");
@@ -34,6 +38,46 @@ const FileComplaint: NextPage = () => {
 	const [accountName, setAccountName] = useState("");
 	const [accountNumber, setAccountNumber] = useState("");
 	const [bankName, setBankName] = useState("");
+	const [isScam, setIsScam] = useState(false);
+	const [successModalShowing, setSuccessModalShowing] = useState(false);
+
+	useEffect(() => {
+		if (successModalShowing == true) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "auto";
+		}
+	}, [successModalShowing]);
+
+	const handleCreate = () => {
+		const payload = {
+			userId: cookie.user.userId,
+			title: titleOfComplaint,
+			transactionLocation: placeOfTransaction,
+			brandName: companyName,
+			productCategory: productCategory,
+			brandBankAccountNumber: accountNumber,
+			brandBankAccountName: accountName,
+			brandBank: bankName,
+			socialMediaHandle: brandHandle,
+			amountLost: amountLost,
+			resolution: { refund: wantsRefund, compensation: wantsCompensation, apology: wantsApology, replacement: wantsReplacement },
+			description: complaintDetails,
+			isScam: isScam,
+			supportingDocuments: selectedFiles,
+		};
+		if (!isScam) {
+			delete payload.brandBankAccountName;
+			delete payload.brandBankAccountNumber;
+			delete payload.brandBank;
+		}
+		postUserComplaints(payload);
+		if (createResult.error) {
+			toast.error(createResult.message);
+		} else setSuccessModalShowing(true);
+		console.log(createResult);
+	};
+
 	const handleSubmit = (event) => {
 		console.log(1);
 		event.preventDefault();
@@ -41,6 +85,8 @@ const FileComplaint: NextPage = () => {
 	return (
 		<NavWrapper>
 			<div className={` ${Open && `h-screen overflow-hidden`}`}>
+				<ToastContainer />
+
 				<PageSectionNav
 					setPage={setCurrentPage}
 					currentPage={currentPage}
@@ -78,6 +124,8 @@ const FileComplaint: NextPage = () => {
 								brandHandle={brandHandle}
 								setBrandHandle={setBrandHandle}
 								setIsOpaque={setIsOpaque}
+								isScam={isScam}
+								setIsScam={setIsScam}
 							/>
 						)}
 						{currentPage == 2 && (
@@ -91,6 +139,9 @@ const FileComplaint: NextPage = () => {
 						)}
 						{currentPage == 3 && (
 							<Page3
+								handleCreate={handleCreate}
+								successModalShowing={successModalShowing}
+								setSuccessModalShowing={setSuccessModalShowing}
 								setCurrentPage={setCurrentPage}
 								setIsOpaque={setIsOpaque}
 								place="dashboard"

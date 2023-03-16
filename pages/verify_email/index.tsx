@@ -11,7 +11,7 @@ import Popup, { ErrorPopUp, ResendCodeSuccessfulPopUp } from "../../components/L
 import client from "../api/Services/AxiosClient";
 import Joi from "joi";
 import jwtDecode from "jwt-decode";
-import { sendEmail, verifyEmail } from "api/users";
+import { checkVerified, sendEmail, verifyEmail } from "api/users";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -50,12 +50,11 @@ const RecoverPage: NextPage = () => {
 		try {
 			setResendButtonDisabled(true);
 			const res = await sendEmail(user);
-			if (res.status > 400) {
-				toast.error(res.message);
-				setResendText(res.message);
-			}
 			if (res.status < 400) {
 				toast.success(res.message);
+				setResendText(res.message);
+			} else {
+				toast.error(res.message);
 				setResendText(res.message);
 			}
 		} catch (err: any) {
@@ -70,37 +69,33 @@ const RecoverPage: NextPage = () => {
 
 		try {
 			setLoading(true);
-			const payload = { code };
+			console.log(code);
+			const payload = { code: code };
 			const { error } = validateCode(payload);
 			if (error) {
 				setError(error.details[0].message);
 			} else {
 				setError("");
-				const res = await verifyEmail();
+				const res = await verifyEmail(user, payload);
+
 				if (res.status >= 400) {
 					setBackendError(res.message);
 					toast.error(res.message);
 				}
 				if (res.status < 400) {
 					toast.success(res.message);
-					if (!cookies.user.acountVerified) {
-						router.replace({ pathname: "/verify", query: { id: user } });
-					} else {
-						router.replace("/dashboard");
+					try {
+						const verificationStatus = await checkVerified(user);
+						if (!verificationStatus.message.acountVerified) {
+							router.replace({ pathname: "/verify", query: { id: user } });
+						} else {
+							router.replace("/login");
+						}
+					} catch (error) {
+						toast.error("an error occured checking your verification status");
 					}
 				}
-				// const response = await client.post(`/users/verify_email/${cookies.user._id}`, payload);
-				// if (response.data.token) {
-				// 	const user: any = jwtDecode(response.data.token);
-				// 	console.log(user);
-				// 	if (user.emailVerified) {
-				// 		setCookie("user", user, {
-				// 			path: "/",
-				// 			expires: new Date(Date.now() + 2 * 86400000),
-				// 		});
-				// 		router.replace("/verify");
-				// 	}
-				// }
+
 				setBackendError("");
 			}
 		} catch (err: any) {

@@ -24,11 +24,12 @@ const Index: NextPage = (props) => {
 	useEffect(() => {
 		if (complaints && complaints.data && complaints.data.data) {
 			setComplaintData(complaints.data.data);
+			setSearchResults(complaints.data.data);
 		}
 		setLoading(isLoading);
 		setError(isError);
 	}, [complaints]);
-	console.log(complaintData, loading, error);
+	console.log(complaintData);
 	const [searchText, setSearchText] = useState("");
 	const [areSearchResults, setAreSearchResults] = useState(false);
 	const [resultIndicatorShowing, setResultIndicatorShowing] = useState(false);

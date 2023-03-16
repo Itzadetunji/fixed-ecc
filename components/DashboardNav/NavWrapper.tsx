@@ -1,20 +1,53 @@
 import SideNav from "./SideNav";
 import TopNav from "./TopNav";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import test from "node:test";
-
 import { SideNavContext } from "./../Contexts/SideNavContext";
-
+import { useCookies } from "react-cookie";
+import { getUserInfo } from "./../../api/users";
+import { UserContext } from "components/Contexts/UserContext";
+import { useRouter } from "next/router";
+import { Data } from "victory";
 interface NavWrapperProps {
 	children: JSX.Element;
 }
-
 const NavWrapper: React.FC<NavWrapperProps> = ({ children }) => {
 	const { Open, setIsOpen } = useContext(SideNavContext);
-
+	const { user, setUser } = useContext(UserContext);
+	const [cookie, setCookie, deleteCookie] = useCookies();
+	const router = useRouter();
 	const openSide = () => {
 		setIsOpen(!Open);
 	};
+
+	useEffect(() => {
+		document.body.style.overflow = "auto";
+		if (cookie.expiry && cookie.expiry.time < Date.now()) {
+			router.replace("/login");
+			deleteCookie("expiry");
+		}
+
+		if (cookie.user && cookie.token && cookie.expiry && cookie.expiry.time > Date.now()) {
+			const getUserDetails = async () => {
+				const user = cookie.user ? cookie.user.userId : "";
+				console.log(user, cookie.token);
+				try {
+					const res = await getUserInfo(user, cookie.token);
+					const data = res.getNeededInfo();
+					setUser(data);
+				} catch (error) {
+					console.log(error);
+				}
+			};
+			try {
+				getUserDetails();
+			} catch (error) {
+				console.log(error);
+			}
+		} else {
+			router.replace("/login");
+		}
+	}, []);
 
 	return (
 		<div className="flex flex-row">

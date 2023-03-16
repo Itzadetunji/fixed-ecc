@@ -19,6 +19,7 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 		setSelectedFiles(selectedFiles.filter((item) => item != currentItem));
 	};
 	const onSubmit = () => {
+		console.log(selectedFiles);
 		setIsOpaque(false);
 		setTimeout(() => {
 			setIsOpaque(true);
@@ -78,7 +79,7 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 						<p className="text-[12px] lg:text-[18px] mt-[6px] lg:mt-[22px]">Supported format: JPEG, PNG, PDF</p>
 					</div>
 				</div>
-				<p className="text-[14px] lg:text-xl mt-[16px] lg:mt-10 leading-[25px] lg:leading-[46px]">You can provide additional documents that can support your claim e.g screenshots of chats. You can upload multiple documents</p>
+				<p className="text-[14px] lg:text-xl mt-[16px] lg:mt-10 leading-[25px] lg:leading-[46px]">You can provide additional documents that can support your claim e.g screenshots of chats. You can upload multiple documents. Upload proof of payment/ receipt first </p>
 				<div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-x-[27.34px]">
 					{selectedFiles.length > 0 &&
 						selectedFiles.map((item, index) => (
@@ -121,7 +122,9 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 					Previous
 				</button>
 				<button
+					style={{ opacity: selectedFiles.length > 0 ? 1 : 0.6 }}
 					onClick={onSubmit}
+					disabled={selectedFiles.length === 0}
 					className="text-xs sm:text-sm bg-eccblue rounded-lg font-regular sm:font-semibold text-white h-[35px] sm:h-[45px] w-[100px] sm:w-[131px] hover:scale-[0.95] hover:duration-100 hover:ease-in-out"
 				>
 					Continue

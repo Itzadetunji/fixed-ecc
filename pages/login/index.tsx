@@ -10,11 +10,12 @@ import { useRouter } from "next/router";
 import "react-toastify/dist/ReactToastify.css";
 import client from "../api/Services/AxiosClient";
 
-import { authenticate } from "./../../api/users";
+import { authenticate, sendEmail } from "./../../api/users";
 import { ToastContainer, toast } from "react-toastify";
+import { checkVerified } from "api/users";
 
 const LoginPage: NextPage = () => {
-	const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+	const [cookies, setCookie, removeCookie] = useCookies(["user" || "token" || "expiry"]);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState(false);
@@ -63,17 +64,23 @@ const LoginPage: NextPage = () => {
 					setBackendError(res.message);
 				} else if (res.status < 400) {
 					const user = res.message;
-					setCookie("user", user);
+					const token = res.token;
 					console.log(user);
-					if (!user.accountVerified) {
-						router.replace({ pathname: "/verify", query: { id: cookies.user.userId } });
-					} else if (!user.emailVerified) {
-						router.replace({ pathname: "/verify_email", query: { id: cookies.user.userId } });
+					setCookie("user", user);
+					setCookie("token", token, { expires: new Date(Date.now() * 60 * 60 * 60 * 24) });
+					setCookie("expiry", { time: Date.now() + 1000 * 60 * 60 * 24 });
+					const verificationStatus = await checkVerified(user.userId);
+					if (!verificationStatus.message.accountVerified) {
+						router.replace({ pathname: "/verify", query: { id: user.userId } });
+					} else if (!verificationStatus.message.emailVerified) {
+						sendEmail(cookies.user.userId);
+						router.replace({ pathname: "/verify_email", query: { id: user.userId } });
 					} else {
 						router.push("/dashboard");
 					}
 				}
-			} catch (err: any) {
+			} catch (err) {
+				console.log(err);
 				toast.error("Something went wrong🥲 Kindly check your internet connection🥲");
 			} finally {
 				setLoading(false);

@@ -12,11 +12,7 @@ import { UserContext } from "../../../Contexts/UserContext";
 const Profile: NextPage = () => {
 	const [cookie, setCookie] = useCookies(["user"]);
 	const { user, setUser } = useContext(UserContext);
-	useEffect(() => {
-		if (cookie.user) setUser(cookie.user);
-	});
 	const [isShowing, setIsShowing] = useState("personal");
-
 	const dummyProfile = "/../../Images/dummy-profile.png";
 	const camera = "/../../icons/dashboard-icons/camera.svg";
 	const cOutline = "/../../icons/dashboard-icons/camera-outline.svg";

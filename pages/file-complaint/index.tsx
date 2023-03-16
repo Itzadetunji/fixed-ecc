@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import FileAComplaintProcess from "../../components/FileAComplaintComponents/FileAComplaintProcess";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavBar } from "../../components";
 import { Footer } from "../../components/";
 import Page1 from "../../components/FileAComplaintComponents/Page1";
@@ -31,6 +31,35 @@ const Index: NextPage = () => {
 	const [accountNumber, setAccountNumber] = useState("");
 	const [bankName, setBankName] = useState("");
 	const [expand, setExpand] = useState(false);
+	const [isScam, setIsScam] = useState(false);
+	const [successModalShowing, setSuccessModalShowing] = useState(false);
+	useEffect(() => {
+		if (successModalShowing == true) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "auto";
+		}
+	}, [successModalShowing]);
+
+	const handleCreate = () => {
+		const payload = {
+			title: titleOfComplaint,
+			transactionLocation: placeOfTransaction,
+			companyName: companyName,
+			productCategory: productCategory,
+			brandBankAccountNumber: accountNumber,
+			brandBankAccountName: accountName,
+			brandBank: bankName,
+			socialMediaHandle: brandHandle,
+			amountLost: amountLost,
+			resolution: { refund: wantsRefund, compensation: wantsCompensation, apology: wantsApology, replacement: wantsReplacement },
+			description: complaintDetails,
+			isScam: isScam,
+			selectedFiles: selectedFiles,
+		};
+		console.log(payload);
+		setSuccessModalShowing(true);
+	};
 	return (
 		<div>
 			{expand && (
@@ -102,6 +131,8 @@ const Index: NextPage = () => {
 									brandHandle={brandHandle}
 									setBrandHandle={setBrandHandle}
 									setIsOpaque={setIsOpaque}
+									isScam={isScam}
+									setIsScam={setIsScam}
 								/>
 							)}
 							{currentPage == 2 && (
@@ -115,6 +146,9 @@ const Index: NextPage = () => {
 							)}
 							{currentPage == 3 && (
 								<Page3
+									setSuccessModalShowing={setSuccessModalShowing}
+									successModalShowing={successModalShowing}
+									handleCreate={handleCreate}
 									setCurrentPage={setCurrentPage}
 									setIsOpaque={setIsOpaque}
 									place="main"

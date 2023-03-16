@@ -1,11 +1,14 @@
 import { useRouter } from "next/router";
 import React from "react";
-import ComplaintData from "./ComplaintData";
+import { useContext } from "react";
 
+import { ComplaintContext } from "../Contexts/ComplaintContext";
 const TransactionDetails = () => {
 	const router = useRouter();
 	const complaintId = router.query.id;
-	const complaint = ComplaintData.filter((complaint) => complaint.grievanceId == complaintId)[0];
+	const { userComplaints } = useContext(ComplaintContext);
+
+	const complaint = userComplaints.filter((complaint) => complaint._id == complaintId)[0];
 
 	return (
 		<div>
@@ -30,7 +33,7 @@ const TransactionDetails = () => {
 
 				<div>
 					<h6 className="border-b border-b-[#c5c5c5] text-[16px] text-[#0B63C5] mb-3">{"Company's/Brand's Name:"}</h6>
-					<p className="text-[#474747] mb-4 ">{complaint.companyName}</p>
+					<p className="text-[#474747] mb-4 ">{complaint.brandName}</p>
 				</div>
 				<div>
 					<h6 className="border-b border-b-[#c5c5c5] text-[16px] text-[#0B63C5] mb-3">{"Company's / Brand's Contact:"}</h6>
