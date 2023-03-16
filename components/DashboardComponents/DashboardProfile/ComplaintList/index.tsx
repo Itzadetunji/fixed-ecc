@@ -52,12 +52,14 @@ const ComplaintList: React.FC<ComplaintProps> = ({ page, pageNumber, setPageNumb
 				</ul>
 			)}
 
-			<PreviousNextButton
-				maxNumber={maxNumber}
-				setPageNumber={setPageNumber}
-				listLength={list.length}
-				pageNumber={pageNumber}
-			/>
+			{list.length > 1 && (
+				<PreviousNextButton
+					maxNumber={maxNumber}
+					setPageNumber={setPageNumber}
+					listLength={list.length}
+					pageNumber={pageNumber}
+				/>
+			)}
 		</div>
 	);
 };
