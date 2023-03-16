@@ -20,11 +20,11 @@ const Admin = () => {
 				<div className="w-full mb-[20px]">
 					<ComplaintStats stats={ComplaintStatsData} />
 				</div>
-				<div className="flex flex-row justify-between mb-[20px] gap-x-6">
+				<div className="flex items-center flex-col lg:flex-row lg:justify-between mb-[20px] gap-x-6">
 					<RecentActivity />
 					<RecentShares />
 				</div>
-				<div className="w-full flex flex-row justify-between gap-x-6">
+				<div className="lg:w-full w-[80%] items-center flex flex-col lg:flex-row lg:justify-between gap-y-4 lg:gap-y-0 lg:gap-x-6">
 					<Geographics states={states} />
 					<ComplaintGeographics states={states} />
 				</div>
