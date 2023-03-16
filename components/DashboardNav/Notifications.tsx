@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useContext, useState, useEffect } from "react";
 import { NotificationContext } from "../Contexts/NotificationContext";
@@ -8,10 +9,12 @@ const Notifications: React.FC = () => {
 
 	return (
 		<Link href="/dashboard/notifications">
-			<div className="relative cursor-pointer">
-				<img
-					className="w-[24px] h-[24px]"
+			<div className="relative cursor-pointer w-5 sm:w-6 h-5 sm:h-6">
+				<Image
 					src="/Images/notificationsIcon.svg"
+					layout="fill"
+					objectFit="contain"
+					alt="notification icon"
 				/>
 				<div
 					style={{ opacity: newNotifications ? 1 : 0 }}

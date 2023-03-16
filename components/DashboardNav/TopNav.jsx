@@ -95,7 +95,7 @@ const TopNav = (props) => {
 			{/*the mobile screen starts here */}
 			<div className="lg:hidden">
 				<div className="w-full max-h-[57.3px] bg-white fixed z-20 flex flex-row justify-between p-3 sm:p-5">
-					<div className="flex flex-row items-center space-x-[11px]">
+					<div className="flex flex-row items-center space-x-[11px] sm:space-x-[15px]">
 						<button onClick={props.openSide}>
 							<div className="relative w-[24px] sm:w-[30px] h-[24px] sm:h-[30px]">
 								<Image
