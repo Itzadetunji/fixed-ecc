@@ -14,7 +14,6 @@ export const markAllRead = async (user) => {
 	try {
 		const res = await post(`notifications/${user}/markAllAsRead`);
 		return { status: res.status, message: res.data };
-		setNotificationData(data.notifications);
 	} catch (error) {
 		console.log(error);
 	}
