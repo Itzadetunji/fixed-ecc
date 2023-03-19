@@ -53,6 +53,7 @@ const WebcamPort: React.FC<WebCamProps> = ({ setWebCamShowing }) => {
 				/>
 			) : (
 				<img
+					className="w-full object-cover h-[250px]"
 					src={Image}
 					alt=""
 				/>
