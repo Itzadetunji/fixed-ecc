@@ -1,23 +1,22 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-
-import Link from "next/link";
 import Details from "../PersonalDetails";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { format, parse } from "fecha";
 import { motion } from "framer-motion";
 import ComplaintsCardSection from "./../../../../Sections/ComplaintsCardSection/index";
-import { useCookies } from "react-cookie";
 import { UserContext } from "../../../Contexts/UserContext";
+import { WebCamContext } from "components/Contexts/WebCamContext";
 const Profile: NextPage = () => {
-	const [cookie, setCookie] = useCookies(["user"]);
-	const { user, setUser } = useContext(UserContext);
+	const { user } = useContext(UserContext);
 	const [isShowing, setIsShowing] = useState("personal");
 	const dummyProfile = "/../../Images/dummy-profile.png";
 	const camera = "/../../icons/dashboard-icons/camera.svg";
 	const cOutline = "/../../icons/dashboard-icons/camera-outline.svg";
+	const { setWebCamShowing } = useContext(WebCamContext);
 	return (
 		<motion.div
+			className={`flex justify-center items-center  `}
 			initial={{ opacity: 0, scale: 0.95 }}
 			animate={{ opacity: 1, scale: 1, transition: { duration: 0.3 } }}
 		>
@@ -36,7 +35,10 @@ const Profile: NextPage = () => {
 								alt="Dummy Profile"
 							/>
 						</div>
-						<div className="relative w-[43px] h-[43px] bottom-[48px] left-[56px] cursor-pointer">
+						<div
+							onClick={() => setWebCamShowing(true)}
+							className="relative w-[43px] h-[43px] bottom-[48px] left-[56px] cursor-pointer"
+						>
 							<Image
 								src={camera}
 								alt="Camera"
@@ -96,7 +98,10 @@ const Profile: NextPage = () => {
 						</div>
 					</div>
 				</div>
-				<div className="flex flex-row justify-center items-center bg-eccblue mx-[37px] xl:mx-[73px] rounded-xl mt-[60px] mb-[41px]">
+				<div
+					onClick={() => setWebCamShowing(true)}
+					className="flex flex-row justify-center items-center bg-eccblue mx-[37px] xl:mx-[73px] rounded-xl mt-[60px] mb-[41px]"
+				>
 					<div className="relative mr-5 h-[24px] w-[24px]">
 						<Image
 							src={cOutline}
@@ -110,7 +115,10 @@ const Profile: NextPage = () => {
 			</div>
 
 			<div className="lg:hidden w-full bg-clearblue relative">
-				<div className="relative rounded-t-[20px] h-[105.44px]">
+				<div
+					onClick={() => setWebCamShowing(true)}
+					className="relative rounded-t-[20px] h-[105.44px]"
+				>
 					<Image
 						src={"/../../icons/dashboard-icons/profile-header.svg"}
 						alt="Profile Header"
@@ -124,7 +132,10 @@ const Profile: NextPage = () => {
 								alt=""
 							/>
 						</div>
-						<div className="relative w-[27.39px] h-[28.67px] bottom-[20px] left-[20px] cursor-pointer">
+						<div
+							onClick={() => setWebCamShowing(true)}
+							className="relative w-[27.39px] h-[28.67px] bottom-[20px] left-[20px] cursor-pointer"
+						>
 							<Image
 								src={camera}
 								alt="Camera"

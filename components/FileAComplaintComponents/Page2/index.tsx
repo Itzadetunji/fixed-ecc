@@ -10,9 +10,12 @@ interface Page2Props {
 
 const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, setSelectedFiles, setIsOpaque }) => {
 	const filePickerRef = useRef<HTMLInputElement>(null);
+
+	const uploadFile = (file) => {};
 	const addDocument = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const files = [...selectedFiles];
 		if (e.target.files) files.push(e.target.files[0]);
+
 		setSelectedFiles(files);
 	};
 	const onFileDelete = (currentItem: any) => {
