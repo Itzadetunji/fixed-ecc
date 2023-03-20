@@ -19,6 +19,10 @@ export const put = async (route, auth, data) => {
 	const res = await apiConfig.put(`/${route}`, data, auth);
 	return { data: res.data, status: res.status };
 };
+export const patch = async (route, auth, data) => {
+	const res = await apiConfig.patch(`/${route}`, data, auth);
+	return { data: res.data, status: res.status };
+};
 export const _delete = async (route, auth) => {
 	const res = await apiConfig.delete(`/${route}`, auth);
 	return { data: res.data, status: res.status };
