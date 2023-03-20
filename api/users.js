@@ -1,4 +1,4 @@
-import { post, get, put, _delete } from "./config";
+import { post, get, put, _delete, patch } from "./config";
 import jwt_decode from "jwt-decode";
 export const authenticate = async (payload) => {
 	try {
@@ -14,6 +14,24 @@ export const authenticate = async (payload) => {
 	} catch (error) {
 		console.log(error);
 		return { status: error.response.status, message: error.response.data.message };
+	}
+};
+
+export const uplaodUserProfile = async (payload, user, token) => {
+	try {
+		const res = await patch(
+			`users/profile/${user}`,
+			{
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: token,
+				},
+			},
+			payload
+		);
+		console.log(res);
+	} catch (error) {
+		console.log(error);
 	}
 };
 

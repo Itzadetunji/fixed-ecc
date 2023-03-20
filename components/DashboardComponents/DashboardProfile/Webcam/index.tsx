@@ -1,6 +1,8 @@
 import Webcam from "react-webcam";
 import { Dispatch, SetStateAction } from "react";
 import { useEffect, useRef, useCallback, useState } from "react";
+import { useCookies } from "react-cookie";
+import { uplaodUserProfile } from "api/users";
 
 interface WebCamProps {
 	setWebCamShowing: Dispatch<SetStateAction<boolean>>;
@@ -8,6 +10,9 @@ interface WebCamProps {
 
 const WebcamPort: React.FC<WebCamProps> = ({ setWebCamShowing }) => {
 	const reader = new FileReader();
+	const [cookies] = useCookies();
+	const token = cookies.token;
+	const user = cookies.user.userId;
 
 	const webCamRef = useRef(null);
 	const [Image, setImage] = useState("");
@@ -32,6 +37,20 @@ const WebcamPort: React.FC<WebCamProps> = ({ setWebCamShowing }) => {
 			setImage("");
 		}
 	}, [unreadFile]);
+
+	const uploadImage = async () => {
+		const payload = {
+			files: {
+				myfile: Image,
+			},
+		};
+
+		try {
+			const res = uplaodUserProfile(payload, user, token);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 	return (
 		<div className="bg-white p-4 w-[400px] h-[400px] flex flex-col rounded-[18px] justify-center items-center">
 			<div className="w-full flex justify-end mb-4">
@@ -100,7 +119,14 @@ const WebcamPort: React.FC<WebCamProps> = ({ setWebCamShowing }) => {
 						/>
 					</>
 				)}
-				{photoSelected && <button className="border border-eccblue text-eccblue p-2 rounded-md">Use Photo</button>}
+				{photoSelected && (
+					<button
+						onClick={uploadImage}
+						className="border border-eccblue text-eccblue p-2 rounded-md"
+					>
+						Use Photo
+					</button>
+				)}
 			</div>
 		</div>
 	);
