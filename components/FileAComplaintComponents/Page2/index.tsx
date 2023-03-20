@@ -10,9 +10,11 @@ interface Page2Props {
 
 const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, setSelectedFiles, setIsOpaque }) => {
 	const filePickerRef = useRef<HTMLInputElement>(null);
+
 	const addDocument = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const files = [...selectedFiles];
 		if (e.target.files) files.push(e.target.files[0]);
+
 		setSelectedFiles(files);
 	};
 	const onFileDelete = (currentItem: any) => {
@@ -79,7 +81,7 @@ const Page2: React.FC<Page2Props> = ({ place, setCurrentPage, selectedFiles, set
 						<p className="text-[12px] lg:text-[18px] mt-[6px] lg:mt-[22px]">Supported format: JPEG, PNG, PDF</p>
 					</div>
 				</div>
-				<p className="text-[14px] lg:text-xl mt-[16px] lg:mt-10 leading-[25px] lg:leading-[46px]">You can provide additional documents that can support your claim e.g screenshots of chats. You can upload multiple documents</p>
+				<p className="text-[14px] lg:text-xl mt-[16px] lg:mt-10 leading-[25px] lg:leading-[46px]">You can provide additional documents that can support your claim e.g screenshots of chats. You can upload multiple documents. Upload proof of payment/ receipt first </p>
 				<div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-x-[27.34px]">
 					{selectedFiles.length > 0 &&
 						selectedFiles.map((item, index) => (

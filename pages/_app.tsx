@@ -10,6 +10,7 @@ import NotificationContextProvider from "../components/Contexts/NotificationCont
 import UserContextProvider from "../components/Contexts/UserContext";
 import SideNavContextProvider from "components/Contexts/SideNavContext";
 import ComplaintContextProvider from "./../components/Contexts/ComplaintContext";
+import WebCamContextProvider from "./../components/Contexts/WebCamContext";
 
 const queryClient = new QueryClient();
 function MyApp({ Component, pageProps, router }: AppProps) {
@@ -22,12 +23,14 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 						<NotificationContextProvider>
 							<UserContextProvider>
 								<ComplaintContextProvider>
-									<SideNavContextProvider>
-										<Component
-											{...pageProps}
-											key={router.route}
-										/>
-									</SideNavContextProvider>
+									<WebCamContextProvider>
+										<SideNavContextProvider>
+											<Component
+												{...pageProps}
+												key={router.route}
+											/>
+										</SideNavContextProvider>
+									</WebCamContextProvider>
 								</ComplaintContextProvider>
 							</UserContextProvider>
 						</NotificationContextProvider>

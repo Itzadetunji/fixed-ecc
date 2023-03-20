@@ -1,33 +1,43 @@
 import { createContext, useState, useEffect } from "react";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient, useMutation } from "react-query";
 import { useCookies } from "react-cookie";
-
 export const ComplaintContext = createContext();
-import { getComplaintsUser } from "api/complaints";
-import { getUserInfo } from "./../../api/users";
+import { getComplaintsUser, createComplaint } from "api/complaints";
 
 const ComplaintContextProvider = ({ children }) => {
+	const queryClient = useQueryClient();
+	const [createResult, setCreateResult] = useState("");
 	const [userComplaints, setUserComplaints] = useState([]);
 	const [cookie, setCookie] = useCookies();
 	const user = cookie.user ? cookie.user.userId : "";
 	const token = cookie.token ? cookie.token : "";
-	const getUserComplaints = async () => {
-		const data = await getComplaintsUser(user, token);
 
-		return data.message;
+	const { mutate: postUserComplaints } = useMutation((payload) => createComplaint(payload, token), {
+		onError(err) {
+			setCreateResult({ error: true, message: "could not create complaint" });
+		},
+		onSuccess(data) {
+			setCreateResult({ error: false, message: "complaint successfully created" });
+		},
+		onSettled() {
+			queryClient.invalidateQueries("complaints");
+		},
+	});
+	const getUserComplaints = async () => {
+		try {
+			const data = await getComplaintsUser(user, token);
+			return data.message;
+		} catch (error) {
+			console.log(error);
+		}
 	};
 	const { isLoading, data, status } = useQuery("complaints", getUserComplaints);
 
-	const postUserComplaints = (complaintData) => {
-		return null;
-	};
 	useEffect(() => {
-		if (!isLoading && status === "success") {
-			setUserComplaints(data);
-		}
-	}, [isLoading]);
+		setUserComplaints(data);
+	}, []);
 
-	return <ComplaintContext.Provider value={{ userComplaints, postUserComplaints }}>{children}</ComplaintContext.Provider>;
+	return <ComplaintContext.Provider value={{ userComplaints, postUserComplaints, createResult }}>{children}</ComplaintContext.Provider>;
 };
 
 export default ComplaintContextProvider;

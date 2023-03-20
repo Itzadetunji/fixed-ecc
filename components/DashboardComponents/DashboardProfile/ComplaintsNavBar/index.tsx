@@ -58,7 +58,7 @@ const complaintsnavbar: NextPage<navBarProps> = ({ setPage, page, setPageNumber 
 			</div>
 
 			<div className="bg-eccblue lg:hidden w-full flex items-center justify-center h-[55px]">
-				<div className="flex flex-row items-center justify-between gap-x-[10px] sm:gap-x-[40px]">
+				<div className="flex flex-row items-center justify-between gap-x-[10px] sm:gap-x-[40px] sm:w-[80%]">
 					{complaintsnavbarcontents.map((item, index) => (
 						<div
 							key={index}
@@ -66,7 +66,7 @@ const complaintsnavbar: NextPage<navBarProps> = ({ setPage, page, setPageNumber 
 								setPage(item.text);
 								setPageNumber(1);
 							}}
-							className={`border border-transparent ${item.text === page && "text-black border-solid bg-white border-white"} w-[65px] rounded-2xl text-center hoverAnimation`}
+							className={`border border-transparent ${item.text === page && "text-black border-solid bg-white border-white"} w-[51px] sm:w-[65px] rounded-2xl text-center hoverAnimation`}
 						>
 							<p className={`text-[12px]  text-center text-white font-medium -tracking-[0.02em] ${item.text === page && "text-[black] py-2"}`}>{item.text}</p>
 						</div>

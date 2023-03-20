@@ -7,7 +7,7 @@ const TopNav = () => {
 	return (
 		<div
 			style={{ zIndex: 20 }}
-			className="fixed left-[295px] top-0 w-[calc(100%-295px)] h-[110px] bg-white pl-[35px] pt-[0px] pr-[66px] flex justify-between items-center poppinsFont  "
+			className="fixed lg:left-[295px] top-0 lg:w-[calc(100%-295px)] lg:h-[110px] h-[75px] bg-white lg:pl-[35px] lg:pt-[0px] lg:pr-[66px] flex justify-between items-center poppinsFont w-full  "
 		>
 			<div>
 				<SearchBar

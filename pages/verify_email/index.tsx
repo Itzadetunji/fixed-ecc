@@ -89,7 +89,7 @@ const RecoverPage: NextPage = () => {
 						if (!verificationStatus.message.acountVerified) {
 							router.replace({ pathname: "/verify", query: { id: user } });
 						} else {
-							router.replace("/dashboard");
+							router.replace("/login");
 						}
 					} catch (error) {
 						toast.error("an error occured checking your verification status");

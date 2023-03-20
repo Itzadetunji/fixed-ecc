@@ -1,17 +1,30 @@
 import type { NextPage } from "next";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+
 import { useRouter } from "next/router";
-import ComplaintData from "../../../components/Complaint/ComplaintData";
+import { ComplaintContext } from "../../../components/Contexts/ComplaintContext";
 import Resolution from "../../../components/ResolutionWanted";
 import NavWrapper from "../../../components/DashboardNav/NavWrapper";
 import TransactionDetails from "../../../components/Complaint/TransactionDetails";
-
+import { format } from "date-fns";
 const Mycomplaints: NextPage = () => {
+	const { userComplaints } = useContext(ComplaintContext);
 	const [showModal, setShowModal] = useState(false);
 	const [data, setData] = useState("");
 	const router = useRouter();
 	const complaintId = router.query.id;
-	const complaint = ComplaintData.filter((complaint) => complaint.grievanceId == complaintId)[0];
+	const [complaint, setComplaint] = useState({
+		resolution: "",
+		_id: "",
+		createdAt: "",
+		description: "",
+		status: "",
+	});
+	useEffect(() => {
+		if (userComplaints && userComplaints.length > 0) {
+			setComplaint(userComplaints.filter((complaint) => complaint._id == complaintId)[0]);
+		}
+	}, [userComplaints]);
 
 	const documents = [
 		{ src: "/Images/Frame-814.png", alt: "document" },
@@ -39,18 +52,19 @@ const Mycomplaints: NextPage = () => {
 							<div className=" w-full flex lg:flex-row flex-col mb-[50px]  lg:justify-between ">
 								<div>
 									<div className="flex flex-row gap-x-2">
-										<p className=" text-eccblue sm:font-[600] mb-2 ">Greviance ID:{complaintId}</p>
+										<p className=" text-eccblue sm:font-[600] mb-2 ">Greviance ID:{complaint._id}</p>
 										<img
 											onClick={() => {
 												alert("id has been copied to clipboard");
-												navigator.clipboard.writeText(complaint.grievanceId);
+												navigator.clipboard.writeText(complaint._id);
 											}}
 											src="/icons/dashboard-icons/copy.svg"
 											className="w-[26.15px] h-[26.15px]"
 											alt=""
 										/>
 									</div>
-									<p className="text-[#474747] my-2 ">Date Filed: {complaint.date}</p>
+									{/* format(new Date(complaint.createdAt), "dd/MM/yyyy") */}
+									<p className="text-[#474747] my-2 ">Date Filed: {}</p>
 								</div>
 								<div className="my-4 sm:mt-[1px] flex flex-col mx-auto lg:mx-0 items-center ">
 									<p className="sm:font-[500]  sm:text-[15px]">Has this complaint been resolved?</p>
@@ -71,12 +85,12 @@ const Mycomplaints: NextPage = () => {
 							<div className="mt-[52px]">
 								<p className="text-eccblue text-[19.64px]">Resolution wanted:</p>
 								<div className="lg:grid w-full grid-cols-2 flex flex-col items-center justify-center">
-									{Object.values(complaint.resolutionWanted).map(
+									{Object.values(complaint.resolution).map(
 										(value, index) =>
 											value && (
 												<Resolution
 													key={index}
-													type={Object.keys(complaint.resolutionWanted)[index]}
+													type={Object.keys(complaint.resolution)[index]}
 												/>
 											)
 									)}
