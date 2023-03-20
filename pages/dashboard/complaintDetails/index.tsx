@@ -63,7 +63,8 @@ const Mycomplaints: NextPage = () => {
 											alt=""
 										/>
 									</div>
-									<p className="text-[#474747] my-2 ">Date Filed: {format(new Date(complaint.createdAt), "dd/MM/yyyy")}</p>
+									{/* format(new Date(complaint.createdAt), "dd/MM/yyyy") */}
+									<p className="text-[#474747] my-2 ">Date Filed: {}</p>
 								</div>
 								<div className="my-4 sm:mt-[1px] flex flex-col mx-auto lg:mx-0 items-center ">
 									<p className="sm:font-[500]  sm:text-[15px]">Has this complaint been resolved?</p>
